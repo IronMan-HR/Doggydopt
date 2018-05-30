@@ -1,0 +1,8 @@
+
+?key=6bfd4e7144254f8d048242e5d067a696
+
+http://api.petfinder.com/pet.find?key=6bfd4e7144254f8d048242e5d067a696&animal=dog&location=10017&count=75&output=full&format=json&count=2
+
+http://api.petfinder.com/breed.list?key=6bfd4e7144254f8d048242e5d067a696&animal=dog&format=json
+
+http://api.petfinder.com/pet.find?key=6bfd4e7144254f8d048242e5d067a696&animal=dog&location=10017&count=75&output=full&format=json&count=10&breed=Alaskan%20Malamute
