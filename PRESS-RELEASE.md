@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  Dogstuff
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Potential new dog-owners learn compatible breeds for their lifestyle, and receive targeted rescue-matches based on geolocation.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+
+  Dog ownership is not an enterprise to be taken lightly, but for an eager novice, the learning curve can often prove steep.  For those unsure of where to start, _______ aims to pinpoint a short list of breeds compatible with your lifestyle, and route you towards local adoption options in the immediate area.  Why leave such an important decision to chance, when a brief survey can ensure a smooth transition into pet ownership?
 
 ## Problem ##
-  > Describe the problem your product solves.
+  Prospective dog owners may be unaware of what breed fits best with their lifestyle, impulsively choosing one from a breeder rather than making an informed decision that also gives a rescue dogs a new home.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  Our product matches the perfect breed for each person based on their lifestyle, recommending available options in the immediate area.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  Dog ownership is complicated, and our targeted filter system can ensure that you transition as smootly as possible into your new responsibility.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Just select the filters that best correspond to your lifestyle and learn which breeds match you best.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  I've always wanted a dog, but didn't know where to start.  With the help of ......, I was able to hit the ground running, and find the best match for me AND her.  
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  Why take chances when searching for your new best friend?
