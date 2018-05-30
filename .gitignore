@@ -1,3 +1,6 @@
 node-modules
-config.js
+dist/
+build/
+package-lock.json
 bundle.js
+.DS_Store
