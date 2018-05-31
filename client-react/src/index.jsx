@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       breeds: exampleData,
-      selectedBreed: {}
+      adoptables: []
     } 
     this.clickHandler = this.clickHandler.bind(this);
     this.search = this.search.bind(this);
@@ -19,7 +19,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/breeds/all')
     .then(res => {
-      console.log(res.data);
       this.setState({
         breeds: res.data
       });
@@ -29,23 +28,32 @@ class App extends React.Component {
   }
 
   clickHandler(breed) {
-    this.setState({
-      selectedBreed: breed
+    axios.post('/adopt', {
+      breedName: breed.breed,
+      zipCode: 10017 // HARDCODED
     })
+    .then(res => {
+      this.state({
+        adoptables: res.data
+      })
+    }).catch(err => {
+      console.error(err);
+    }) 
   }
 
   search(params) {
     axios.post('/breeds', params)
     .then(res => {
-      console.log(res.data);
+      this.setState({
+        breeds: res.data
+      })
     }).catch(err => {
       console.error(err);
     })
   }
 
   render () {
-    let breed = this.state.selectedBreed
-    if (breed.constructor === Object && Object.keys(breed).length === 0) {
+    if (this.state.adoptables.length === 0) {
       return (
         <div className="columns is-gapless">
             <Search search={this.search}/>
@@ -53,11 +61,10 @@ class App extends React.Component {
         </div>
       )
     } else {
-      return <AdoptList breed={breed}/>;
+      return <AdoptList dogs={this.state.adoptables}/>;
     }
   }
 }
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
->>>>>>> dev
