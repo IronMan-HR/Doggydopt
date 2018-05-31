@@ -5,7 +5,7 @@ var connection = createConnection(credentials);
 
 connection.connect();
 
-var queryStr = "";
+var queryStr = "INSERT INTO ";
 
 var params = "";
 
