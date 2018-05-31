@@ -1,19 +1,33 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var url = require('url');
 
-var axios = requier('axios');
+var models = require('../server/db/models/models.js');
+
+var axios = require('axios');
 var port = process.env.PORT || 9000;
 var app = express();
 
-app.use(express.static(__dirname, '/../client-react/'));
+app.use(express.static(__dirname + '/../client-react/'));
 app.use(bodyParser.json());
 
-app.get('/action', (req, res)=>{
-	res.status(201).send(data);
+app.get('/breeds/all', (req, res)=>{
+	models.breeds.all((data)=>{
+		res.status(201).send(data);
+	});
 });
 
-app.post('/action', (req, res)=>{
-	res.status(201).send(data);
+app.post('/breeds', (req, res)=>{
+	console.log('body', req.body);
+	models.breeds.post(req.body, (data)=>{
+		res.status(201).send(data);
+	});
+});
+
+app.get('/adopt', (req, res)=>{
+	models.adopt.get(req.body, (data)=>{
+		res.status(201).send(data);
+	});
 });
 
 app.listen(port, ()=>{

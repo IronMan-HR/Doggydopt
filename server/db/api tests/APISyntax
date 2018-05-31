@@ -1,8 +1,16 @@
 api.post('/breeds', ()=>{
 
-    size: ->weight
-    energy: -> exercise
-    hair: ->shedding
-    kid:    -> biddability
-    playful: -> exercise
+    size: ['small', 'medium', 'large],
+    energy: ['low', 'moderate', 'high'],
+    hair: ['low', 'moderate', 'high'], //shedding
+    kid:  ['low', 'moderate', 'high'], //biddability
+    playful: ['low', 'moderate', 'high']
 });
+
+{
+    "size": ["small", "medium"],
+    "energy": ["moderate", "high"],
+    "hair": ["low", "moderate"],
+    "kid":  ["low", "moderate", "high"],
+    "playful": ["low", "moderate", "high"]
+}
