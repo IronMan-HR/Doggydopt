@@ -18,14 +18,17 @@ class Search extends React.Component {
   onClick(e, trait) {
     e.preventDefault();
     if (e.target.tagName === 'BUTTON') {
-      var spec = e.target.innerHTML.toLowerCase();
-      var arr = this.state[trait];
-      if (!arr.includes(spec)) {
+      let spec = e.target.innerHTML.toLowerCase();
+      let arr = this.state[trait];
+      let i = arr.indexOf(spec);
+      if (i === -1) {
         arr.push(spec);
-        this.setState({
-          trait: arr
-        });
+      } else {
+        arr.splice(i, 1);
       }
+      this.setState({
+        trait: arr
+      })
     }
    console.log(this.state); 
   }
