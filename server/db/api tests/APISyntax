@@ -1,0 +1,8 @@
+api.post('/breeds', ()=>{
+
+    size: ->weight
+    energy: -> exercise
+    hair: ->shedding
+    kid:    -> biddability
+    playful: -> exercise
+});

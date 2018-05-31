@@ -1,6 +1,6 @@
-CREATE DATABASE dog_traits;
+CREATE DATABASE destroys_dogslife;
 
-USE dog_traits;
+USE destroys_dogslife;
 
 CREATE TABLE breeds(
     id int NOT NULL AUTO_INCREMENT,
@@ -9,12 +9,12 @@ CREATE TABLE breeds(
     weight_m_high int,
     weight_f_low int,
     weight_f_high int,
-    shedding varchar(20),
-    grooming varchar(20),
-    exercise varchar(20),
-    barking varchar(20),
-    biddability varchar(20),
-    prey_drive varchar(20),
+    shedding varchar(255),
+    grooming varchar(255),
+    exercise varchar(255),
+    barking varchar(255),
+    biddability varchar(255),
+    prey_drive varchar(255),
     notes varchar(255),
     PRIMARY KEY (ID)
 );
