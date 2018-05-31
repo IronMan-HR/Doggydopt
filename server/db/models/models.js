@@ -15,13 +15,22 @@ module.exports = {
                 'large':  '> 45'
             };
             
+            // //size to weight conditional
+            // if(params.size.length === 1){
+            //     conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
+            // } else if(params.size.length != 0){
+            //     conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
+            //     for(var i=1; i<params.size.length; i++){
+            //         conditionals += "OR weight_m_low " + sizeToWeight[params.size[i]] + " ";
+            //     }
+            // }
             //size to weight conditional
             if(params.size.length === 1){
-                conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
+                conditionals += "weight_avg = " + params.size[0] + " ";
             } else if(params.size.length != 0){
-                conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
+                conditionals += "weight_avg = " + params.size[0] + " ";
                 for(var i=1; i<params.size.length; i++){
-                    conditionals += "OR weight_m_low " + sizeToWeight[params.size[i]] + " ";
+                    conditionals += "OR weight_avg = " + params.size[i] + " ";
                 }
             }
             //energy to exercise conditional
