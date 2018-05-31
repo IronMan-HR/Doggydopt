@@ -83,22 +83,6 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### Language constructs
 
-* Do not use `for...in` statements with the intent of iterating over a list of numeric keys. Use a for-with-semicolons statement in stead.
-
-  ```javascript
-  // good:
-  var list = ['a', 'b', 'c']
-  for(var i = 0; i < list.length; i++){
-    alert(list[i]);
-  }
-
-  // bad:
-  var list = ['a', 'b', 'c']
-  for(var i in list){
-    alert(list[i]);
-  }
-  ```
-
 * Never omit braces for statement blocks (although they are technically optional).
     ```javascript
     // good:
@@ -127,16 +111,6 @@ When writing any block of code that is logically subordinate to the line immedia
     if(0 == ''){
       alert('looks like they\'re equal');
     }
-    ```
-
-* Don't use function statements for the entire first half of the course. They introduce a slew of subtle new rules to how the language behaves, and without a clear benefit. Once you and all your peers are expert level in the second half, you can start to use the more (needlessly) complicated option if you like.
-
-    ```javascript
-    // good:
-    var go = function(){...};
-
-    // bad:
-    function stop(){...};
     ```
 
 
