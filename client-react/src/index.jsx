@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.post('/breeds/all')
+    axios.get('/breeds/all')
     .then(res => {
       console.log(res.data);
       this.setState({
@@ -37,25 +37,23 @@ class App extends React.Component {
   search(params) {
     axios.post('/breeds', params)
     .then(res => {
-      // do smth
+      console.log(res.data);
     }).catch(err => {
       console.error(err);
     })
   }
 
   render () {
-    let breed = this.state.breed
+    let breed = this.state.selectedBreed
     if (breed.constructor === Object && Object.keys(breed).length === 0) {
       return (
-        <AdoptList breed={breed}/>
-      )
-    } else {
-      return (
         <div className="columns is-gapless">
-          <Search search={this.search}/>
-          <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
+            <Search search={this.search}/>
+            <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
         </div>
       )
+    } else {
+      return <AdoptList breed={breed}/>;
     }
   }
 }
