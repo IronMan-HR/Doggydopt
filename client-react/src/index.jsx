@@ -1,43 +1,63 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import List from './components/List.jsx';
+import Search from './components/Search.jsx';
+import exampleData from '../../exampleData.js';
+import axios from 'axios';
 
-class AdoptList extends React.Component {
+class App extends React.Component {
   constructor(props) {
-    super(props)
-    this.state ={
-        dogs: [1,2,3,4,5]
+    super(props);
+    this.state = {
+      breeds: exampleData,
+      selectedBreed: {}
+    } 
+    this.clickHandler = this.clickHandler.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('/breeds/all')
+    .then(res => {
+      console.log(res.data);
+      this.setState({
+        breeds: res.data
+      });
+    }).catch(err => {
+      console.error(err);
+    })
+  }
+
+  clickHandler(breed) {
+    this.setState({
+      selectedBreed: breed
+    })
+  }
+
+  search(params) {
+    axios.post('/breeds', params)
+    .then(res => {
+      console.log(res.data);
+    }).catch(err => {
+      console.error(err);
+    })
+  }
+
+  render () {
+    let breed = this.state.selectedBreed
+    if (breed.constructor === Object && Object.keys(breed).length === 0) {
+      return (
+        <div className="columns is-gapless">
+            <Search search={this.search}/>
+            <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
+        </div>
+      )
+    } else {
+      return <AdoptList breed={breed}/>;
     }
   }
- render() {
-     console.log('this.state.dogList',this.state.dogList)
-    return (
-        
-            <div className="AdoptList flex big-container">
-      
-      {this.state.dogs.map((dog, i)=>{
-      return(
-      
-                <div key={i} className="flex list-item container">
-                    <img src={dog.image} width='250' height= '260'/>
-                    <div className="item-text">
-                        <h2>Name: {dog.name}</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                        <div className="flex zip-age">
-                            <h4>Age: {dog.age}</h4>
-                            <h4>1212{dog.zip}</h4>
-                        </div>
-                    </div>
-                </div>
-                
-      
-      )}
-      
-      )}      
-            </div>
-    )
-  }
 }
- 
-  export default AdoptList;
 
-  ReactDOM.render(<AdoptList />, document.getElementById('app'));
+
+ReactDOM.render(<App />, document.getElementById('app'));
+>>>>>>> dev
