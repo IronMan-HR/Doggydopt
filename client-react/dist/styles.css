@@ -146,7 +146,7 @@ button:active{
 .info .text{
     color: white;
     border: 2px solid #fe8912;
-    border-radius: 12px;
+    border-radius: 16px;
     font-family: 'Poppins', sans-serif;
     width: 14em;
     padding: 0em 1em;
@@ -202,3 +202,4 @@ h1{
     display:flex;
     align-items: center;
     filter: invert(100%);
+}
