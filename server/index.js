@@ -8,7 +8,7 @@ var axios = require('axios');
 var port = process.env.PORT || 9000;
 var app = express();
 
-app.use(express.static(__dirname + '/../client-react/'));
+app.use(express.static(__dirname + '/../client-react/dist'));
 app.use(bodyParser.json());
 
 app.get('/breeds/all', (req, res)=>{
