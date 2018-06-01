@@ -110,7 +110,7 @@ footer{
     background-color: transparent;
     position: relative;
     color: white;
-    border: 2px solid #fe8912;
+    border: 2px solid #fff;
     padding: 40px 50px;
     font-size: 3em;
     border-radius: 16px;;
@@ -145,7 +145,7 @@ button:active{
 
 .info .text{
     color: white;
-    border: 2px solid #fe8912;
+    border: 2px solid #fff;
     border-radius: 16px;
     font-family: 'Poppins', sans-serif;
     width: 14em;

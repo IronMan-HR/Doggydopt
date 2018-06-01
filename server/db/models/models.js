@@ -1,5 +1,6 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
+var credentials = require('../../../config.js');
 
 db.connect();
 
@@ -72,12 +73,12 @@ module.exports = {
         }
     },
     adopt: {
-        get: (params, callback)=>{
-            var apiQuery = `http://api.petfinder.com/pet.find?key=${credentials.pf_key}&animal=dog&location=10017&count=75&output=full&format=json&count=10&breed=${params.breed}`;
+        post: (params, callback)=>{
+            var apiQuery = `http://api.petfinder.com/pet.find?key=${credentials.pf_key}&animal=dog&location=10017&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
 
             axios.get(apiQuery)
             .then((results, callback)=>{
-               callback(err);
+               callback(results);
             })
             .catch((err)=>{
                 callback(err);

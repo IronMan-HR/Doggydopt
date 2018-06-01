@@ -4,16 +4,20 @@ import List from './components/List.jsx';
 import Search from './components/Search.jsx';
 import exampleData from '../../exampleData.js';
 import axios from 'axios';
+import Home from './components/Home.jsx';
+import AdoptList from './components/AdoptList.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       breeds: exampleData,
-      adoptables: []
+      adoptables: [],
+      homeView: true   
     } 
     this.clickHandler = this.clickHandler.bind(this);
     this.search = this.search.bind(this);
+    this.findMyMatch = this.findMyMatch.bind(this);
   }
 
   componentDidMount() {
@@ -33,8 +37,9 @@ class App extends React.Component {
       zipCode: 10017 // HARDCODED
     })
     .then(res => {
-      this.state({
-        adoptables: res.data
+      console.log('res.data :', res);
+      this.setState({
+        adoptables: ['tulu']
       })
     }).catch(err => {
       console.error(err);
@@ -52,7 +57,16 @@ class App extends React.Component {
     })
   }
 
+  findMyMatch() {
+    this.setState({
+      homeView: false
+    })
+  }
+
   render () {
+    if (this.state.homeView === true) {
+    return <Home findMyMatch={this.findMyMatch}/> 
+    }
     if (this.state.adoptables.length === 0) {
       return (
         <div className="columns is-gapless">

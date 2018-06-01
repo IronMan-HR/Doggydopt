@@ -10,16 +10,16 @@ class AdoptList extends React.Component {
     }
   }
  render() {
-     console.log('this.state.dogList',this.state.dogList)
+     console.log('this.state.dogList', this.props)
     return (
         
             <div className="AdoptList flex big-container">
       
-      {this.state.dogs.map((dog, i)=>{
+      {/* {this.props.dogs.map((dog, i)=>{
       return(
       
                 <div key={i} className="flex list-item container">
-                    <img src={dog.image} width='250' height= '260'/>
+                    <img src={'https://www.australian-shepherd-lovers.com/image-files/fat-dogs.jpg'} width='250' height= '260'/>
                     <div className="item-text">
                         <h2>Name: {dog.name}</h2>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
@@ -33,7 +33,7 @@ class AdoptList extends React.Component {
       
       )}
       
-      )}      
+      )}       */}
             </div>
     )
   }
