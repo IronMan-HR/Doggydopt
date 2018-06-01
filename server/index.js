@@ -24,16 +24,14 @@ app.get('/breeds/all', (req, res)=>{
 });
 
 app.post('/breeds', (req, res)=>{
-	console.log('body', req.body);
 	models.breeds.post(req.body, (data)=>{
 		res.status(201).send(data);
 	});
 });
 
 app.post('/adopt', (req, res)=>{
-	console.log('data', req.body);
-	models.adopt.post(req.body, (data)=>{
-		res.status(201).send(data);
+	models.adopt.post(req.body, (results)=>{
+		res.status(201).send(results);
 	});
 });
 
