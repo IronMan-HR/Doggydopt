@@ -11,6 +11,12 @@ var app = express();
 app.use(express.static(__dirname + '/../client-react/dist'));
 app.use(bodyParser.json());
 
+app.get('/breeds/all/pictures', (req, res)=>{
+	models.pictures.get((data)=>{
+		res.status(201).send(data);
+	});
+});
+
 app.get('/breeds/all', (req, res)=>{
 	models.breeds.all((data)=>{
 		res.status(201).send(data);
@@ -30,6 +36,7 @@ app.post('/adopt', (req, res)=>{
 		res.status(201).send(data);
 	});
 });
+
 
 app.listen(port, ()=>{
 	console.log(`listening to ${port}`);

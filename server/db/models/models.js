@@ -84,5 +84,76 @@ module.exports = {
                 callback(err);
             });
         }
+    },
+    pictures: {
+        get: ()=>{
+            var apiQuery = "https://dog.ceo/api/breed/hound/images";
+            var apiRandom = "https://dog.ceo/api/breed/african/images/random"
+            // `https://dog.ceo/api/breed/${}/images/random`
+
+            var resultsArray = [];
+            var resultsCount = 0;
+            var acc = [];
+            var queryStr = "SELECT breed from breeds";
+            db.query(queryStr, (err, breeds)=>{
+                // for(var i=0; i<10; i++){
+                //     acc.push(()=>{
+                //         //api + breeds[i].breed
+                //         axios.get(breeds[i].breed);
+                //     });
+
+                // };
+                axios.get('https://dog.ceo/api/breeds/list/all')
+                .then((breedsVerify)=>{
+                    var verify = {"affenpinscher":[],"african":[],"airedale":[],"akita":[],"appenzeller":[],"basenji":[],"beagle":[],"bluetick":[],"borzoi":[],"bouvier":[],"boxer":[],"brabancon":[],"briard":[],"bulldog":["boston","french"],"bullterrier":["staffordshire"],"cairn":[],"chihuahua":[],"chow":[],"clumber":[],"collie":["border"],"coonhound":[],"corgi":["cardigan"],"dachshund":[],"dalmatian":[],"dane":["great"],"deerhound":["scottish"],"dhole":[],"dingo":[],"doberman":[],"elkhound":["norwegian"],"entlebucher":[],"eskimo":[],"germanshepherd":[],"greyhound":["italian"],"groenendael":[],"hound":["afghan","basset","blood","english","ibizan","walker"],"husky":[],"keeshond":[],"kelpie":[],"komondor":[],"kuvasz":[],"labrador":[],"leonberg":[],"lhasa":[],"malamute":[],"malinois":[],"maltese":[],"mastiff":["bull","tibetan"],"mexicanhairless":[],"mix":[],"mountain":["bernese","swiss"],"newfoundland":[],"otterhound":[],"papillon":[],"pekinese":[],"pembroke":[],"pinscher":["miniature"],"pointer":["german"],"pomeranian":[],"poodle":["miniature","standard","toy"],"pug":[],"pyrenees":[],"redbone":[],"retriever":["chesapeake","curly","flatcoated","golden"],"ridgeback":["rhodesian"],"rottweiler":[],"saluki":[],"samoyed":[],"schipperke":[],"schnauzer":["giant","miniature"],"setter":["english","gordon","irish"],"sheepdog":["english","shetland"],"shiba":[],"shihtzu":[],"spaniel":["blenheim","brittany","cocker","irish","japanese","sussex","welsh"],"springer":["english"],"stbernard":[],"terrier":["american","australian","bedlington","border","dandie","fox","irish","kerryblue","lakeland","norfolk","norwich","patterdale","scottish","sealyham","silky","tibetan","toy","westhighland","wheaten","yorkshire"],"vizsla":[],"weimaraner":[],"whippet":[],"wolfhound":["irish"]}
+                    // console.log('breeds verify', breedsVerify.data.message);
+                    breeds = JSON.stringify(breeds);
+                    breeds = JSON.parse(breeds);
+            
+                    
+                    acc = breeds.filter((breed)=>{
+                        //console.log("in filter2 lowercase");
+                        //console.log(breed.breed.toLowerCase() in verify);
+                        return breed.breed.toLowerCase() in verify;
+                    });
+                    //console.log('acc here are the listed', acc);
+                    console.log('mapping');
+                    //console.log('list of common', acc);
+                    acc = acc.map((breed)=>{
+                        //console.log('inside map', breed);
+                        console.log(`https://dog.ceo/api/breed/${breed.breed.toLowerCase()}/images/random`);
+                        return ()=>{return axios.get(`https://dog.ceo/api/breed/${breed.breed.toLowerCase()}/images/random`)};
+                        //return breed.breed.toLowerCase();
+                    });
+                    console.log(JSON.stringify(acc));
+                    axios.all(acc)
+                    .then(axios.spread(function(acct, perms){
+                        console.log('all done');
+                        console.log(acct);
+                        console.log(perms);
+                    }))
+                    .catch((err)=>{
+                        console.log('err');
+                        console.log(err);
+                    });
+                    // console.log(acc);
+                    // console.log(JSON.stringify(acc));
+    
+                    // for(var j=0; j<acc.length;j++){
+                    //     (function(index){
+                    //         acc[index](function (val) {
+    
+                    //         })
+                    //     })
+                    // }
+                })
+                .catch(()=>{
+
+                });
+                
+            });
+           
+            
+        }   
     }
 };
