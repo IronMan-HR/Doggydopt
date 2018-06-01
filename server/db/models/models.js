@@ -74,11 +74,10 @@ module.exports = {
     },
     adopt: {
         post: (params, callback)=>{
-            var apiQuery = `http://api.petfinder.com/pet.find?key=${credentials.pf_key}&animal=dog&location=10017&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
-
+            var apiQuery = `http://api.petfinder.com/pet.find?key=${credentials.pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
             axios.get(apiQuery)
-            .then((results, callback)=>{
-               callback(results);
+            .then((results)=>{
+               callback(results.data.petfinder.pets);
             })
             .catch((err)=>{
                 callback(err);
