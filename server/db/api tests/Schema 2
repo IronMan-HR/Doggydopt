@@ -1,7 +1,3 @@
-CREATE DATABASE destroys_dogslife;
-
-USE destroys_dogslife;
-
 CREATE TABLE breeds(
     id int NOT NULL AUTO_INCREMENT,
     breed varchar(255) NOT NULL,
