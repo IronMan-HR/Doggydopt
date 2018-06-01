@@ -4,6 +4,8 @@
 }
 body{
     background-color:#184d50;
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
 .title {
     font-size: 3.5em;
@@ -203,3 +205,36 @@ h1{
     align-items: center;
     filter: invert(100%);
 }
+
+.view2{
+    border:2px solid red;
+    display: flex;
+}
+
+.search{
+    border:2px solid pink;
+}
+
+.menu{
+    border:2px solid white;
+    
+}
+.breed-container{
+    border:3px solid orange;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:90%;
+}
+.info-container{
+    border:2px solid aqua;
+}
+.info-container p{
+    
+}
+
+.list-entry{
+    width: 25%
+}
+

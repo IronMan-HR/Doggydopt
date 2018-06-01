@@ -44,7 +44,7 @@ class Search extends React.Component {
             <div className="field" onClick={(e) => this.onClick(e, 'size')}>
               <label className="label">Size</label>
               <div className="control">
-                <button className="button is-small">Small</button>
+                <button className="button test is-small">Small</button>
                 <button className="button is-small">Medium</button>
                 <button className="button is-small">Large</button>
               </div>
