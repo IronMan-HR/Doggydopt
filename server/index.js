@@ -30,8 +30,8 @@ app.post('/breeds', (req, res)=>{
 	});
 });
 
-app.get('/adopt', (req, res)=>{
-	models.adopt.get(req.body, (data)=>{
+app.post('/adopt', (req, res)=>{
+	models.adopt.post(req.body, (data)=>{
 		res.status(201).send(data);
 	});
 });
