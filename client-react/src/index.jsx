@@ -105,8 +105,8 @@ class App extends React.Component {
     }
     if (this.state.adoptables.length === 0) {
       return (
-        <div className="columns is-gapless">
-            <Search search={this.search}/>
+        <div className="view2">
+            <Search search={this.search} className="search"/>
             <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
         </div>
       )
