@@ -39,7 +39,7 @@ class App extends React.Component {
     .then(res => {
       console.log('res.data :', res);
       this.setState({
-        adoptables: [1, 2, 3] // res.data is returning nothing
+        adoptables: res.data // res.data is returning nothing
       })
     }).catch(err => {
       console.error(err);
