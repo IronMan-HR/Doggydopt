@@ -6,6 +6,8 @@ import exampleData from '../../exampleData.js';
 import axios from 'axios';
 import Home from './components/Home.jsx';
 import AdoptList from './components/AdoptList.jsx';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -100,21 +102,24 @@ class App extends React.Component {
   }
 
   render () {
-    if (this.state.homeView === true) {
-    return <Home findMyMatch={this.findMyMatch}/> 
-    }
-    if (this.state.adoptables.length === 0) {
-      return (
-        <div className="columns is-gapless">
-            <Search search={this.search}/>
-            <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
-        </div>
-      )
-    } else {
-      return <AdoptList dogs={this.state.adoptables}/>;
-    }
+  <Switch>
+    <Route exact={true} path="/" component={Home}/>
+    <Route exact={true} path="/matchMe" render={() => {
+      <div className="columns is-gapless">
+          <Search search={this.search}/>
+          <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
+      </div>
+    }}/>
+    <Route exact={true} path="/adoptables" render={() => {
+      <AdoptList dogs={this.state.adoptables}/>;
+    }}/>
+  </Switch>
   }
 }
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render((
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+), document.getElementById('app'));
