@@ -31,6 +31,7 @@ app.post('/breeds', (req, res)=>{
 });
 
 app.post('/adopt', (req, res)=>{
+	console.log('data', req.body);
 	models.adopt.post(req.body, (data)=>{
 		res.status(201).send(data);
 	});
