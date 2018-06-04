@@ -1,5 +1,6 @@
 import React from 'react';
 import ListEntry from './ListEntry.jsx';
+console.log("ListEntry: ", ListEntry);
 
 const List = ({breeds, clickHandler}) => (
   <div className="container" style={{width:'100%'}}>
@@ -9,7 +10,7 @@ const List = ({breeds, clickHandler}) => (
         })}
     </div>
   </div>
-)
+) 
 
 
 export default List;
