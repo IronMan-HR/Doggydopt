@@ -1,0 +1,15 @@
+https://www.reddit.com/r/AskProgramming/comments/6iq29e/dog_pictures_api/
+
+http://loremflickr.com/320/240/dog
+
+http://loremflickr.com/320/240/dog,puppy
+
+http://loremflickr.com/640/480/dog,beauceron
+
+Bulldog'
+
+http://loremflickr.com/640/480/dog,bulldog
+
+http://loremflickr.com/640/480/dog,Boykin Spaniel'
+
+http://loremflickr.com/320/240/dog,Boykin Spaniel'
