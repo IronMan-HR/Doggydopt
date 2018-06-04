@@ -19,6 +19,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.findMyMatch = this.findMyMatch.bind(this);
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
+    this.addDefaultSrc = this.addDefaultSrc.bind(this);
   }
 
   componentDidMount() {
@@ -99,6 +100,11 @@ class App extends React.Component {
     })
   }
 
+
+  addDefaultSrc(ev){
+    ev.target.src = 'https://www.drawingtutorials101.com/drawing-tutorials/Cartoon-Movies/Bolt/bolt/how-to-draw-Dog-from-Bolt-step-0.png'
+  }
+
   render () {
     if (this.state.homeView === true) {
     return <Home findMyMatch={this.findMyMatch}/> 
@@ -107,7 +113,7 @@ class App extends React.Component {
       return (
         <div className="view2">
             <Search search={this.search} className="search"/>
-            <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
+            <List breeds={this.state.breeds} clickHandler={this.clickHandler} addDefaultSrc={this.addDefaultSrc}/>
         </div>
       )
     } else {
