@@ -52,15 +52,16 @@ module.exports = {
                     conditionals += "OR shedding='" + params.hair[i] + "' ";
                 }
             }
-            
-            queryStr += conditionals;
+            //kid to biddability
+            if(params.kid.length === 1 && params.kid === 'yes'){
+                conditionals += "AND biddability = 'moderate' AND biddability = 'high";
+            }
+
             // {
-            //     hair: ['low', 'moderate', 'high'], //shedding
-            //     kid:  ['low', 'moderate', 'high'], //biddability
             //     playful: ['low', 'moderate', 'high']
             // }
-            console.log('here is the queryStr');
-            console.log(queryStr);
+            queryStr += conditionals;
+            console.log('here is the queryStr', queryStr);
             db.query(queryStr, (err, data)=>{
                 callback(data);
             });
@@ -86,6 +87,13 @@ module.exports = {
     },
     pictures: {
         get: ()=>{
+            var apiQuery = `http://loremflickr.com/640/480/dog,Brittany Spaniel'`;
+            axios.get(apiQuery)
+            .then((results)=>{
+                console.log('lorem results', results);
+            })
+        },
+        ceo: ()=>{
             var apiQuery = "https://dog.ceo/api/breed/hound/images";
             var apiRandom = "https://dog.ceo/api/breed/african/images/random"
             // `https://dog.ceo/api/breed/${}/images/random`
