@@ -30,7 +30,8 @@ class Search extends React.Component {
       this.setState({
         trait: arr
       })
-      this.triggerButton(e.target.id)
+      this.triggerButton(e.target.id);
+      this.props.searchNow(this.state);
     }
    console.log(this.state); 
   }
