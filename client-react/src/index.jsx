@@ -102,18 +102,20 @@ class App extends React.Component {
   }
 
   render () {
-  <Switch>
-    <Route exact={true} path="/" component={Home}/>
-    <Route exact={true} path="/matchMe" render={() => {
-      <div className="columns is-gapless">
-          <Search search={this.search}/>
-          <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
-      </div>
-    }}/>
-    <Route exact={true} path="/adoptables" render={() => {
-      <AdoptList dogs={this.state.adoptables}/>;
-    }}/>
-  </Switch>
+    return (
+      <Switch>
+        <Route exact={true} path="/" component={Home}/>
+        <Route exact={true} path="/matchMe" render={() => {
+          <div className="columns is-gapless">
+              <Search search={this.search}/>
+              <List breeds={this.state.breeds} clickHandler={this.clickHandler}/>
+          </div>
+        }}/>
+        <Route exact={true} path="/adoptables" render={() => {
+          <AdoptList dogs={this.state.adoptables}/>;
+        }}/>
+      </Switch>
+    )
   }
 }
 
