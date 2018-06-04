@@ -1,12 +1,17 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const ListEntry = ({breed, clickHandler}) => (
-  <div className="list-entry" onClick={() => clickHandler(breed)}>
-    <div className="info-container">
-      <img src={/* breed.img */ 'https://www.australian-shepherd-lovers.com/image-files/fat-dogs.jpg'} alt={`Picture of a ${breed.name}`}/>
-      <p>{breed.breed}</p>
+  <Link to={{
+    pathname: `adopt/${breed.breed}/10017`
+  }}>
+    <div className="column is-one-fifth">
+      <div>
+        <img src={/* breed.img */ 'https://www.australian-shepherd-lovers.com/image-files/fat-dogs.jpg'} alt={`Picture of a ${breed.name}`}/>
+        <p>{breed.breed}</p>
+      </div>
     </div>
-  </div>
+  </Link>
 )
 
 export default ListEntry;
