@@ -1,6 +1,6 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
-var credentials = require('../../../config.js');
+var credentials = process.env.credentials || require('../../../config.js');
 
 db.connect();
 

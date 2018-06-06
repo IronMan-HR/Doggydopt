@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var credentials = require('../../config.js');
+var credentials = process.env.crendentials || require('../../config.js') ;
 
 module.exports = connection = mysql.createConnection({
     host: credentials.host,
