@@ -48,10 +48,10 @@ class App extends React.Component {
   searchNow(params) {
     var allBreeds;
     if(this.state.unfiltered.length === 0){
-     allBreeds = this.state.breeds.slice();
+      allBreeds = this.state.breeds.slice();
     } else {
-     allBreeds = this.state.unfiltered.slice();
-    }
+      allBreeds = this.state.unfiltered.slice();
+    };
 
     if(params.size.length + params.energy.length + params.hair.length + params.playful.length === 0){
       this.setState({
@@ -76,20 +76,20 @@ class App extends React.Component {
           if(characteristic === 'small'){
             min_weight = 0;
             max_weight = 25;
-          }
+          };
           if(characteristic === 'medium'){
             min_weight = 26;
             max_weight = 40;
-          }
+          };
           if(characteristic === 'large'){
             min_weight = 41;
             max_weight = 300;
-          }
+          };
           if(sizeSelect === undefined) {
             sizeSelect = breed.weight_avg > min_weight && breed.weight_avg <= max_weight;
           } else {
             sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
-          }
+          };
         });
         return energySelect || hairSelect || playfulSelect || sizeSelect;
       }); //end of filter
@@ -98,7 +98,7 @@ class App extends React.Component {
         breeds: filteredBreeds,
         unfiltered: allBreeds
       });
-    }//end of if else
+    }; //end of if else
   } //end of searchNow()
 
  addDefaultSrc(ev){
