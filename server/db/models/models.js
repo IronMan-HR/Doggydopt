@@ -1,7 +1,7 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
-var credentials = process.env.credentials || require('../../../config.js');
-
+var credentials = process.env.credentials;
+//var credentials = process.env.credentials || require('../../../config.js');
 db.connect();
 
 module.exports = {
