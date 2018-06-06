@@ -56,12 +56,7 @@ module.exports = {
             if(params.kid.length === 1 && params.kid === 'yes'){
                 conditionals += "AND biddability = 'moderate' AND biddability = 'high";
             }
-
-            // {
-            //     playful: ['low', 'moderate', 'high']
-            // }
             queryStr += conditionals;
-            console.log('here is the queryStr', queryStr);
             db.query(queryStr, (err, data)=>{
                 callback(data);
             });
