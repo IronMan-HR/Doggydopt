@@ -1,7 +1,7 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
-var credentials = require('../../../config.js');
-
+var credentials = process.env.credentials;
+//var credentials = process.env.credentials || require('../../../config.js');
 db.connect();
 
 module.exports = {
@@ -56,12 +56,7 @@ module.exports = {
             if(params.kid.length === 1 && params.kid === 'yes'){
                 conditionals += "AND biddability = 'moderate' AND biddability = 'high";
             }
-
-            // {
-            //     playful: ['low', 'moderate', 'high']
-            // }
             queryStr += conditionals;
-            console.log('here is the queryStr', queryStr);
             db.query(queryStr, (err, data)=>{
                 callback(data);
             });

@@ -46,96 +46,60 @@ class App extends React.Component {
   }
 
   searchNow(params) {
-    console.log("SEARCH NOW---------------------------")
-     var allBreeds;
-   // console.log('unfiltered length', this.state.unfiltered.length);
+    var allBreeds;
     if(this.state.unfiltered.length === 0){
-     allBreeds = this.state.breeds.slice();
+      allBreeds = this.state.breeds.slice();
     } else {
-     allBreeds = this.state.unfiltered.slice();
-    }
- 
-    var translate = {
-     energy: 'breed',
-     hair: 'shedding',
-     familyDog: 'biddability',
-     playful: 'biddability'
-   };
-    //   {
- //     size: [/* 'small', 'medium', 'large' */],
- //     energy: [/* 'low', 'moderate', 'high' */],
- //     hair: [/* 'low', 'moderate', 'high' */], //shedding
- //     familyDog:  [/* 'yes' */], //biddability
- //     playful: [/* 'low', 'moderate', 'high' */]
- //   }
- //   var sizeToWeight = {
- //     'small': 'BETWEEN 0 and 25',
- //     'medium': 'BETWEEN 26 and 40',
- //     'large':  '> 45'
- // };
-   var filteredBreeds = allBreeds.filter((breed)=>{
-     console.log("breed------------->", breed.breed);
-     console.log("breed stats: ", breed);
-     console.log('params:', params);
-    
-    
-     var energySelect = params.energy.some((characteristic)=>{
-       return characteristic === breed.exercise;
-     });
-     console.log('energySelect', energySelect);
-    
-     var hairSelect = params.hair.some((characteristic)=>{
-       return characteristic === breed.shedding;
-     });
-     console.log('hairSelect', hairSelect);
-    
-     var playfulSelect = params.playful.some((characteristic)=>{
-       return characteristic === breed.biddability;
-     });
-     console.log('playfulSelect', hairSelect);
-     
-    
-     var sizeSelect;
-     console.log('foreach', params.size.length);
-     params.size.forEach((characteristic)=>{
-       var min_weight = 0;
-       var max_weight = 0;
-       if(characteristic === 'small'){
-         min_weight = 0;
-         max_weight = 25;
-       }
-       if(characteristic === 'medium'){
-         min_weight = 26;
-         max_weight = 40;
-       }
-       if(characteristic === 'large'){
-         min_weight = 41;
-         max_weight = 300;
-       }
-       console.log('min:', min_weight);
-       console.log('max:', max_weight);
-       console.log('weight:', breed.weight_avg);
-       console.log('REDUCING', breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
-       if(sizeSelect === undefined) {
-         console.log('sizeselect set first');
-         sizeSelect = breed.weight_avg > min_weight && breed.weight_avg <= max_weight;
-       } else {
-         sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
-       }
-       
-       //return acc && (breed.weight_avg >= min_weight && breed.weight_avg < max_weight);
-     });
-     console.log('sizeSelect end result', sizeSelect);
-     
-     return energySelect || hairSelect || playfulSelect || sizeSelect;
-   });
-    
-   console.log('searchNow state', params);
-   this.setState({
-     breeds: filteredBreeds,
-     unfiltered: allBreeds
-   });
-   }
+      allBreeds = this.state.unfiltered.slice();
+    };
+
+    if(params.size.length + params.energy.length + params.hair.length + params.playful.length === 0){
+      this.setState({
+        breeds: allBreeds,
+        unfiltered: allBreeds
+      });
+    } else {
+      var filteredBreeds = allBreeds.filter((breed)=>{
+        var energySelect = params.energy.some((characteristic)=>{
+          return characteristic === breed.exercise;
+        });
+        var hairSelect = params.hair.some((characteristic)=>{
+          return characteristic === breed.shedding;
+        });
+        var playfulSelect = params.playful.some((characteristic)=>{
+          return characteristic === breed.biddability;
+        });
+        var sizeSelect;
+        var min_weight = 0;
+        var max_weight = 0;
+        params.size.forEach((characteristic)=>{
+          if(characteristic === 'small'){
+            min_weight = 0;
+            max_weight = 25;
+          };
+          if(characteristic === 'medium'){
+            min_weight = 26;
+            max_weight = 40;
+          };
+          if(characteristic === 'large'){
+            min_weight = 41;
+            max_weight = 300;
+          };
+          if(sizeSelect === undefined) {
+            sizeSelect = breed.weight_avg > min_weight && breed.weight_avg <= max_weight;
+          } else {
+            sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
+          };
+        });
+        return energySelect || hairSelect || playfulSelect || sizeSelect;
+      }); //end of filter
+
+      this.setState({
+        breeds: filteredBreeds,
+        unfiltered: allBreeds
+      });
+    }; //end of if else
+  } //end of searchNow()
 
  addDefaultSrc(ev){
     ev.target.src = 'https://www.drawingtutorials101.com/drawing-tutorials/Cartoon-Movies/Bolt/bolt/how-to-draw-Dog-from-Bolt-step-0.png'
