@@ -51,20 +51,23 @@ class Search extends React.Component {
   render() {
     return (
         <div className="menu">
+       
           <div style={{margin: "25px 0 0 15px"}}>
             <div className="field" onClick={(e) => this.onClick(e, 'size')}>
               <label className="label">Size</label>
               <div className="control">
-                <button id='1' className="button is-small">Small</button>
-                <button id='2' className="button is-small">Medium</button>
-                <button id='3' className="button is-small">Large</button>
+                <button id='1' className="button small">
+                  <img src='dog.png' width='45px'/>
+                </button>
+                <button id='2' className="button medium"><img src='dog.png' width='65px'/></button>
+                <button id='3' className="button large"><img src='dog.png' width='110px'/></button>
               </div>
             </div>
 
             <div className="field" onClick={(e) => this.onClick(e, 'energy')}>
               <label className="label">Energy</label>
               <div className="control">
-                <button id='4' className="button is-small">Low</button>
+                <button id='4' className="button is-small"><img src='flash.png' width='65px'/></button>
                 <button id='5' className="button is-small">Moderate</button>
                 <button id='6' className="button is-small">High</button>
               </div>
@@ -97,14 +100,14 @@ class Search extends React.Component {
             </div>
           </div>
 
-          <br/>
+          {/* <br/>
           <br/>
           <br/>
           <div className="searchButtonWrapper">
             <button className="button is-link" onClick={this.clickSearch}>
               Search
             </button>
-          </div>
+          </div> */}
         </div>
     )
   }

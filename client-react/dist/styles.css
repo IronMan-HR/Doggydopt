@@ -3,7 +3,7 @@
     /* border: 1px solid black; */
 }
 body{
-    /* background-color:#4791A1 ; */
+    background-color:#024B63 ;
     font-family: 'Poppins', sans-serif;
     color:  #FEFDFD;
     /* background-image: url('puppy.jpg');
@@ -36,10 +36,10 @@ position: absolute;
 }
 
 header {
-    /* border: 1px solid orange; */
+    border: 1px solid orange;
     display: flex;
     /* color: #4791A1 !important;  */
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
     /* background-color: #FEFDFD ; */
     /* position: absolute; */
@@ -53,7 +53,7 @@ header {
 .left-top{
     display: flex;
     /* border: 1px solid yellow; */
-    padding: 0em 1em 1em 0em;
+    padding: 1em 2em;
 
 }
 
@@ -75,7 +75,7 @@ a{
 
 .navigation {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     text-decoration-style: none;
     justify-content: space-between;
     /* border: 1px solid red; */
@@ -83,7 +83,7 @@ a{
 }
 .option{
     /* padding-top: 1.5em; */
-    padding-top: 1.25em;
+    padding: 1em;
     text-align: center;
     text-decoration-style: none;
     font-size: 1.5em;
@@ -126,8 +126,8 @@ a{
 button {
     background-color: transparent;
     position: relative;
-    top: -3em;
-    left:-10em;
+/*     top: -3em; */
+/*     left:-10em; */
     color:  #FEFDFD;
     border: 2px solid #FEFDFD ;
     padding: 40px 50px;
@@ -212,7 +212,7 @@ button:active{
     left:0;
     right:0;
     bottom: -33em; */
-    background-color:#4791A1;
+    background-color:#024B63;
     /* background-color:#FEFDFD;  */
     width: 100%;
     /* height: 100%; */
@@ -222,7 +222,7 @@ button:active{
 }
 
 .copyright p{
-    color: #4791A1;
+    color: #FEFDFD;
     text-align: center;
 }
 
@@ -272,6 +272,7 @@ h1{
     /* max-width:49%; */
     width: 49%;
     height: 25em;
+    overflow:hidden;
 }
 
 .list-item img{
@@ -306,8 +307,8 @@ h1{
 
 
 .breed-container{
-    padding: 2em 0em;
-    border:3px solid grey;
+    padding: 2em;
+/*     border:3px solid grey; */
     display: flex;
     overflow: hidden;
     flex-wrap: wrap;
@@ -326,12 +327,16 @@ h1{
     /*border:3px solid yellow;*/
     text-align: center;
     font-size: 2em;
-    
+    color: #4791A1 ;         
 }
 
 .list-entry{
     /*width: 33%;*/
-    
+    background-color:#FEFDFD;
+    padding: 1em;
+    margin: 1em 0em;
+    border-radius: 16px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .menu button {
@@ -352,14 +357,17 @@ h1{
     max-height: 307px;
     min-height:300px;
     cursor:pointer;
+    position: relative;
+    right: 5em;
    
 }
 
 .menu{
-    /*border:3px solid  mediumorchid;*/
+/*     border:3px solid  mediumorchid; */
     width:  30%;
-    padding: 0 auto;
+    padding: 1em 2em;
     /*width:55%;*/
+    background-color: #B51209
 }
 
 .control{
@@ -380,6 +388,54 @@ h1{
     min-height:300px;
 }
 
-.item-text{
+.item-text p{
     overflow: scroll;
+    height:14em;
+    width: 14em;
+    padding: 0em 1em;
+    border: 1px solid;
+    font-size: .9em;
+}
+.link-main{
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 43em;
+    left: 3em;
+}
+
+.cute{
+/*     border: 1px solid maroon; */
+    border-radius: 16px;
+    overflow: hidden;
+    height: 307px;
+}
+
+.field .button{
+    color: white;
+    background-color: transparent;
+    margin: 1em 0.5em;
+    padding: 1em;
+}
+
+.field{
+    margin-bottom:2em
+}
+/* .small img{
+    width:50px;
+}
+.medium img{
+    width:60px;
+}
+.large img{
+    width:70px;
+} */
+
+.adopt-rightside{
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+}
+.adopt-rightside button{
+    padding: 0.4em;
+    font-size: 1.5em;
 }

@@ -113,6 +113,25 @@ class App extends React.Component {
           <div className="view2">
               <Search search={this.search} className="search" searchNow={this.searchNow}/>
               <List breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/>
+              <div class="bottom">
+      <div class="info">
+        <div id="mission" class="text box">
+            <h3>Mission</h3>
+            <p>We aim to simplify the dog adoption process by targeting breeds that will pair favorably with your lifestyle, and locating local area dogs in need of a good home.</p>
+        </div>
+        <div class='bottom-logo box'>
+          <img src='logo2.png' alt='logo'width="85" />
+        </div>
+        <div  id="aboutUs"class="text box">
+          <h3>About Us</h3>
+          <p>Doggy consists of four developers whose love for dogs has inspired us to build a solution for the number of aspiring pet owners that can't quite figure out how to get started.</p>
+        </div>
+      </div>
+
+      <div class= 'copyright'>
+        <p>©2018 Doggy App All rights reserved.</p>
+      </div>
+      </div>
           </div>
         )}/>
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => (

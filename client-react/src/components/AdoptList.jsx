@@ -37,7 +37,8 @@ class AdoptList extends React.Component {
           name: dog.name.$t,
           age: dog.age.$t,
           description: dog.description.$t,
-          zip: dog.contact.zip.$t
+          zip: dog.contact.zip.$t,
+          email: dog.contact.email.$t
         };
         // SOME DOGS DON'T HAVE A PICTURE OR PICTURES IN BAD FORMATS. THE SIZE FORMATS "x" AND "pn" WORK FOR US
         // WE CHECK IF ONE OF THOSE IS AVAILABLE (PREFERABLY "x"), AND SET IT AS PHOTO, IF NOT WE GIVE IT A PLACEHOLDER
@@ -69,7 +70,10 @@ class AdoptList extends React.Component {
         {this.state.adoptables.map((dog, i)=>{
           return(
             <div key={i} className="flex list-item container">
+            <div className='adopt-rightside'>
               <img src={dog.photo} width='250' height= '260'/>
+              <a href={`mailto;${dog.email}`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+              </div>
                 <div className="item-text">
                   <h2>Name: {dog.name}</h2>
                   <p>{dog.description}</p>
