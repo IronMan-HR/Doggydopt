@@ -2,6 +2,7 @@ var db = require('../../db/index.js');
 var axios = require('axios');
 var credentials = process.env.credentials;
 //var credentials = process.env.credentials || require('../../../config.js');
+console.log("CREDENTIALS", credentials);
 db.connect();
 
 module.exports = {
@@ -70,7 +71,7 @@ module.exports = {
     },
     adopt: {
         post: (params, callback)=>{
-            var apiQuery = `http://api.petfinder.com/pet.find?key=${credentials.pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
+            var apiQuery = `http://api.petfinder.com/pet.find?key=${ .pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
             axios.get(apiQuery)
             .then((results)=>{
                callback(results.data.petfinder.pets);
