@@ -4,8 +4,8 @@ var mysql = require('mysql');
 //var credentials = process.env.crendentials || require('../../config.js') ;
 
 
-console.log("inside db/index.js, after db.connect()", credentials);
-console.log('host:', credentials.host);
+console.log("inside db/index.js, after db.connect()");
+console.log('host:', process.env.host);
 module.exports = connection = mysql.createConnection({
     host: process.env.host,
     user: process.env.user,

@@ -3,7 +3,7 @@ var axios = require('axios');
 //var credentials = process.env.pf_key;
 var pf_key = process.env.pf_key
 //var credentials = process.env.credentials || require('../../../config.js');
-console.log("CREDENTIALS", credentials);
+//console.log("CREDENTIALS", credentials);
 db.connect();
 
 module.exports = {
