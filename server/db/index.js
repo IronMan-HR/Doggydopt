@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var credentials = process.env.credentials;
+var credentials = JSON.parse(process.env.credentials);
 //var credentials = process.env.crendentials || require('../../config.js') ;
 
 console.log("inside db/index.js, after db.connect()", credentials);
