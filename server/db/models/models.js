@@ -1,7 +1,11 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
 //var credentials = process.env.pf_key;
-var pf_key = process.env.pf_key
+var pf_key = process.env.pf_key;
+if(pf_key === undefined){
+    pf_key = require('../../../config.js');
+    pf_key = pf_key.pf_key;
+}
 //var credentials = process.env.credentials || require('../../../config.js');
 //console.log("CREDENTIALS", credentials);
 db.connect();
