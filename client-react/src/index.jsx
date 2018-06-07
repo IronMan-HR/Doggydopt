@@ -6,7 +6,7 @@ import exampleData from '../../exampleData.js';
 import axios from 'axios';
 import Home from './components/Home.jsx';
 import AdoptList from './components/AdoptList.jsx';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -150,7 +150,7 @@ class App extends React.Component {
               <Search search={this.search} className="search" searchNow={this.searchNow}/>
               <List breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/>
           </div>
-        )}/>
+        )}/> 
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => (
           <AdoptList match={match}/>
         )}/>
@@ -161,7 +161,7 @@ class App extends React.Component {
 
 
 ReactDOM.render((
-  <BrowserRouter>
+  <BrowserRouter history={browserHistory}>
     <App/>
   </BrowserRouter>
 ), document.getElementById('app'));

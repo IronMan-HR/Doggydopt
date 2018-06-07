@@ -317,3 +317,27 @@ h1{
 .item-text{
     overflow: scroll;
 }
+
+.no-adoptables-div {
+  text-align: center;
+  background-color: #F0EFED;
+  padding: 0 0 40px 0;
+}
+
+.no-adoptables-text {
+  text-decoration: underline;
+  color: #184d50
+}
+
+.no-adoptables-img {
+  margin: 45px 0 20px 0;
+}
+
+.loading-div {
+  text-align: center;
+}
+
+.loading-text {
+  color: #F0EFED;
+  padding: 300px 0;
+}
