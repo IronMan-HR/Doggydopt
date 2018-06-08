@@ -73,7 +73,7 @@ class AdoptList extends React.Component {
       if(this.state.adoptables.length === 0) {
         return (
           <div className="loading-div">
-            <p className="loading-text">Going to space and looking for doggos...</p>
+            <p className="loading-text">Going to space and looking for doggos . . .</p>
           </div>
         )
       }
