@@ -111,6 +111,7 @@ class App extends React.Component {
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div className="view2">
+          <div className = 'below-header2'></div>
           <div className = 'below-header'></div>
           <div className='top-view2'>
               

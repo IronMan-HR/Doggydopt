@@ -93,8 +93,11 @@ class Search extends React.Component {
              <div className="field" onClick={(e) => this.onClick(e, 'familyDog')}>
               <label className="label">Family Dog</label>
               <div className="control">
+                <div className = 'filter-option'>
                 <button name = 'yes' id ='10' className="button yes" alt='yes'></button>
-                <button name = 'no' id ='11' className="button no" alt='no'>No</button>
+                <p>Yes</p>
+                </div>
+                <button name = 'no' id ='11' className="button no" alt='no'></button>
               </div>
             </div>
             </div>

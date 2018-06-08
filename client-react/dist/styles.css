@@ -48,17 +48,31 @@ header {
     /* right:0; */
     /* background-color:#4791A1 ; */
     z-index: 099291092233210;
-/*     position:absolute; */
+    position: fixed;
 }
 
 .below-header{
     border-bottom: 9px solid #FEFDFD;
-    position: absolute;
+    position: fixed;
+    top: 7.8em;
     left: -0.25em;
     margin: 0, 0;
     padding: 0, 0;
-    width: 100%;
-    z-index: 100;
+    width: 120%;
+    z-index: 999999999999999999999999999;
+}
+
+.below-header2{
+/*     border-bottom: 28px solid red; */
+    background-color: #024B63;
+    height: 8em;
+    position: fixed;
+    top: 0em;
+    left: -0.25em;
+    margin: 0, 0;
+    padding: 0, 0;
+    width: 120%;
+    z-index: 99;
 }
 
 .left-top{
@@ -256,17 +270,22 @@ h1{
 
 
 .breed-container{
-    padding: 2em;
-
+    padding: 2em 10em 12em 3.9em;
+    position:relative;
+    top: 7.86em;
+    left: 25.45em;
 /*     border:3px solid grey; */
     display: flex;
     overflow: hidden;
     flex-wrap: wrap;
-    justify-content: space-between;
+/*     justify-content: space-around; */
     background-color: #4791A1 ;
+
     flex-grow: 1;
     flex-shrink:1;
-/*     width:95%; */
+    width:100%;
+/* max-width: 90em; */
+    
 }
 .info-container{
 /*     border:2px solid aqua; */
@@ -285,11 +304,12 @@ h1{
 }
 
 .list-entry{
-    /*width: 33%;*/
+    width: 100%;
 /*     border:4px solid #f14c43; */
     background-color:#FEFDFD;
     padding: 1em;
-    margin: 1em 0em;
+/*     margin: em 0em; */
+/*     max-width: 18em; */
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -313,11 +333,11 @@ h1{
     min-height:300px;
     cursor:pointer;
     position: relative;
-    right: 5em;
+    right: 2em;
    
 }
 
-.menu{/*     border:3px solid  mediumorchid; */position:relative;left: -1em;width:  100%;padding: 1em 2em;/*width:55%;*//*     background-color: #4791A1 ; */background-color: #f14c43;}
+.menu{/*     border:3px solid  mediumorchid; */position:fixed;left: 0em;top:133px;padding: 1em 2em;/*width:55%;*//*     background-color: #4791A1 ; */z-index:9999999999999;background-color: #f14c43;}
 
 .control{
     display:flex;
@@ -326,8 +346,20 @@ h1{
 
 
 .breed-container a {
-    /*border:3px solid yellow;*/
-    width:30%;
+/*     border:3px solid yellow; */
+    min-width:26%;
+    max-width: 25%;
+    width: 18em;
+/*     height: 25em; */
+    display:flex;
+/*     overflow: wrap; */
+    justify-content: center;
+    position: relative;
+    left: -3em;
+    margin:  1em 2em;
+/*     height: 24em; */
+border-radius: 16px;
+    
 }
 
 .flex img {
@@ -365,8 +397,10 @@ h1{
     margin: 1em 0.5em;
     padding: 1em;
     box-shadow: none;
-    width: 8em;
-    height: 8em;
+    width: 6em;
+    height: 6em;
+    text-align: center;
+
 }
 
 .field{
@@ -391,7 +425,8 @@ h1{
 .top-view2{
     display: flex;
 /*     position:absolute; */
-    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 justify-content:space-around;
     
 }
@@ -470,14 +505,14 @@ justify-content:space-around;
 
 .medium{
     background-image: url('dog.png');
-    background-size: 4em;
+    background-size: 3.6em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .large{
     background-image: url('dog.png');
-    background-size: 6.5em;
+    background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -498,7 +533,7 @@ justify-content:space-around;
 
 .high-shed{
     background-image: url('dog.png');
-    background-size: 6.5em;
+    background-size: 5.6em;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -506,49 +541,57 @@ justify-content:space-around;
 
 .low-energy{
     background-image: url('flash.png');
-    background-size: 2.5em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-energy{
     background-image: url('flash.png');
-    background-size: 4em;
+    background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-energy{
     background-image: url('flash.png');
-    background-size: 6em;
+    background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-play{
     background-image: url('lazy.png');
-    background-size: 2.5em;
+    background-size: 3em;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 50% 80%;
 }
 
 .moderate-play{
     background-image: url('almost-active.png');
-    background-size: 4em;
+    background-size: 4.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-play{
     background-image: url('active.png');
-    background-size: 6.5em;
+    background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .yes{
     background-image: url('family.png');
-    background-size: 6.5em;
+    background-size: 4.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.no{
+    background-image: url('nofamily.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
