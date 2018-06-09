@@ -1,13 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var url = require('url');
+var axios = require('axios');
+var history = require('connect-history-api-fallback');
 
 var models = require('../server/db/models/models.js');
 
-var axios = require('axios');
+
 var port = process.env.PORT || 9000;
 var app = express();
 
+app.use(history());
 app.use(express.static(__dirname + '/../client-react/dist'));
 app.use(bodyParser.json());
 

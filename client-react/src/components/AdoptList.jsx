@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 
+
 class AdoptList extends React.Component {
   constructor(props) {
     super(props);
@@ -31,39 +32,51 @@ class AdoptList extends React.Component {
 
   refactorPetFinderData(data) {
     // FILTERING ONLY THE NECESSARY DATA
-    return (
-      data.map(dog => {
-        var compressed = {
-          name: dog.name.$t,
-          age: dog.age.$t,
-          description: dog.description.$t,
-          zip: dog.contact.zip.$t
-        };
-        // SOME DOGS DON'T HAVE A PICTURE OR PICTURES IN BAD FORMATS. THE SIZE FORMATS "x" AND "pn" WORK FOR US
-        // WE CHECK IF ONE OF THOSE IS AVAILABLE (PREFERABLY "x"), AND SET IT AS PHOTO, IF NOT WE GIVE IT A PLACEHOLDER
-        if(dog.media.photos) {
-          var pics = {};
-          dog.media.photos.photo.forEach(photo => {
-            if(photo['@size'] === 'x' || photo['@size'] === 'pn') {
-              if(!pics.hasOwnProperty(photo['@size'])) {
-                pics[photo['@size']] = photo.$t;
+    if(data) {
+      return (
+        data.map(dog => {
+          var compressed = {
+            name: dog.name.$t,
+            age: dog.age.$t,
+            description: dog.description.$t,
+            zip: dog.contact.zip.$t
+          };
+          // SOME DOGS DON'T HAVE A PICTURE OR PICTURES IN BAD FORMATS. THE SIZE FORMATS "x" AND "pn" WORK FOR US
+          // WE CHECK IF ONE OF THOSE IS AVAILABLE (PREFERABLY "x"), AND SET IT AS PHOTO, IF NOT WE GIVE IT A PLACEHOLDER
+          if(dog.media.photos) {
+            var pics = {};
+            dog.media.photos.photo.forEach(photo => {
+              if(photo['@size'] === 'x' || photo['@size'] === 'pn') {
+                if(!pics.hasOwnProperty(photo['@size'])) {
+                  pics[photo['@size']] = photo.$t;
+                }
               }
+            })
+            if(pics.hasOwnProperty('x')) {
+              compressed.photo = pics.x;
+            } else if (pics.hasOwnProperty('pn')) {
+              compressed.photo = pics.pn;
+            } else {
+              compressed.photo = 'http://www.dohyokennels.com/img/dog-placeholder.jpg';
             }
-          })
-          if(pics.hasOwnProperty('x')) {
-            compressed.photo = pics.x;
-          } else if (pics.hasOwnProperty('pn')) {
-            compressed.photo = pics.pn;
-          } else {
-            compressed.photo = '../dist/images/placeholderDog.jpg'
           }
-        }
-        return compressed;
-      })
-    )
+          return compressed;
+        })
+      )
+    } else {
+      return undefined;
+    }
   }  
   
   render() {
+    if(this.state.adoptables) {
+      if(this.state.adoptables.length === 0) {
+        return (
+          <div className="loading-div">
+            <p className="loading-text">Going to space and looking for doggos . . .</p>
+          </div>
+        )
+      }
       return (
         <div className="AdoptList flex big-container">
         {this.state.adoptables.map((dog, i)=>{
@@ -83,6 +96,14 @@ class AdoptList extends React.Component {
         })}  
         </div>
       )
+    } else {
+      return (
+        <div className="no-adoptables-div">
+          <img className="no-adoptables-img" src={'https://i0.wp.com/alawalnews.net/wp-content/uploads/2018/04/do.jpg?ssl=1'}/>
+          <p className="no-adoptables-text">There are no dogs of this breed for adoption in your area :( </p>
+        </div>
+      )
+    }
   }
 }
  
