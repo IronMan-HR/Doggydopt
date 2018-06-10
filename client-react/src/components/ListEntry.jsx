@@ -13,6 +13,7 @@ const ListEntry = ({breed, clickHandler, addDefaultSrc}) => (
         <p>{breed.breed}</p>
       </div>
     </div>
+    
   </Link>
 )
 

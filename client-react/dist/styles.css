@@ -128,6 +128,8 @@ a{
 .home-pic{
     /* overflow:hidden; */
     display:flex;
+/*     position: fixed; */
+ bottom: 3em; 
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -141,18 +143,27 @@ a{
     /* background-size: cover; */
 }
 
+.home-pic p {
+   
+    position: fixed;
+    bottom: 9em; 
+    width: 15em;
+    font-size:2.1em;
+    line-height: 1.9em;
+    padding: 1em 0em 1em 0.7em;
+    font-family: 'Kaushan Script', cursive;
 
+}
 .home-pic img{
     width:100%;
     height:auto;
-
+    
 }
 
-button {
+button.findMyMatch  {
     background-color: transparent;
-    position: relative;
-/*     top: -3em; */
-/*     left:-10em; */
+    position: fixed;
+    bottom: 1.5em; 
     color:  #FEFDFD;
     border: 2px solid #FEFDFD ;
     padding: 40px 50px;
@@ -181,6 +192,14 @@ button {
     transition: 0.5s;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+button.findMyMatch:hover{
+    /* background-color: hsla(30, 99%, 53%, 0.6); */
+    background-color: hsla(3, 95%, 71%, 0.7);
+    /* background-color: #B51209; */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    bottom: 1.4em;
 }
 
 
@@ -217,23 +236,33 @@ h1{
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
     flex-wrap: wrap;
+/*     border: 2px solid yellow; */
+    position: absolute;
+    top: 8em;
+    padding-top:2em;
+    width:100%;
+    background-color: #4791A1;
 }
 
 .flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .flex .AdoptList{
     overflow: hidden;
 }
-.list-item{
-    border: 2px solid #fe8912;
+.list-item{ 
     margin: 2em 0em;
-    /* max-width:49%; */
-    width: 49%;
-    height: 25em;
+    width: 40em;
+    height: 29em;
     overflow:hidden;
+    border-radius: 16px;
+    border: 2px solid #FEFDFD;
+    background-color: #f14c43;
+    padding: 2em;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 
 .list-item img{
@@ -270,22 +299,23 @@ h1{
 
 
 .breed-container{
-    padding: 2em 10em 12em 3.9em;
+    padding: 2em 2em 12em 6em;
     position:relative;
     top: 7.86em;
+    max-width: 82%;
     left: 25.45em;
 /*     border:3px solid grey; */
     display: flex;
     overflow: hidden;
     flex-wrap: wrap;
+/*     margin: 0 auto;  */
 /*     justify-content: space-around; */
     background-color: #4791A1 ;
-
     flex-grow: 1;
     flex-shrink:1;
     width:100%;
 /* max-width: 90em; */
-    
+/*     margin: 0 auto; */
 }
 .info-container{
 /*     border:2px solid aqua; */
@@ -337,7 +367,18 @@ h1{
    
 }
 
-.menu{/*     border:3px solid  mediumorchid; */position:fixed;left: 0em;top:133px;padding: 1em 2em;/*width:55%;*//*     background-color: #4791A1 ; */z-index:9999999999999;background-color: #f14c43;}
+.menu{
+/*     border:3px solid  mediumorchid; */
+position:fixed;
+left: 0em;
+top:133px;
+padding: 0em 2em;
+height:100%;
+max-width:55%;
+background-color: #4791A1 ; 
+z-index:9999999999999;
+background-color: #f14c43;
+}
 
 .control{
     display:flex;
@@ -373,9 +414,12 @@ border-radius: 16px;
     overflow: scroll;
     height:14em;
     width: 14em;
-    padding: 0em 1em;
-    border: 1px solid;
-    font-size: .9em;
+    padding: 0.5em 1em;
+    /* border: 1px solid; */
+    font-size: 1.em;
+    line-height: 1.75em;
+    color: #024B63;
+    background-color: #FEFDFD;
 }
 .link-main{
     /* border: 1px solid red; */
@@ -394,7 +438,7 @@ border-radius: 16px;
 .field .button{
     color: #FEFDFD;
     background-color: transparent;
-    margin: 1em 0.5em;
+    margin: 0.25em 0.5em;
     padding: 1em;
     box-shadow: none;
     width: 6em;
@@ -406,17 +450,41 @@ border-radius: 16px;
 .field{
 /*     margin-bottom:1em; */
     text-align: center;
+    margin-bottom: 0.em;
+   
+}
+
+.field label{
+    font-size: 1.25em;
+    text-decoration: underline;
 }
 
 .adopt-rightside{
     display: flex;
     flex-direction: column;
  align-items: center;
+ border-radius: 16px;
+ background-color:#FEFDFD;
+ overflow: hidden;
+ height: 27em;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 .adopt-rightside button{
+    background-color: transparent;
+    color:  #FEFDFD;
+    border: 2px solid #FEFDFD ;
+    border-radius: 16px;;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     padding: 0.4em;
     font-size: 1.5em;
+    background-color:#f14c43;
 }
+
 
 .zip-age h4 {
     margin-right: 15px;
@@ -431,21 +499,7 @@ justify-content:space-around;
     
 }
 
-.info{
-    /* position: absolute; */
-    right: 0em;
-    display: flex;
-    justify-content: space-around;
-    /* width: 100%; */
-    margin: 0 auto;
-    /* border: 2px solid black; */
-    background-color: #FEFDFD ;
-    /* position: relative; */
-    /* bottom: -30em; */
-    width: 100%;
-    padding: 3em 0em;
-    /* border: 1px solid blue; */
-}
+
 
 .info .text{
     color: hsla(3, 95%, 71%, 1);
@@ -465,22 +519,24 @@ justify-content:space-around;
 }
 
 .copyright{
-    /* position: absolute;
-    left:0;
+    position: relative;
+/*     left:0; */
     right:0;
-    bottom: -33em; */
+
     background-color:#024B63;
     /* background-color:#FEFDFD;  */
     width: 100%;
+    max-width: 98%;
+/*     left: 25.45em; */
     /* height: 100%; */
-    margin: 0 auto;
-    z-index: 1000;
+/*     margin: 0 auto; */
+/*     z-index: 999999999999; */
     /* padding: 0em 0 3em 0; */
 }
 
 .copyright p{
     color: #FEFDFD;
-    text-align: center;
+    text-align: right;
 }
 
 
@@ -595,3 +651,61 @@ justify-content:space-around;
     background-position: center;
 }
 
+.low-shed{
+    background-image: url('low-shed.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.moderate-shed{
+    background-image: url('moderate-shed.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.high-shed{
+    background-image: url('high-shed.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.filter-option{
+/*     border: 1px solid yellow; */
+    height:9em;
+    text-align:center;
+}
+
+.filter-option p{
+    position:relative;
+    bottom: 1em
+}
+
+.display-right{
+    display: flex;
+    flex-direction: column;
+/*     z-index: 99999999999999999999; */
+}
+
+.info{
+    /* position: absolute; */
+/*     right: 0em; */
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #FEFDFD ;
+    max-width: 82%;
+    left: 25.45em;
+    padding: 3em 0em;
+    /* border: 1px solid blue; */
+    z-index: 9999999999999999999;
+}
+
+.view3{
+    max-width: 100%;
+    width: 100%;
+    left:0em;
+}
