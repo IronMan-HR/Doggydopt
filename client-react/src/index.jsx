@@ -111,12 +111,21 @@ class App extends React.Component {
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div className="view2">
+          <div className = 'below-header2'></div>
+          <div className = 'below-header'></div>
+          <div className='top-view2'>
+              
               <Search search={this.search} className="search" searchNow={this.searchNow}/>
               <List breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/>
+              </div>
           </div>
         )}/> 
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => (
-          <AdoptList match={match}/>
+          <div className = 'view3'>
+            <div className = 'below-header2'></div>
+            <div className = 'below-header'></div>
+            <AdoptList className='top-view3' match={match}/>
+          </div>
         )}/>
       </Switch>
     )
