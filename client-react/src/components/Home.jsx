@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 const Home = ({findMyMatch}) => (
     <div className='home-pic'>
-      <Link to={'/matchMe'}>
+      <Link className='link-main'to={'/matchMe'}>
           <button className='findMyMatch'>Find my match</button>
       </Link>
     </div>
