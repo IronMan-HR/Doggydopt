@@ -88,7 +88,7 @@ class AdoptList extends React.Component {
             <div key={i} className="flex list-item container">
               <div className='adopt-rightside'>
                 <img src={dog.photo} width='250' height= '260'/>
-                <a href={`mailto:${dog.email}?subject='I like your dog ${dog.name}'&body='Hi, can I meet him?`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+                <a href={`mailto:${dog.email}?subject='I would like to adopt ${dog.name}!'&body='Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
               </div>
               <div className="item-text">
                 <h2>Name: {dog.name}</h2>
