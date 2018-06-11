@@ -20,7 +20,7 @@ app.get('/breeds/all', (req, res)=>{
 	});
 });
 
-//Provides characteristics for a particular breed when the name is sent.
+//Provides characteristics for a particular breed when the name is sent as post parameters.
 app.post('/breeds', (req, res)=>{
 	models.breeds.post(req.body, (data)=>{
 		res.status(201).send(data);
@@ -40,10 +40,6 @@ app.get('/breeds/all/pictures', (req, res)=>{
 		res.status(201).send(data);
 	});
 });
-
-// app.get('*', (req, res)=>{
-// 	res.status(404).send(err);
-// })
 
 app.listen(port, ()=>{
 	console.log(`listening to ${port}`);

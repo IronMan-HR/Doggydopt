@@ -1,11 +1,7 @@
 var mysql = require('mysql');
-//var credentials = JSON.stringify(process.env.credentials);
-//crendentials = JSON.parse(process.env.credentials);
-//var credentials = process.env.crendentials || require('../../config.js') ;
-// console.log("inside db/index.js, after db.connect()");
-// console.log('host:', process.env.host);
 var credentials =  process.env.credentials;
 
+//Sets up the login information for the database whether from the deployment environment or locally.
 if(credentials === undefined) {
     credentials = require('../../config.js') 
 } else {
@@ -23,10 +19,3 @@ module.exports = connection = mysql.createConnection({
     password: credentials.password,
     database: credentials.database
 });
-
-// module.exports = connection = mysql.createConnection({
-//     host: process.env.host,
-//     user: process.env.user,
-//     password: process.env.password,
-//     database: process.env.database
-// });

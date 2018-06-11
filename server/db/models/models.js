@@ -17,24 +17,24 @@ module.exports = {
             var apiQuery = `http://api.petfinder.com/pet.find?key=${pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
             axios.get(apiQuery)
             .then((results)=>{
-               callback(results.data.petfinder.pets);
+                callback(results.data.petfinder.pets);
             })
             .catch((err)=>{
                 callback(err);
             });
         }
     },
+     //Functionality moved to frontend filtering. provides the list of breeds.
     breeds: {
-        //Functionality moved to frontend filtering. provides the list of breeds.
         post: (params, callback) => {
             var queryStr = "SELECT * FROM breeds WHERE ";
             var conditionals = "";
-
             var sizeToWeight = {
                 'small': 'BETWEEN 0 and 25',
                 'medium': 'BETWEEN 26 and 40',
                 'large':  '> 45'
             };
+            //Adds SQL query for size to weight.
             if(params.size.length === 1){
                 conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
             } else if(params.size.length != 0){
@@ -43,7 +43,7 @@ module.exports = {
                     conditionals += "OR weight_avg " + sizeToWeight[params.size[i]] + " ";
                 }
             }
-            //energy to exercise conditional
+            //Adds energy to exercise conditional
             if(params.energy.length === 1){
                 conditionals += "AND exercise='" + params.energy[0] + "' ";
             } else if(params.energy.length != 0){
