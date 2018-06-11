@@ -44,7 +44,8 @@ class Search extends React.Component {
   triggerButton(id) {
     let buttonId = document.getElementById(id);
     console.log('Before buttonId is ', buttonId)
-     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'transparent') ? 'rgb(254, 137, 18)' : 'transparent';
+     //buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'transparent') ? 'rgb(254, 137, 18)' : 'transparent';
+     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'rgb(254, 137, 18)') ? 'transparent' : 'rgb(254, 137, 18)';
     //  buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'white') ? 'white' : '#fe8912';
      console.log('After buttonId is ', buttonId)
   }
