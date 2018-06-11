@@ -14,11 +14,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       breeds: exampleData,
-      // adoptables: [],
-      homeView: true,
       unfiltered: []   
     } 
-    this.search = this.search.bind(this);
     this.addDefaultSrc = this.addDefaultSrc.bind(this);
     this.searchNow = this.searchNow.bind(this);
   }
@@ -29,17 +26,6 @@ class App extends React.Component {
       this.setState({
         breeds: res.data
       });
-    }).catch(err => {
-      console.error(err);
-    })
-  }
-
-  search(params) {
-    axios.post('/breeds', params)
-    .then(res => {
-      this.setState({
-        breeds: res.data
-      })
     }).catch(err => {
       console.error(err);
     })
@@ -101,6 +87,7 @@ class App extends React.Component {
     }; //end of if else
   } //end of searchNow()
 
+ // SETS DEFAULT PIC IF DOG HAS NO SUITABLE PICTURE
  addDefaultSrc(ev){
     ev.target.src = 'https://www.drawingtutorials101.com/drawing-tutorials/Cartoon-Movies/Bolt/bolt/how-to-draw-Dog-from-Bolt-step-0.png'
   }
@@ -111,13 +98,12 @@ class App extends React.Component {
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div className="view2">
-          <div className = 'below-header2'></div>
-          <div className = 'below-header'></div>
-          <div className='top-view2'>
-              
+            <div className = 'below-header2'></div>
+            <div className = 'below-header'></div>
+            <div className='top-view2'>  
               <Search search={this.search} className="search" searchNow={this.searchNow}/>
               <List breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/>
-              </div>
+            </div>
           </div>
         )}/> 
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => (

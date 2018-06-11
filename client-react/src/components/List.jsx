@@ -8,6 +8,8 @@ const List = ({breeds, clickHandler,addDefaultSrc}) => (
             return <ListEntry key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
           })}
         </div>
+        
+        {/* FOOTER */}
         <div className="info">
             <div id="mission" className="text box">
                 <h3>Mission</h3>

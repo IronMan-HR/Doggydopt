@@ -116,5 +116,3 @@ class AdoptList extends React.Component {
 }
  
   export default AdoptList;
-
-  ReactDOM.render(<AdoptList />, document.getElementById('app'));

@@ -11,8 +11,3 @@ const Home = ({findMyMatch}) => (
 ); 
 
 export default Home;
-
-
-{/*<form>
-              <input className='button' value="Find my match" />
-          </form>*/}
