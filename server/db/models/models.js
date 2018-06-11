@@ -1,37 +1,40 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
-//var credentials = process.env.pf_key;
 var pf_key = process.env.pf_key;
+
+//Checks to see if in deployment or locally hosted, provides the config.js if local.
 if(pf_key === undefined){
     pf_key = require('../../../config.js');
     pf_key = pf_key.pf_key;
 }
-//var credentials = process.env.credentials || require('../../../config.js');
-//console.log("CREDENTIALS", credentials);
+
 db.connect();
 
 module.exports = {
+    //Makes a call to petfinder with the breed name and zip code. The api returns a list of locally adoptable dogs with their names, summary, and information.
+    adopt: {
+        post: (params, callback)=>{
+            var apiQuery = `http://api.petfinder.com/pet.find?key=${pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
+            axios.get(apiQuery)
+            .then((results)=>{
+                callback(results.data.petfinder.pets);
+            })
+            .catch((err)=>{
+                callback(err);
+            });
+        }
+    },
+     //Functionality moved to frontend filtering. provides the list of breeds.
     breeds: {
         post: (params, callback) => {
             var queryStr = "SELECT * FROM breeds WHERE ";
             var conditionals = "";
-
             var sizeToWeight = {
                 'small': 'BETWEEN 0 and 25',
                 'medium': 'BETWEEN 26 and 40',
                 'large':  '> 45'
             };
-            
-            // //size to weight conditional
-            // if(params.size.length === 1){
-            //     conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
-            // } else if(params.size.length != 0){
-            //     conditionals += "weight_m_low " + sizeToWeight[params.size[0]] + " ";
-            //     for(var i=1; i<params.size.length; i++){
-            //         conditionals += "OR weight_m_low " + sizeToWeight[params.size[i]] + " ";
-            //     }
-            // }
-            //size to weight conditional
+            //Adds SQL query for size to weight.
             if(params.size.length === 1){
                 conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
             } else if(params.size.length != 0){
@@ -40,7 +43,7 @@ module.exports = {
                     conditionals += "OR weight_avg " + sizeToWeight[params.size[i]] + " ";
                 }
             }
-            //energy to exercise conditional
+            //Adds energy to exercise conditional
             if(params.energy.length === 1){
                 conditionals += "AND exercise='" + params.energy[0] + "' ";
             } else if(params.energy.length != 0){
@@ -74,19 +77,9 @@ module.exports = {
             });
         }
     },
-    adopt: {
-        post: (params, callback)=>{
-            var apiQuery = `http://api.petfinder.com/pet.find?key=${pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
-            axios.get(apiQuery)
-            .then((results)=>{
-               callback(results.data.petfinder.pets);
-            })
-            .catch((err)=>{
-                callback(err);
-            });
-        }
-    },
+  
     pictures: {
+        //Currently in development, gets the pictures for the breeds.
         get: ()=>{
             var apiQuery = `http://loremflickr.com/640/480/dog,Brittany Spaniel'`;
             axios.get(apiQuery)
@@ -118,7 +111,6 @@ module.exports = {
                     breeds = JSON.stringify(breeds);
                     breeds = JSON.parse(breeds);
             
-                    
                     acc = breeds.filter((breed)=>{
                         //console.log("in filter2 lowercase");
                         //console.log(breed.breed.toLowerCase() in verify);
@@ -158,10 +150,7 @@ module.exports = {
                 .catch(()=>{
 
                 });
-                
             });
-           
-            
         }   
     }
 };
