@@ -32,19 +32,26 @@ class App extends React.Component {
   }
 
   searchNow(params) {
+
+    //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
+
+    //Checks to see if this is the first the filter is being used, if yes than a copy of all the breeds is kept in the state as unfiltered so additional api calls are unnecssary.
     if(this.state.unfiltered.length === 0){
       allBreeds = this.state.breeds.slice();
     } else {
       allBreeds = this.state.unfiltered.slice();
     };
 
+    //If all the selections are 'unselected' or zero, than all the breeds are shown.
     if(params.size.length + params.energy.length + params.hair.length + params.playful.length === 0){
       this.setState({
         breeds: allBreeds,
         unfiltered: allBreeds
       });
     } else {
+
+      //Based on the selection, certain breeds are shown and others are not.
       var filteredBreeds = allBreeds.filter((breed)=>{
         var energySelect = params.energy.some((characteristic)=>{
           return characteristic === breed.exercise;
