@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 const ListEntry = ({breed, clickHandler, addDefaultSrc}) => (
   <Link to={{
-    pathname: `adopt/${breed.breed}/10017`
+    pathname: `adopt/${breed.breed}/10017`  // ZIPCODE CURRENTLY STILL HARDCODED
   }}>
     <div className="list-entry">
       <div className="info-container">
