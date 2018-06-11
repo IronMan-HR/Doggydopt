@@ -16,6 +16,7 @@ if(credentials === undefined) {
         database: process.env.database
     }
 }
+
 module.exports = connection = mysql.createConnection({
     host: credentials.host,
     user: credentials.user,
