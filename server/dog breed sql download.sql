@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `breeds`
 --
 
+USE dogs;
+
 CREATE TABLE IF NOT EXISTS `breeds` (
   `id` int(11) NOT NULL,
   `breed` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
