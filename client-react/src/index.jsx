@@ -111,13 +111,8 @@ class App extends React.Component {
             </div> 
           </div>
         )}/> 
-        <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => (
-          
-            
-              <AdoptList match={match}/>
-            
-            
-          
+        <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
+          <AdoptList match={match}/>
         )}/>
       </Switch>
     )
