@@ -9,6 +9,7 @@ class Search extends React.Component {
       exercise: [/* 'low', 'moderate', 'high' */],
       biddability: [/* 'low', 'moderate', 'high' */], //shedding
       shedding: [/* 'low', 'moderate', 'high' */],
+      barking: [/* 'low', 'moderate', 'high' */],
     }
     this.onClick = this.onClick.bind(this);
     this.triggerButton = this.triggerButton.bind(this);
@@ -114,6 +115,25 @@ class Search extends React.Component {
               </div>
             </div>
           </div>
+
+           <div className="field" onClick={(e) => this.onClick(e, 'barking')}>
+            <label className="label">Barking</label>
+            <div className="control">
+              <div className = 'filter-option'>
+                <button name = 'low' id ='10' className="button low-bark" alt='low'></button>
+                <p>Low</p>
+              </div>
+              <div className = 'filter-option'>
+                <button name = 'moderate' id ='11' className="button moderate-bark" alt='moderate'></button>
+                <p>Moderate</p>
+              </div>
+              <div className = 'filter-option'>
+                <button name = 'high' id ='12' className="button high-bark" alt='high'></button>
+                <p>High</p>
+              </div>
+            </div>
+          </div>
+
           </div>
         </div>
       </div>
