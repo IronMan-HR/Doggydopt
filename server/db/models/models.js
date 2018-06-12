@@ -17,6 +17,7 @@ module.exports = {
             var apiQuery = `http://api.petfinder.com/pet.find?key=${pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
             axios.get(apiQuery)
             .then((results)=>{
+                console.log(results.data.petfinder.pets);
                 callback(results.data.petfinder.pets);
             })
             .catch((err)=>{

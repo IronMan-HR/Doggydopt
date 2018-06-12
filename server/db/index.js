@@ -19,3 +19,11 @@ module.exports = connection = mysql.createConnection({
     password: credentials.password,
     database: credentials.database
 });
+
+// local db for testing
+// module.exports = connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'root',
+//     database: 'dogs'
+// });
