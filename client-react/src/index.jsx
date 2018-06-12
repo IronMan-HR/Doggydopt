@@ -25,14 +25,14 @@ class App extends React.Component {
     .then(res => {
       this.setState({
         breeds: res.data
-      });
+      }, console.log('all breeds is', res.data));
     }).catch(err => {
       console.error(err);
     })
   }
 
   searchNow(params) {
-
+    console.log('params is', params);
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
 
@@ -44,24 +44,29 @@ class App extends React.Component {
     };
 
     //If all the selections are 'unselected' or zero, than all the breeds are shown.
-    if(params.size.length + params.energy.length + params.hair.length + params.playful.length === 0){
+    if(params.size.length + params.exercise.length + params.shedding.length + params.biddability.length === 0){
       this.setState({
         breeds: allBreeds,
         unfiltered: allBreeds
       });
     } else {
 
+      var createSelector = (breed, category) => {
+        if (params[category].length !== 0) {
+          return params[category].some(characteristic => {
+            return characteristic === breed[category];
+          })
+        } else {
+          return true;
+        }
+      }
       //Based on the selection, certain breeds are shown and others are not.
-      var filteredBreeds = allBreeds.filter((breed)=>{
-        var energySelect = params.energy.some((characteristic)=>{
-          return characteristic === breed.exercise;
-        });
-        var hairSelect = params.hair.some((characteristic)=>{
-          return characteristic === breed.shedding;
-        });
-        var playfulSelect = params.playful.some((characteristic)=>{
-          return characteristic === breed.biddability;
-        });
+      var filteredBreeds = allBreeds.filter(breed => {
+        
+        var exerciseSelect = createSelector(breed, 'exercise');
+        var sheddingSelect = createSelector(breed, 'shedding');
+        var biddabilitySelect = createSelector(breed, 'biddability');
+    
         var sizeSelect;
         var min_weight = 0;
         var max_weight = 0;
@@ -84,7 +89,7 @@ class App extends React.Component {
             sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
           };
         });
-        return energySelect || hairSelect || playfulSelect || sizeSelect;
+        return exerciseSelect && sheddingSelect && biddabilitySelect && sizeSelect;
       }); //end of filter
 
       this.setState({
