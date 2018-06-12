@@ -1,15 +1,14 @@
 import React from 'react';
-import axios from 'axios';
 
-class Search extends React.Component {
+class DogSearch extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      size: [/* 'small', 'medium', 'large' */],
-      energy: [/* 'low', 'moderate', 'high' */],
-      hair: [/* 'low', 'moderate', 'high' */], //shedding
-      familyDog:  [/* 'yes' */], //biddability
-      playful: [/* 'low', 'moderate', 'high' */]
+      favorite: [/* 'yes', 'no' */],
+      sex: [/* 'male', 'female', */],
+      age: [/* 'baby', 'youth', 'adult', 'senior' */],
+      vaccinated: [/* 'yes', 'no' */],
+      pottyTrained:  [/* 'yes' */],
     }
     this.onClick = this.onClick.bind(this);
     this.clickSearch = this.clickSearch.bind(this);
@@ -31,12 +30,12 @@ class Search extends React.Component {
         trait: arr
       })
       this.triggerButton(e.target.id);
-      this.props.searchNow(this.state);
+      //this.props.searchDogs(this.state);
     }
   }
 
   clickSearch() {
-    this.props.search(this.state);
+    //this.props.search(this.state);
   }
 
   triggerButton(id) {
@@ -141,6 +140,4 @@ class Search extends React.Component {
   }
 }
 
-
-
-export default Search;
+export default DogSearch;
