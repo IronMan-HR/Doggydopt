@@ -13,17 +13,17 @@ if(credentials === undefined) {
     }
 }
 
-// module.exports = connection = mysql.createConnection({
-//     host: credentials.host,
-//     user: credentials.user,
-//     password: credentials.password,
-//     database: credentials.database
-// });
+module.exports = connection = mysql.createConnection({
+    host: credentials.host,
+    user: credentials.user,
+    password: credentials.password,
+    database: credentials.database
+});
 
 // local db for testing
-module.exports = connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'dogs'
-});
+// module.exports = connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'root',
+//     database: 'dogs'
+// });
