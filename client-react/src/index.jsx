@@ -54,42 +54,28 @@ class App extends React.Component {
       var createSelector = (breed, category) => {
         if (params[category].length !== 0) {
           return params[category].some(characteristic => {
-            return characteristic === breed[category];
+            if(characteristic === 'small'){
+              return breed.weight_avg > 0 && breed.weight_avg <= 25;
+            } else if(characteristic === 'medium'){
+              return breed.weight_avg > 26 && breed.weight_avg <= 40;
+            } else if (characteristic === 'large'){
+              return breed.weight_avg > 41 && breed.weight_avg <= 300;
+            } else {
+              return characteristic === breed[category];
+            }     
           })
         } else {
           return true;
         }
       }
       //Based on the selection, certain breeds are shown and others are not.
-      var filteredBreeds = allBreeds.filter(breed => {
-        
+      var filteredBreeds = allBreeds.filter(breed => {    
         var exerciseSelect = createSelector(breed, 'exercise');
         var sheddingSelect = createSelector(breed, 'shedding');
         var biddabilitySelect = createSelector(breed, 'biddability');
-    
-        var sizeSelect;
-        var min_weight = 0;
-        var max_weight = 0;
-        params.size.forEach((characteristic)=>{
-          if(characteristic === 'small'){
-            min_weight = 0;
-            max_weight = 25;
-          };
-          if(characteristic === 'medium'){
-            min_weight = 26;
-            max_weight = 40;
-          };
-          if(characteristic === 'large'){
-            min_weight = 41;
-            max_weight = 300;
-          };
-          if(sizeSelect === undefined) {
-            sizeSelect = breed.weight_avg > min_weight && breed.weight_avg <= max_weight;
-          } else {
-            sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
-          };
-        });
-        return exerciseSelect && sheddingSelect && biddabilitySelect && sizeSelect;
+        var sizeSelect = createSelector(breed, 'size');
+        var barkingSelect = createSelector(breed, 'barking'); 
+        return exerciseSelect && sheddingSelect && biddabilitySelect && sizeSelect && barkingSelect;
       }); //end of filter
 
       this.setState({
