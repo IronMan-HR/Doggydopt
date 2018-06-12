@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-
-
+import DogSearch from './DogSearch.jsx';
 
 class AdoptList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      adoptables: []
+      adoptables: [],
+      unfiltered: [],
     }
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
+    this.searchDogs = this.searchDogs.bind(this);
   }
   
   componentDidMount() {
@@ -75,7 +75,60 @@ class AdoptList extends React.Component {
     } else {
       return undefined;
     }
-  }  
+  }
+
+  searchDogs(params) {
+
+    //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
+    var allDogs;
+
+    //Checks to see if this is the first the filter is being used, if yes than a copy of all the breeds is kept in the state as unfiltered so additional api calls are unnecssary.
+    if(this.state.unfiltered.length === 0){
+      allDogs = this.state.adoptables.slice();
+    } else {
+      allDogs = this.state.unfiltered.slice();
+    };
+
+    //If all the selections are 'unselected' or zero, than all the breeds are shown.
+    if(params.favorite.length + params.sex.length + params.age.length + params.vaccinated.length + params.pottyTrained.length === 0){
+      this.setState({
+        adoptables: allDogs,
+        unfiltered: allDogs,
+      });
+    } else {
+      //Based on the selection, certain breeds are shown and others are not.
+      var createSelector = (dog, category) => {
+        if (params[category].length !== 0) {
+          return params[category].some(characteristic => {
+            return characteristic === dog[category];
+          })
+        } else {
+          return true;
+        }
+      }
+
+      var filteredDogs = allDogs.filter(dog => {
+        var favoriteSelect = createSelector(dog, 'favorite');
+        var sexSelect = createSelector(dog, 'sex');
+        var ageSelect = createSelector(dog, 'age');
+        var vaccinatedSelect = createSelector(dog, 'vaccinated');
+        var pottyTrainedSelect = createSelector(dog, 'pottyTrained');
+       
+        console.log('favoriteSelect', favoriteSelect);
+        console.log('sexSelect', sexSelect);
+        console.log('ageSelect', ageSelect);
+        console.log('vaccinatedSelect', vaccinatedSelect);
+        console.log('pottyTrainedSelect', pottyTrainedSelect);
+  
+        return favoriteSelect && sexSelect && ageSelect && vaccinatedSelect && pottyTrainedSelect;
+      }); //end of filter
+
+      this.setState({
+        adoptables: filteredDogs,
+        unfiltered: allDogs,
+      });
+    }; //end of if else
+  } //end of searchNow()
   
   render() {
     if(this.state.adoptables) {
@@ -87,26 +140,29 @@ class AdoptList extends React.Component {
         )
       }
       return (
-        <div className="AdoptList flex big-container">
-        {this.state.adoptables.map((dog, i)=>{
-          return(
-            <div key={i} className="flex list-item container">
-              <div className='adopt-rightside'>
-                <img src={dog.photo} width='250' height= '260'/>
-                <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
-              </div>
-              <div className="item-text">
-                <h2>Name: {dog.name}</h2>
-                <p>{dog.description}</p>
-                <div className="flex zip-age">
-                  <h4>Age: {dog.age}</h4>
-                  <h4>Sex: {dog.sex}</h4>
-                  <h4>Zip Code: {dog.zip}</h4>
+        <div className="below-header">
+          <DogSearch searchDogs={this.searchDogs}/>
+          <div className="breed-container flex">
+          {this.state.adoptables.map((dog, i)=>{
+            return(
+              <div key={i} className="flex list-item">
+                <div className='adopt-rightside'>
+                  <img src={dog.photo} width='250' height= '260'/>
+                  <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+                </div>
+                <div className="item-text">
+                  <h2>Name: {dog.name}</h2>
+                  <p>{dog.description}</p>
+                  <div className="flex zip-age">
+                    <h4>Age: {dog.age}</h4>
+                    <h4>Sex: {dog.sex}</h4>
+                    <h4>Zip Code: {dog.zip}</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}  
+            )
+          })} 
+          </div>    
         </div>
       )
     } else {

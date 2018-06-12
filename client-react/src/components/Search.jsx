@@ -48,7 +48,7 @@ class Search extends React.Component {
     return (
       <div className="menu">
       <div className="fixed-menu">
-        <div style={{margin: "25px 0 0 15px"}}>
+        <div>
           <div className="field" onClick={(e) => this.onClick(e, 'size')}>
             <label className="label">Size</label>
             <div className="control">

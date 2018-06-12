@@ -2,12 +2,11 @@ import React from 'react';
 import ListEntry from './ListEntry.jsx';
 
 const List = ({breeds, clickHandler,addDefaultSrc}) => (
-      <div className='display-right'>
-        <div className="breed-container">
+      <div className="breed-container">
           {breeds.map((breed, i) => {
             return <ListEntry key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
           })}
-        </div>
+       
         
         {/* FOOTER */}
         <div className="info">
@@ -22,11 +21,11 @@ const List = ({breeds, clickHandler,addDefaultSrc}) => (
               <h3>About Us</h3>
               <p>Doggy consists of four developers whose love for dogs has inspired us to build a solution for the number of aspiring pet owners that can't quite figure out how to get started.</p>
             </div>
-          </div>
+        </div>
 
-          <div className= 'copyright'>
-            <p>©2018 Doggy App All rights reserved.</p>
-          </div> 
+        <div className= 'copyright'>
+          <p>©2018 Doggy App All rights reserved.</p>
+        </div> 
       </div>
   )
 
