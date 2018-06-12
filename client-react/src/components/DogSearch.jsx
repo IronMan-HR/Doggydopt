@@ -7,8 +7,7 @@ class DogSearch extends React.Component {
       favorite: [/* 'yes', 'no' */],
       sex: [/* 'male', 'female', */],
       age: [/* 'baby', 'youth', 'adult', 'senior' */],
-      vaccinated: [/* 'yes', 'no' */],
-      pottyTrained:  [/* 'yes', 'no' */],
+      options: [/* 'housetrained', 'hasShots', 'catsOk', 'kidsOk', 'altered' */],
     }
     this.onClick = this.onClick.bind(this);
     this.triggerButton = this.triggerButton.bind(this);
@@ -89,30 +88,28 @@ class DogSearch extends React.Component {
             </div>
           </div>
 
-          <div className="field" onClick={(e) => this.onClick(e, 'vaccinated')}>
-            <label className="label">Vaccinated</label>
+          <div className="field" onClick={(e) => this.onClick(e, 'options')}>
+            <label className="label">Options</label>
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'yes' id ='8' className="button" alt='yes'></button>
-                <p>Yes</p>
+                <button name = 'housetrained' id ='8' className="button" alt='housetrained'></button>
+                <p>House Trained</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'no' id ='9' className="button" alt='no'></button>
-                <p>No</p>
-              </div>
-            </div>
-          </div>
-
-            <div className="field" onClick={(e) => this.onClick(e, 'pottyTrained')}>
-            <label className="label">Potty Trained</label>
-            <div className="control">
-              <div className = 'filter-option'>
-                <button name = 'yes' id ='10' className="button" alt='yes'></button>
-                <p>Yes</p>
+                <button name = 'hasShots' id ='9' className="button" alt='hasShots'></button>
+                <p>Has Shots</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'no' id ='11' className="button" alt='no'></button>
-                <p>No</p>
+                <button name = 'kidsOk' id ='10' className="button" alt='kidsOk'></button>
+                <p>Kids Ok</p>
+              </div>
+              <div className = 'filter-option'>
+                <button name = 'catsOk' id ='11' className="button" alt='catsOk'></button>
+                <p>Cats Ok</p>
+              </div>
+              <div className = 'filter-option'>
+                <button name = 'altered' id ='12' className="button" alt='altered'></button>
+                <p>Altered</p>
               </div>
             </div>
           </div>
