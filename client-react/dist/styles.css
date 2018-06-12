@@ -1,6 +1,6 @@
-
+*{border: 1px solid black;}
 .logo {
-    /* border: 1px solid black; */
+    /*border: 1px solid black; */
 }
 
 html, body, .top, #app {
@@ -13,25 +13,30 @@ body{
     background-color:#024B63 ;
     font-family: 'Poppins', sans-serif;
     color:  #FEFDFD;
-    /* background-image: url('puppy.jpg');
+}
+
+.home-pic{
+    background-image: url('happyadoption.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed; */
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    background-position: 0% 5%;
+    /*left:0em;*/
+    position: absolute;
 }
-body .home-pic{
-background-image: url('puppy.jpg');
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;
-margin: 0;
-background-position: 0% 5%;
-left:0em;
-position: absolute;
+
+.link-main{
+    /*position: absolute;*/
+    top: 43em;
+    left: 3em;
 }
+
 .title {
-    font-size: 3.5em;
-    /* border: 1px solid orange; */
+    font-size: 4em;
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
+
     z-index: 10999093322;
 }
 
@@ -39,7 +44,7 @@ position: absolute;
     overflow: hidden;
     /* margin-left: 2em;
     margin-right: 2em; */
-   width: 100%;
+    width: 100%;
 }
 
 header {
@@ -87,9 +92,8 @@ header {
 
 .left-top{
     display: flex;
-    /* border: 1px solid yellow; */
     padding: 1em;
-
+    color: #034551;
 }
 
 a{
@@ -138,8 +142,8 @@ a{
 .home-pic{
     /* overflow:hidden; */
     display:flex;
-/*     position: fixed; */
- bottom: 3em; 
+    /* position: fixed; */
+    bottom: 3em; 
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -154,8 +158,7 @@ a{
 }
 
 .home-pic p {
-   
-    position: fixed;
+    position: relative;
     bottom: 9em; 
     width: 15em;
     font-size:2.1em;
@@ -167,26 +170,23 @@ a{
 .home-pic img{
     width:100%;
     height:auto;
-    
 }
 
-button.findMyMatch  {
+button.findMyMatch {
     background-color: transparent;
-    position: fixed;
+    position: relative;
     bottom: 1.5em; 
-    color:  #FEFDFD;
-    border: 2px solid #FEFDFD ;
-    padding: 40px 50px;
+    color: #FEFDFD;
+    border: 2px solid #FEFDFD;
+    /*padding: 10px 10px;*/
     font-size: 3em;
-    border-radius: 16px;;
+    border-radius: 16px;
     font-family: 'Poppins', sans-serif;
-    margin: 0 auto;
+    margin: auto;
     transition: 0.5s;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
-
 
 .button {
     background-color: transparent;
@@ -428,12 +428,6 @@ border-radius: 16px;
     line-height: 1.75em;
     color: #024B63;
     background-color: #FEFDFD;
-}
-.link-main{
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 43em;
-    left: 3em;
 }
 
 .cute{
