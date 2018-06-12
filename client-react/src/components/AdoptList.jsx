@@ -6,9 +6,11 @@ class AdoptList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      adoptables: []
+      adoptables: [],
+      unfiltered: [],
     }
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
+    this.searchDogs = this.searchDogs.bind(this);
   }
   
   componentDidMount() {
@@ -73,62 +75,52 @@ class AdoptList extends React.Component {
   searchDogs(params) {
 
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
-    var allBreeds;
+    var allDogs;
 
     //Checks to see if this is the first the filter is being used, if yes than a copy of all the breeds is kept in the state as unfiltered so additional api calls are unnecssary.
     if(this.state.unfiltered.length === 0){
-      allBreeds = this.state.breeds.slice();
+      allDogs = this.state.adoptables.slice();
     } else {
-      allBreeds = this.state.unfiltered.slice();
+      allDogs = this.state.unfiltered.slice();
     };
 
     //If all the selections are 'unselected' or zero, than all the breeds are shown.
-    if(params.size.length + params.energy.length + params.hair.length + params.playful.length === 0){
+    if(params.favorite.length + params.sex.length + params.age.length + params.vaccinated.length + params.pottyTrained.length === 0){
       this.setState({
-        breeds: allBreeds,
-        unfiltered: allBreeds
+        adoptables: allDogs,
+        unfiltered: allDogs,
       });
     } else {
-
       //Based on the selection, certain breeds are shown and others are not.
-      var filteredBreeds = allBreeds.filter((breed)=>{
-        var energySelect = params.energy.some((characteristic)=>{
-          return characteristic === breed.exercise;
-        });
-        var hairSelect = params.hair.some((characteristic)=>{
-          return characteristic === breed.shedding;
-        });
-        var playfulSelect = params.playful.some((characteristic)=>{
-          return characteristic === breed.biddability;
-        });
-        var sizeSelect;
-        var min_weight = 0;
-        var max_weight = 0;
-        params.size.forEach((characteristic)=>{
-          if(characteristic === 'small'){
-            min_weight = 0;
-            max_weight = 25;
-          };
-          if(characteristic === 'medium'){
-            min_weight = 26;
-            max_weight = 40;
-          };
-          if(characteristic === 'large'){
-            min_weight = 41;
-            max_weight = 300;
-          };
-          if(sizeSelect === undefined) {
-            sizeSelect = breed.weight_avg > min_weight && breed.weight_avg <= max_weight;
-          } else {
-            sizeSelect = sizeSelect || (breed.weight_avg > min_weight && breed.weight_avg <= max_weight);
-          };
-        });
-        return energySelect || hairSelect || playfulSelect || sizeSelect;
+      var createSelector = (dog, category) => {
+        if (params[category].length !== 0) {
+          return params[category].some(characteristic => {
+            return characteristic === dog[category];
+          })
+        } else {
+          return true;
+        }
+      }
+
+      var filteredDogs = allDogs.filter(dog => {
+        var favoriteSelect = createSelector(dog, 'favorite');
+        var sexSelect = createSelector(dog, 'sex');
+        var ageSelect = createSelector(dog, 'age');
+        var vaccinatedSelect = createSelector(dog, 'vaccinated');
+        var pottyTrainedSelect = createSelector(dog, 'pottyTrained');
+       
+        console.log('favoriteSelect', favoriteSelect);
+        console.log('sexSelect', sexSelect);
+        console.log('ageSelect', ageSelect);
+        console.log('vaccinatedSelect', vaccinatedSelect);
+        console.log('pottyTrainedSelect', pottyTrainedSelect);
+  
+        return favoriteSelect && sexSelect && ageSelect && vaccinatedSelect && pottyTrainedSelect;
       }); //end of filter
 
       this.setState({
-        breeds: filteredBreeds,
-        unfiltered: allBreeds
+        adoptables: filteredDogs,
+        unfiltered: allDogs,
       });
     }; //end of if else
   } //end of searchNow()
@@ -144,7 +136,7 @@ class AdoptList extends React.Component {
       }
       return (
         <div className="below-header">
-          <DogSearch />
+          <DogSearch searchDogs={this.searchDogs}/>
           <div className="breed-container flex">
           {this.state.adoptables.map((dog, i)=>{
             return(
