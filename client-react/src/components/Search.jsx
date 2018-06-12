@@ -6,13 +6,11 @@ class Search extends React.Component {
     super(props)
     this.state = {
       size: [/* 'small', 'medium', 'large' */],
-      energy: [/* 'low', 'moderate', 'high' */],
-      hair: [/* 'low', 'moderate', 'high' */], //shedding
-      familyDog:  [/* 'yes' */], //biddability
-      playful: [/* 'low', 'moderate', 'high' */]
+      exercise: [/* 'low', 'moderate', 'high' */],
+      biddability: [/* 'low', 'moderate', 'high' */], //shedding
+      shedding: [/* 'low', 'moderate', 'high' */],
     }
     this.onClick = this.onClick.bind(this);
-    this.clickSearch = this.clickSearch.bind(this);
     this.triggerButton = this.triggerButton.bind(this);
   }
 
@@ -33,10 +31,6 @@ class Search extends React.Component {
       this.triggerButton(e.target.id);
       this.props.searchNow(this.state);
     }
-  }
-
-  clickSearch() {
-    this.props.search(this.state);
   }
 
   triggerButton(id) {
@@ -67,7 +61,7 @@ class Search extends React.Component {
             </div>
           </div>
 
-          <div className="field" onClick={(e) => this.onClick(e, 'energy')}>
+          <div className="field" onClick={(e) => this.onClick(e, 'exercise')}>
             <label className="label">Energy</label>
             <div className="control">
               <div className = 'filter-option'>
@@ -85,7 +79,7 @@ class Search extends React.Component {
             </div>
           </div>
 
-          <div className="field" onClick={(e) => this.onClick(e, 'playful')}>
+          <div className="field" onClick={(e) => this.onClick(e, 'biddability')}>
             <label className="label">Playfulness</label>
             <div className="control">
               <div className = 'filter-option'>
@@ -103,7 +97,7 @@ class Search extends React.Component {
             </div>
           </div>
 
-          <div className="field" onClick={(e) => this.onClick(e, 'hair')}>
+          <div className="field" onClick={(e) => this.onClick(e, 'shedding')}>
             <label className="label">Shedding</label>
             <div className="control">
               <div className = 'filter-option'>
@@ -117,20 +111,6 @@ class Search extends React.Component {
               <div className = 'filter-option'>
                 <button name = 'high' id ='9' className="button high-shed" alt='high'></button>
                 <p>High</p>
-              </div>
-            </div>
-          </div>
-
-            <div className="field" onClick={(e) => this.onClick(e, 'familyDog')}>
-            <label className="label">Family Dog</label>
-            <div className="control">
-              <div className = 'filter-option'>
-                <button name = 'yes' id ='10' className="button yes" alt='yes'></button>
-                <p>Yes</p>
-              </div>
-              <div className = 'filter-option'>
-                <button name = 'no' id ='11' className="button no" alt='no'></button>
-                <p>No</p>
               </div>
             </div>
           </div>
