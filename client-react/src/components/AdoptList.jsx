@@ -73,7 +73,6 @@ class AdoptList extends React.Component {
   }
 
   searchDogs(params) {
-
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allDogs;
 
@@ -85,7 +84,7 @@ class AdoptList extends React.Component {
     };
 
     //If all the selections are 'unselected' or zero, than all the breeds are shown.
-    if(params.favorite.length + params.sex.length + params.age.length + params.vaccinated.length + params.pottyTrained.length === 0){
+    if(params.favorite.length + params.sex.length + params.age.length + params.options.length === 0){
       this.setState({
         adoptables: allDogs,
         unfiltered: allDogs,
@@ -94,6 +93,14 @@ class AdoptList extends React.Component {
       //Based on the selection, certain breeds are shown and others are not.
       var createSelector = (dog, category) => {
         if (params[category].length !== 0) {
+          if (category === 'options') {
+            if (params.options.includes('catsOk') && dog.options.includes('noCats')) {
+              return false;
+            }
+            if (params.options.includes('kidsOk') && dog.options.includes('noKids')) {
+              return false;
+            }
+          }
           return params[category].some(characteristic => {
             return characteristic === dog[category];
           })
@@ -106,16 +113,25 @@ class AdoptList extends React.Component {
         var favoriteSelect = createSelector(dog, 'favorite');
         var sexSelect = createSelector(dog, 'sex');
         var ageSelect = createSelector(dog, 'age');
-        var vaccinatedSelect = createSelector(dog, 'vaccinated');
-        var pottyTrainedSelect = createSelector(dog, 'pottyTrained');
+        var optionsSelect = (dog) => {
+          if (params.options.length !== 0) {
+            if (params.options.includes('catsOk') && dog.options.includes('noCats')) {
+              return false;
+            }
+            return params.options.some(characteristic => {
+              return characteristic === dog[category];
+            })
+          } else {
+            return true;
+          }
+        }
        
         console.log('favoriteSelect', favoriteSelect);
         console.log('sexSelect', sexSelect);
         console.log('ageSelect', ageSelect);
-        console.log('vaccinatedSelect', vaccinatedSelect);
-        console.log('pottyTrainedSelect', pottyTrainedSelect);
+        console.log('optionsSelect', optionsSelect);
   
-        return favoriteSelect && sexSelect && ageSelect && vaccinatedSelect && pottyTrainedSelect;
+        return favoriteSelect && sexSelect && ageSelect && optionsSelect;
       }); //end of filter
 
       this.setState({
