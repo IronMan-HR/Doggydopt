@@ -6,7 +6,7 @@ CREATE DATABASE Dogs;
 USE Dogs;
 
 DROP TABLE IF EXISTS `Users`;
-CREATE TABLE Users (
+CREATE TABLE IF NOT EXISTS Users (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NULL DEFAULT NULL,
   `password` VARCHAR(255) NULL DEFAULT NULL,
@@ -14,10 +14,10 @@ CREATE TABLE Users (
 ) COMMENT 'stores a human being';
 
 DROP TABLE IF EXISTS `FaveDogs`;
-CREATE TABLE FaveDogs (
+CREATE TABLE IF NOT EXISTS FaveDogs (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `age` VARCHAR(30) NULL DEFAULT NULL,
-  `breeds` BLOB NULL DEFAULT NULL,   -- breeds object is converted to string via JSON.stringify
+  `breeds` TEXT NULL DEFAULT NULL,   -- breeds object is converted to string via JSON.stringify
   `address1` VARCHAR(30) NULL DEFAULT NULL, -- contact object has been separated into multiple fields
   `address2` VARCHAR(30) NULL DEFAULT NULL,
   `city` VARCHAR(30) NULL DEFAULT NULL,
@@ -26,12 +26,12 @@ CREATE TABLE FaveDogs (
   `phone` VARCHAR(30) NULL DEFAULT NULL,
   `state` VARCHAR(30) NULL DEFAULT NULL,
   `zip` VARCHAR(30) NULL DEFAULT NULL,
-  `description` BLOB NULL DEFAULT NULL,
+  `description` TEXT NULL DEFAULT NULL,
   `dog_id` VARCHAR(30) NULL DEFAULT NULL UNIQUE,
-  `media` BLOB NULL DEFAULT NULL,    -- media object is converted to string via JSON.stringify
+  `media` TEXT NULL DEFAULT NULL,    -- media object is converted to string via JSON.stringify
   `mix` VARCHAR(30) NULL DEFAULT NULL,
   `name` VARCHAR(30) NULL DEFAULT NULL,
-  `options` BLOB NULL DEFAULT NULL,  -- options object is converted to string via JSON.stringify
+  `options` TEXT NULL DEFAULT NULL,  -- options object is converted to string via JSON.stringify
   `sex` VARCHAR(30) NULL DEFAULT NULL,
   `shelterId` VARCHAR(30) NULL DEFAULT NULL,
   `shelterPetId` VARCHAR(30) NULL DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE FaveDogs (
 ) COMMENT 'stores a whole dog';
 
 DROP TABLE IF EXISTS `Users_FaveDogs`;
-CREATE TABLE Users_FaveDogs (
+CREATE TABLE IF NOT EXISTS Users_FaveDogs (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `user_id` INTEGER NULL DEFAULT NULL,
   `dog_id` INTEGER NULL DEFAULT NULL,

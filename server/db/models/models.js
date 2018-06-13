@@ -90,13 +90,7 @@ module.exports = {
             var acc = [];
             var queryStr = "SELECT breed from breeds";
             db.query(queryStr, (err, breeds)=>{
-                // for(var i=0; i<10; i++){
-                //     acc.push(()=>{
-                //         //api + breeds[i].breed
-                //         axios.get(breeds[i].breed);
-                //     });
 
-                // };
                 axios.get('https://dog.ceo/api/breeds/list/all')
                 .then((breedsVerify)=>{
                     var verify = {"affenpinscher":[],"african":[],"airedale":[],"akita":[],"appenzeller":[],"basenji":[],"beagle":[],"bluetick":[],"borzoi":[],"bouvier":[],"boxer":[],"brabancon":[],"briard":[],"bulldog":["boston","french"],"bullterrier":["staffordshire"],"cairn":[],"chihuahua":[],"chow":[],"clumber":[],"collie":["border"],"coonhound":[],"corgi":["cardigan"],"dachshund":[],"dalmatian":[],"dane":["great"],"deerhound":["scottish"],"dhole":[],"dingo":[],"doberman":[],"elkhound":["norwegian"],"entlebucher":[],"eskimo":[],"germanshepherd":[],"greyhound":["italian"],"groenendael":[],"hound":["afghan","basset","blood","english","ibizan","walker"],"husky":[],"keeshond":[],"kelpie":[],"komondor":[],"kuvasz":[],"labrador":[],"leonberg":[],"lhasa":[],"malamute":[],"malinois":[],"maltese":[],"mastiff":["bull","tibetan"],"mexicanhairless":[],"mix":[],"mountain":["bernese","swiss"],"newfoundland":[],"otterhound":[],"papillon":[],"pekinese":[],"pembroke":[],"pinscher":["miniature"],"pointer":["german"],"pomeranian":[],"poodle":["miniature","standard","toy"],"pug":[],"pyrenees":[],"redbone":[],"retriever":["chesapeake","curly","flatcoated","golden"],"ridgeback":["rhodesian"],"rottweiler":[],"saluki":[],"samoyed":[],"schipperke":[],"schnauzer":["giant","miniature"],"setter":["english","gordon","irish"],"sheepdog":["english","shetland"],"shiba":[],"shihtzu":[],"spaniel":["blenheim","brittany","cocker","irish","japanese","sussex","welsh"],"springer":["english"],"stbernard":[],"terrier":["american","australian","bedlington","border","dandie","fox","irish","kerryblue","lakeland","norfolk","norwich","patterdale","scottish","sealyham","silky","tibetan","toy","westhighland","wheaten","yorkshire"],"vizsla":[],"weimaraner":[],"whippet":[],"wolfhound":["irish"]}
@@ -129,16 +123,6 @@ module.exports = {
                         console.log('err');
                         console.log(err);
                     });
-                    // console.log(acc);
-                    // console.log(JSON.stringify(acc));
-    
-                    // for(var j=0; j<acc.length;j++){
-                    //     (function(index){
-                    //         acc[index](function (val) {
-    
-                    //         })
-                    //     })
-                    // }
                 })
                 .catch(()=>{
 
@@ -148,52 +132,9 @@ module.exports = {
     }
 };
 
-
-// Dean says breeds.post works, but isn't used at all, so I moved it down here
-// post: (params, callback) => {
-//     var queryStr = "SELECT * FROM breeds WHERE ";
-//     var conditionals = "";
-//     var sizeToWeight = {
-//         'small': 'BETWEEN 0 and 25',
-//         'medium': 'BETWEEN 26 and 40',
-//         'large':  '> 45'
-//     };
-//     //Adds SQL query for size to weight.
-//     if(params.size.length === 1){
-//         conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
-//     } else if(params.size.length != 0){
-//         conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
-//         for(var i=1; i<params.size.length; i++){
-//             conditionals += "OR weight_avg " + sizeToWeight[params.size[i]] + " ";
-//         }
-//     }
-//     //Adds energy to exercise conditional
-//     if(params.energy.length === 1){
-//         conditionals += "AND exercise='" + params.energy[0] + "' ";
-//     } else if(params.energy.length != 0){
-//         conditionals += "AND exercise='" + params.energy[0] + "' ";
-//         for(var i=1; i<params.energy.length; i++){
-//             conditionals += "OR exercise='" + params.energy[i] + "' ";
-//         }
-//     }
-//     //hair shedding conditional
-//     if(params.hair.length === 1){
-//         conditionals += "AND shedding='" + params.hair[0] + "' ";
-//     } else if(params.hair.length != 0){
-//         conditionals += "AND shedding='" + params.hair[0] + "' ";
-//         for(var i=1; i<params.hair.length; i++){
-//             conditionals += "OR shedding='" + params.hair[i] + "' ";
-//         }
-//     }
-//     //kid to biddability
-//     if(params.kid.length === 1 && params.kid === 'yes'){
-//         conditionals += "AND biddability = 'moderate' AND biddability = 'high";
-//     }
-//     queryStr += conditionals;
-//     db.query(queryStr, (err, data)=>{
-//         callback(data);
-//     });
-// },
-
-let oneDog = {"options":{"option":[{"$t":"altered"},{"$t":"hasShots"},{"$t":"housetrained"},{"$t":"noKids"}]},"status":{"$t":"A"},"contact":{"phone":{},"state":{"$t":"NY"},"address2":{},"email":{"$t":"pupstarzrescue@gmail.com"},"city":{"$t":"New York"},"zip":{"$t":"10010"},"fax":{},"address1":{}},"age":{"$t":"Adult"},"size":{"$t":"L"},"media":{"photos":{"photo":[{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=60&-pnt.jpg","@id":"1"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=95&-fpm.jpg","@id":"1"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=500&-x.jpg","@id":"1"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=300&-pn.jpg","@id":"1"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=50&-t.jpg","@id":"1"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=60&-pnt.jpg","@id":"2"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=95&-fpm.jpg","@id":"2"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=500&-x.jpg","@id":"2"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=300&-pn.jpg","@id":"2"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=50&-t.jpg","@id":"2"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=60&-pnt.jpg","@id":"3"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=95&-fpm.jpg","@id":"3"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=500&-x.jpg","@id":"3"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=300&-pn.jpg","@id":"3"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=50&-t.jpg","@id":"3"}]}},"id":{"$t":"36223058"},"shelterPetId":{},"breeds":{"breed":{"$t":"Rottweiler"}},"name":{"$t":"Roxie! **FOSTER NEEDED**"},"sex":{"$t":"F"},"description":{"$t":"Roxie is a 5 year old, 80 pound Rottweiler mix. She is very affectionate and loves people. Roxie does not do well with cats and prefers to be the only pet in the household.  \n\nIf you would like to adopt this Rockstar, please email PupStarzRescue@gmail.com or visit www.pupstarzrescue.org for an application!  \n\nRoxie's Adoption Donation is: $400\n\nwww.pupstarzrescue.org \nPlease Follow us on Instagram and twitter: @pupstarzrescue\nLike us on FaceBook! www.facebook.com/PupStarzRescue"},"mix":{"$t":"no"},"shelterId":{"$t":"NY1270"},"lastUpdate":{"$t":"2016-09-14T03:08:08Z"},"animal":{"$t":"Dog"}};
-module.exports.faves.saveDog(oneDog, (err, data) => console.log(err, data));
+//testing down here
+// let oneDog = {"options":{"option":[{"$t":"altered"},{"$t":"hasShots"},{"$t":"housetrained"},{"$t":"noKids"}]},"status":{"$t":"A"},"contact":{"phone":{},"state":{"$t":"NY"},"address2":{},"email":{"$t":"pupstarzrescue@gmail.com"},"city":{"$t":"New York"},"zip":{"$t":"10010"},"fax":{},"address1":{}},"age":{"$t":"Adult"},"size":{"$t":"L"},"media":{"photos":{"photo":[{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=60&-pnt.jpg","@id":"1"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=95&-fpm.jpg","@id":"1"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=500&-x.jpg","@id":"1"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=300&-pn.jpg","@id":"1"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=50&-t.jpg","@id":"1"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=60&-pnt.jpg","@id":"2"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=95&-fpm.jpg","@id":"2"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=500&-x.jpg","@id":"2"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=300&-pn.jpg","@id":"2"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=50&-t.jpg","@id":"2"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=60&-pnt.jpg","@id":"3"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=95&-fpm.jpg","@id":"3"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=500&-x.jpg","@id":"3"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=300&-pn.jpg","@id":"3"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=50&-t.jpg","@id":"3"}]}},"id":{"$t":"36223058"},"shelterPetId":{},"breeds":{"breed":{"$t":"Rottweiler"}},"name":{"$t":"Roxie! **FOSTER NEEDED**"},"sex":{"$t":"F"},"description":{"$t":"Roxie is a 5 year old, 80 pound Rottweiler mix. She is very affectionate and loves people. Roxie does not do well with cats and prefers to be the only pet in the household.  \n\nIf you would like to adopt this Rockstar, please email PupStarzRescue@gmail.com or visit www.pupstarzrescue.org for an application!  \n\nRoxie's Adoption Donation is: $400\n\nwww.pupstarzrescue.org \nPlease Follow us on Instagram and twitter: @pupstarzrescue\nLike us on FaceBook! www.facebook.com/PupStarzRescue"},"mix":{"$t":"no"},"shelterId":{"$t":"NY1270"},"lastUpdate":{"$t":"2016-09-14T03:08:08Z"},"animal":{"$t":"Dog"}};
+// module.exports.faves.saveDog(oneDog, (err, data) => console.log(err, data));
+// module.exports.faves.getDogs((err, data) => console.log(err, data));
+// module.exports.faves.getDogsByBreed('Rottweiler', (err, data) => console.log(err, data));
+// module.exports.faves.getDogIDs((err, data) => console.log(err, data));
