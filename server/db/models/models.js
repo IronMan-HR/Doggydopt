@@ -17,66 +17,39 @@ module.exports = {
             var apiQuery = `http://api.petfinder.com/pet.find?key=${pf_key}&animal=dog&location=${params.zipCode}&count=75&output=full&format=json&count=10&breed=${params.breedName}`;
             axios.get(apiQuery)
             .then((results)=>{
-                console.log(results.data.petfinder.pets);
+                // console.log(results.data.petfinder.pets);
                 callback(results.data.petfinder.pets);
             })
             .catch((err)=>{
                 callback(err);
             });
         }
-    },
-     //Functionality moved to frontend filtering. provides the list of breeds.
+    }, 
     breeds: {
-        post: (params, callback) => {
-            var queryStr = "SELECT * FROM breeds WHERE ";
-            var conditionals = "";
-            var sizeToWeight = {
-                'small': 'BETWEEN 0 and 25',
-                'medium': 'BETWEEN 26 and 40',
-                'large':  '> 45'
-            };
-            //Adds SQL query for size to weight.
-            if(params.size.length === 1){
-                conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
-            } else if(params.size.length != 0){
-                conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
-                for(var i=1; i<params.size.length; i++){
-                    conditionals += "OR weight_avg " + sizeToWeight[params.size[i]] + " ";
-                }
-            }
-            //Adds energy to exercise conditional
-            if(params.energy.length === 1){
-                conditionals += "AND exercise='" + params.energy[0] + "' ";
-            } else if(params.energy.length != 0){
-                conditionals += "AND exercise='" + params.energy[0] + "' ";
-                for(var i=1; i<params.energy.length; i++){
-                    conditionals += "OR exercise='" + params.energy[i] + "' ";
-                }
-            }
-            //hair shedding conditional
-            if(params.hair.length === 1){
-                conditionals += "AND shedding='" + params.hair[0] + "' ";
-            } else if(params.hair.length != 0){
-                conditionals += "AND shedding='" + params.hair[0] + "' ";
-                for(var i=1; i<params.hair.length; i++){
-                    conditionals += "OR shedding='" + params.hair[i] + "' ";
-                }
-            }
-            //kid to biddability
-            if(params.kid.length === 1 && params.kid === 'yes'){
-                conditionals += "AND biddability = 'moderate' AND biddability = 'high";
-            }
-            queryStr += conditionals;
-            db.query(queryStr, (err, data)=>{
-                callback(data);
-            });
-        },
-        all: (callback) =>{
+        all: callback => {
             var queryStr = "SELECT * FROM breeds";
-            db.query(queryStr, (err, data)=>{
+            db.query(queryStr, (err, data) => {
                 callback(data);
             });
         }
+    },
+    faves: {  // Rose working on this faves feature
+      getDogs: callback => {
+        // retrieves all faved dogs, runs callback
+
+      },
+      getDogsByBreed: (breed, callback) => {
+        // retrieves dogs matching given breed, runs callback
+      },
+      saveDog: (dogObj, callback) => {
+        // takes dog object, adds to database, runs callback
+        let {} = dogObj; // pull values from dogObj
+        var queryStr = "INSERT INTO favedogs () VALUES ()";
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
+      }
     },
   
     pictures: {
@@ -155,3 +128,50 @@ module.exports = {
         }   
     }
 };
+
+
+// Dean says breeds.post works, but isn't used at all, so I moved it down here
+// post: (params, callback) => {
+//     var queryStr = "SELECT * FROM breeds WHERE ";
+//     var conditionals = "";
+//     var sizeToWeight = {
+//         'small': 'BETWEEN 0 and 25',
+//         'medium': 'BETWEEN 26 and 40',
+//         'large':  '> 45'
+//     };
+//     //Adds SQL query for size to weight.
+//     if(params.size.length === 1){
+//         conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
+//     } else if(params.size.length != 0){
+//         conditionals += "weight_avg " + sizeToWeight[params.size[0]] + " ";
+//         for(var i=1; i<params.size.length; i++){
+//             conditionals += "OR weight_avg " + sizeToWeight[params.size[i]] + " ";
+//         }
+//     }
+//     //Adds energy to exercise conditional
+//     if(params.energy.length === 1){
+//         conditionals += "AND exercise='" + params.energy[0] + "' ";
+//     } else if(params.energy.length != 0){
+//         conditionals += "AND exercise='" + params.energy[0] + "' ";
+//         for(var i=1; i<params.energy.length; i++){
+//             conditionals += "OR exercise='" + params.energy[i] + "' ";
+//         }
+//     }
+//     //hair shedding conditional
+//     if(params.hair.length === 1){
+//         conditionals += "AND shedding='" + params.hair[0] + "' ";
+//     } else if(params.hair.length != 0){
+//         conditionals += "AND shedding='" + params.hair[0] + "' ";
+//         for(var i=1; i<params.hair.length; i++){
+//             conditionals += "OR shedding='" + params.hair[i] + "' ";
+//         }
+//     }
+//     //kid to biddability
+//     if(params.kid.length === 1 && params.kid === 'yes'){
+//         conditionals += "AND biddability = 'moderate' AND biddability = 'high";
+//     }
+//     queryStr += conditionals;
+//     db.query(queryStr, (err, data)=>{
+//         callback(data);
+//     });
+// },
