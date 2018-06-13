@@ -21,7 +21,7 @@ class AdoptList extends React.Component {
       })
       .then(res => {
         console.log('pet data', res.data.pet);
-        // console.log(res.data.pet[0].breeds);
+        console.log(JSON.stringify(res.data.pet[0]));
         // console.log(res.data.pet[1].breeds);
         // console.log(JSON.stringify(res.data.pet[0].breeds));
         // console.log(JSON.stringify(res.data.pet[1].breeds));

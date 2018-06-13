@@ -35,15 +35,31 @@ module.exports = {
     },
     faves: {  // Rose working on this faves feature
       getDogs: callback => {
-        // retrieves all faved dogs, runs callback
-
+        var queryStr = "SELECT * FROM FaveDogs";
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
       },
       getDogsByBreed: (breed, callback) => {
-        // retrieves dogs matching given breed, runs callback
+        var queryStr = `SELECT * FROM FaveDogs WHERE breeds LIKE '%${breed}%'`;
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
+      },
+      getDogIDs: callback => {
+        // for list of ids to crosscheck against loaded dogs for filtering
+        var queryStr = "SELECT dog_id FROM FaveDogs";
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
       },
       saveDog: (dogObj, callback) => {
         // takes dog object, adds to database, runs callback
         let {} = dogObj; // pull values from dogObj
+        params = [];
         var queryStr = "INSERT INTO favedogs () VALUES ()";
         db.query(queryStr, (err, data) => {
           if (err) callback(err);
