@@ -8,8 +8,9 @@ USE Dogs;
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS Users (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(255) NULL DEFAULT NULL,
-  `password` VARCHAR(255) NULL DEFAULT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `zip` VARCHAR(30) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) COMMENT 'stores a human being';
 
@@ -18,10 +19,10 @@ CREATE TABLE IF NOT EXISTS FaveDogs (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `age` VARCHAR(30) NULL DEFAULT NULL,
   `breeds` TEXT NULL DEFAULT NULL,   -- breeds object is converted to string via JSON.stringify
-  `address1` VARCHAR(30) NULL DEFAULT NULL, -- contact object has been separated into multiple fields
-  `address2` VARCHAR(30) NULL DEFAULT NULL,
-  `city` VARCHAR(30) NULL DEFAULT NULL,
-  `email` VARCHAR(30) NULL DEFAULT NULL,
+  `address1` VARCHAR(100) NULL DEFAULT NULL, -- contact object has been separated into multiple fields
+  `address2` VARCHAR(100) NULL DEFAULT NULL,
+  `city` VARCHAR(50) NULL DEFAULT NULL,
+  `email` VARCHAR(100) NULL DEFAULT NULL,
   `fax` VARCHAR(30) NULL DEFAULT NULL,
   `phone` VARCHAR(30) NULL DEFAULT NULL,
   `state` VARCHAR(30) NULL DEFAULT NULL,
@@ -30,11 +31,11 @@ CREATE TABLE IF NOT EXISTS FaveDogs (
   `dog_id` VARCHAR(30) NULL DEFAULT NULL UNIQUE,
   `media` TEXT NULL DEFAULT NULL,    -- media object is converted to string via JSON.stringify
   `mix` VARCHAR(30) NULL DEFAULT NULL,
-  `name` VARCHAR(30) NULL DEFAULT NULL,
+  `name` VARCHAR(100) NULL DEFAULT NULL,
   `options` TEXT NULL DEFAULT NULL,  -- options object is converted to string via JSON.stringify
   `sex` VARCHAR(30) NULL DEFAULT NULL,
-  `shelterId` VARCHAR(30) NULL DEFAULT NULL,
-  `shelterPetId` VARCHAR(30) NULL DEFAULT NULL,
+  `shelterId` VARCHAR(100) NULL DEFAULT NULL,
+  `shelterPetId` VARCHAR(100) NULL DEFAULT NULL,
   `size` VARCHAR(30) NULL DEFAULT NULL,
   `status` VARCHAR(30) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -43,8 +44,8 @@ CREATE TABLE IF NOT EXISTS FaveDogs (
 DROP TABLE IF EXISTS `Users_FaveDogs`;
 CREATE TABLE IF NOT EXISTS Users_FaveDogs (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `user_id` INTEGER NULL DEFAULT NULL,
-  `dog_id` INTEGER NULL DEFAULT NULL,
+  `user_id` INTEGER NOT NULL,
+  `dog_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) COMMENT 'join table that matches one user_id to one dog_id';
 
