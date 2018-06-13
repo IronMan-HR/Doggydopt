@@ -14,10 +14,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       breeds: exampleData,
-      unfiltered: []   
+      unfiltered: [],
+      zipCode: 10017, 
     } 
     this.addDefaultSrc = this.addDefaultSrc.bind(this);
     this.searchNow = this.searchNow.bind(this);
+    this.setZipInApp = this.setZipInApp.bind(this);
   }
 
   componentWillMount() {
@@ -28,6 +30,12 @@ class App extends React.Component {
       }, console.log('all breeds is', res.data));
     }).catch(err => {
       console.error(err);
+    })
+  }
+
+  setZipInApp(zipCode) {
+    this.setState({
+      zipCode: zipCode,
     })
   }
 
@@ -97,14 +105,14 @@ class App extends React.Component {
           <Authenticate thisPage="signup" otherPage="login" />
         )}/>
         <Route exact={true} path="/login" render={() => (
-          <Authenticate thisPage="login" otherPage="signup" />
+          <Authenticate thisPage="login" otherPage="signup" setZipInApp={this.setZipInApp}/>
         )}/>
         <Route exact={true} path="/" component={Home}/>
-        <Route exact={true} path="/matchMe" render={(props) => (
+        <Route exact={true} path="/matchMe" render={() => (
           <div>
             <div className='below-header'>
                 <Search search={this.search} searchNow={this.searchNow}/>
-                <List zipCode={props.location.state.zipCode} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
+                <List zipCode={this.state.zipCode} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
             </div> 
           </div>
         )}/> 
