@@ -16,8 +16,7 @@ const ListEntry = ({zipCode, breed, clickHandler, addDefaultSrc}) => {
           <div className="cute"><img onError={addDefaultSrc} src={breed.img} alt={`Picture of a ${breed.name}`}/></div>
           <p>{breed.breed}</p>
         </div>
-      </div>
-      
+      </div>    
     </Link>
   )
 }
