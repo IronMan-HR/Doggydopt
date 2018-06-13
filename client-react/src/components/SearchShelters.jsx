@@ -5,14 +5,25 @@ class SearchShelters extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-  	  zipcode: ''
+  	  zipcode: '',
+      shelters: []
   	}
   }
 
   render() {
   	return (
-  	  <div>SEARCH HERE
-  	  	<button>testing</button>
+  	  <div className="search-shelters-page">
+        <h1>Search Local Shelters</h1>
+        <form>
+          <input placeholder="enter zipcode"/>
+        <button>Submit</button>
+        </form>
+  	  	
+        <div className="search-shelters-results">
+          {this.state.shelters.map((shelter) => (
+            <div>{shelter.name.$t}</div>
+          ))}
+        </div>
   	  </div>
   	)
   }
