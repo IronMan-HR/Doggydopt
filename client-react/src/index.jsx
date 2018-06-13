@@ -101,11 +101,11 @@ class App extends React.Component {
           <Authenticate thisPage="login" otherPage="signup" />
         )}/>
         <Route exact={true} path="/" component={Home}/>
-        <Route exact={true} path="/matchMe" render={() => (
+        <Route exact={true} path="/matchMe" render={(props) => (
           <div>
             <div className='below-header'>
                 <Search search={this.search} searchNow={this.searchNow}/>
-                <List breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
+                <List zipCode={props.location.state.zipCode} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
             </div> 
           </div>
         )}/> 

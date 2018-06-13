@@ -63,7 +63,7 @@ class Authenticate extends React.Component {
 
   render() {
     if (this.state.userIsAuthenticated) {
-      return <Redirect to="/matchMe" />
+      return <Redirect to={{pathname: '/matchMe', state: {zipCode: this.state.zip}}} />
     } else {
       return (
         <div className="authentication-page">
