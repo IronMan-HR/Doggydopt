@@ -33,37 +33,40 @@ module.exports = {
             });
         }
     },
-    faves: {  // Rose working on this faves feature
-      getDogs: callback => {
+    faves: {
+      getUsersDogs: (username, callback) => {
+        var queryStr = "SELECT * FROM FaveDogs INNER JOIN User_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = ?)";
+        db.query(queryStr, username, (err, data) => {
+            if (err) callback(err);
+            else callback(null, data);
+          });
+      },
+      getAllDogs: callback => {
         var queryStr = "SELECT * FROM FaveDogs";
         db.query(queryStr, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
         });
       },
-      getDogsByBreed: (breed, callback) => {
+      getAllDogsByBreed: (breed, callback) => {   
         var queryStr = `SELECT * FROM FaveDogs WHERE breeds LIKE '%${breed}%'`;
         db.query(queryStr, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
         });
       },
-      getDogIDs: callback => {
-        // for list of ids to crosscheck against loaded dogs for filtering
+      getAllDogsIDs: callback => {         // for list of ids to crosscheck against loaded dogs for filtering
         var queryStr = "SELECT dog_id FROM FaveDogs";
         db.query(queryStr, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
         });
       },
-      saveDog: (dogObj, callback) => {
-        // takes dog object, adds to database, runs callback
+      saveDogToPool: (dogObj, callback) => {
         let {age, breeds, contact, description, id, media, mix, name, options, sex, shelterId, shelterPetId, size, status} = dogObj; // pull values from dogObj
         let values = [age.$t, JSON.stringify(breeds.breed), contact.address1.$t, contact.address2.$t, contact.city.$t, contact.email.$t, contact.fax.$t, contact.phone.$t, contact.state.$t, contact.zip.$t, description.$t, id.$t, JSON.stringify(media), mix.$t, name.$t, JSON.stringify(options.option), sex.$t, shelterId.$t, shelterPetId.$t, size.$t, status.$t];
-        // console.log(values);
         let columns = 'age, breeds, address1, address2, city, email, fax, phone, state, zip, description, dog_id, media, mix, name, options, sex, shelterId, shelterPetId, size, status';
         var queryStr = `INSERT INTO favedogs (${columns}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-        // console.log(queryStr);
         db.query(queryStr, values, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
