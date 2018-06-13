@@ -9,11 +9,13 @@ class Authenticate extends React.Component {
       username: '',
       password: '',
       status: '',
+      zip: '',
       userIsAuthenticated: false,
     };
     this.handleUserNameInput = this.handleUserNameInput.bind(this);
     this.handlePasswordInput = this.handlePasswordInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleZipInput = this.handleZipInput.bind(this);
   }
 
   handleUserNameInput(e) {
@@ -28,12 +30,19 @@ class Authenticate extends React.Component {
     });
   }
 
+  handleZipInput(e) {
+    this.setState({
+      zip: e.target.value,
+    });
+  }
+
   handleSubmit(e) {
     console.log('submitted');
     e.preventDefault();
     var credentials = {
       username: this.state.username,
       password: this.state.password,
+      zip: this.state.zip,
     }
     axios.post(`/${this.props.thisPage}`, credentials)
     .then(res => {
@@ -62,6 +71,7 @@ class Authenticate extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input placeholder="username" value={this.state.username} onChange={this.handleUserNameInput} />
             <input placeholder="password" value={this.state.password} onChange={this.handlePasswordInput} />
+            <input placeholder="zipcode" value={this.state.zip} onChange={this.handleZipInput} />
             <button>Submit</button>
           </form>
           <Link to={`/${this.props.otherPage}`}>{this.props.otherPage} Here</Link>

@@ -81,19 +81,6 @@ module.exports = {
         });
       }
     },
-    users: {
-      addUser: (userObj, callback) => {
-        let {username, password, zip} = userObj;
-        let queryStr = "INSERT INTO Users (username, password, zip) VALUES (?, ?, ?)";
-        db.query(queryStr, [username, password, zip], (err, data) => {
-          if (err) callback(err);
-          else callback(null, data);
-        });
-      },
-      getUser: (username, password, callback) => {
-        // implement later when I get more info about what we need here to authenticate
-      }
-    },
   
     pictures: {
         //Currently in development, gets the pictures for the breeds.
@@ -156,16 +143,18 @@ module.exports = {
     },
 
     users: {
-        checkUser: (username, password, callback) => {
-            var userQuery = `SELECT * FROM Users WHERE username = '${username}'`;
-            db.query(userQuery, (err, foundUser) => {
-                console.log('foundUser is', foundUser);
+        checkUser: (userObj, callback) => {
+            let {username, password} = userObj;
+            var userQuery = `SELECT * FROM Users WHERE username = ?`;
+            db.query(userQuery, username, (err, foundUser) => {
                 if (err) {
                     callback(202, 'user does not exist');
                 } else {
                     bcrypt.compare(password, foundUser[0].password, (err, res) => {
                         if (err) {
-                            callback(202, 'incorrect password');
+                            callback(202, 'error comparing passwords');
+                        } else if (res === false) {
+                            callback(202, 'inccorect password');
                         } else {
                             callback(201);
                         }
@@ -173,28 +162,27 @@ module.exports = {
                 }
             });
         },
-        createUser: (username, password, callback) => {
-            var userQuery = `SELECT * FROM Users WHERE username = '${username}'`;
-            db.query(userQuery, (err, foundUser) => {
-                console.log('err is', err);
-                console.log('foundUser is', foundUser);
+        createUser: (userObj, callback) => {
+            let {username, password, zip} = userObj;
+            var userQuery = `SELECT * FROM Users WHERE username = ?`;
+            db.query(userQuery, username, (err, results) => {
                 if (err) {
-                    callback(202, 'user already exists');      
+                    callback(202, 'error retrieving user');      
+                } else if (results.length > 0) {
+                    callback(202, 'user already exists');
                 } else {
                     bcrypt.hash(password, null, null, (err, hash) => {
                         if (err) {
                             callback(202, 'error hashing password');
                         } else {
-                            console.log('hash is', hash);
-                            console.log('username is', username);
-                            var createQuery = `INSERT into Users (username, password) VALUES ('${username}', '${hash}')`;
-                            db.query(createQuery, err => {
+                            var createQuery = `INSERT into Users (username, password, zip) VALUES (?, ?, ?)`;
+                            db.query(createQuery, [username, hash, zip], err => {
                                 if (err) {
                                     callback(202, 'error inserting into database');
                                 } else {
                                     callback(201);
                                 }
-                            })      
+                            });
                         }
                     });
                 }
