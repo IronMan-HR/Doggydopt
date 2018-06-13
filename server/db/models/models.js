@@ -33,6 +33,24 @@ module.exports = {
             });
         }
     },
+    shelters: {
+      post: (params, callback) => {
+        var queryStr = `http://api.petfinder.com/shelter.find?key=${pf_key}&location=${params.zipcode}&count=5&format=json`;
+        axios.get(queryStr)
+        .then((results) => {
+            //API returns a collection of shelter records starting with the given ZIP/postal code
+            //filter results to get ONLY results from the specific zipcode searched
+            var apiresults = results.data.petfinder.shelters.shelter;
+            var sheltersInSpecificZip = apiresults.filter(function(result) {
+              return result.zip.$t === params.zipcode.toString();
+            });
+            console.log('apiresults: ', apiresults);
+            console.log('sheltersInSpecificZip: ', sheltersInSpecificZip);
+            callback(sheltersInSpecificZip);
+        })
+        .catch((err) => console.log('err on shelters search', err));
+      }
+    },
     faves: {  // Rose working on this faves feature
       getDogs: callback => {
         var queryStr = "SELECT * FROM FaveDogs";
