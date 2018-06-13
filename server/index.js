@@ -7,7 +7,7 @@ var history = require('connect-history-api-fallback');
 var models = require('../server/db/models/models.js');
 
 var port = process.env.PORT || 9000;
-var app = express();
+var app = express(); 
 
 app.use(history());
 app.use(express.static(__dirname + '/../client-react/dist'));
