@@ -84,15 +84,15 @@ class Search extends React.Component {
             <label className="label">Playfulness</label>
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'low' id ='12' className="button low-play" alt='low'></button>
+                <button name = 'low' id ='7' className="button low-play" alt='low'></button>
                 <p>Low</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'moderate' id ='13' className="button moderate-play" alt='moderate'></button>
+                <button name = 'moderate' id ='8' className="button moderate-play" alt='moderate'></button>
                 <p>Moderate</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'high' id ='14' className="button high-play" alt='high'></button>
+                <button name = 'high' id ='9' className="button high-play" alt='high'></button>
                 <p>High</p>
               </div>
             </div>
@@ -102,15 +102,15 @@ class Search extends React.Component {
             <label className="label">Shedding</label>
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'low' id ='7' className="button low-shed" alt='low'></button>
+                <button name = 'low' id ='10' className="button low-shed" alt='low'></button>
                 <p>Low</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'moderate' id ='8' className="button moderate-shed" alt='moderate'></button>
+                <button name = 'moderate' id ='11' className="button moderate-shed" alt='moderate'></button>
                 <p>Moderate</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'high' id ='9' className="button high-shed" alt='high'></button>
+                <button name = 'high' id ='12' className="button high-shed" alt='high'></button>
                 <p>High</p>
               </div>
             </div>
@@ -120,15 +120,15 @@ class Search extends React.Component {
             <label className="label">Barking</label>
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'low' id ='10' className="button low-bark" alt='low'></button>
+                <button name = 'low' id ='13' className="button low-bark" alt='low'></button>
                 <p>Low</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'moderate' id ='11' className="button moderate-bark" alt='moderate'></button>
+                <button name = 'moderate' id ='14' className="button moderate-bark" alt='moderate'></button>
                 <p>Moderate</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'high' id ='12' className="button high-bark" alt='high'></button>
+                <button name = 'high' id ='15' className="button high-bark" alt='high'></button>
                 <p>High</p>
               </div>
             </div>
