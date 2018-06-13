@@ -1,6 +1,7 @@
 var db = require('../../db/index.js');
 var axios = require('axios');
 var pf_key = process.env.pf_key;
+var bcrypt = require('bcrypt-nodejs');
 
 //Checks to see if in deployment or locally hosted, provides the config.js if local.
 if(pf_key === undefined){
@@ -129,6 +130,53 @@ module.exports = {
                 });
             });
         }   
+    },
+
+    users: {
+        checkUser: (username, password, callback) => {
+            var userQuery = `SELECT * FROM Users WHERE username = '${username}'`;
+            db.query(userQuery, (err, foundUser) => {
+                console.log('foundUser is', foundUser);
+                if (err) {
+                    callback(202, 'user does not exist');
+                } else {
+                    bcrypt.compare(password, foundUser[0].password, (err, res) => {
+                        if (err) {
+                            callback(202, 'incorrect password');
+                        } else {
+                            callback(201);
+                        }
+                    });
+                }
+            });
+        },
+        createUser: (username, password, callback) => {
+            var userQuery = `SELECT * FROM Users WHERE username = '${username}'`;
+            db.query(userQuery, (err, foundUser) => {
+                console.log('err is', err);
+                console.log('foundUser is', foundUser);
+                if (err) {
+                    callback(202, 'user already exists');      
+                } else {
+                    bcrypt.hash(password, null, null, (err, hash) => {
+                        if (err) {
+                            callback(202, 'error hashing password');
+                        } else {
+                            console.log('hash is', hash);
+                            console.log('username is', username);
+                            var createQuery = `INSERT into Users (username, password) VALUES ('${username}', '${hash}')`;
+                            db.query(createQuery, err => {
+                                if (err) {
+                                    callback(202, 'error inserting into database');
+                                } else {
+                                    callback(201);
+                                }
+                            })      
+                        }
+                    });
+                }
+            });
+        },
     }
 };
 
