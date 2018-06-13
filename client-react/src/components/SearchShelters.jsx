@@ -7,7 +7,18 @@ class SearchShelters extends React.Component {
   	this.state = {
   	  zipcode: '',
       shelters: []
-  	}
+    }
+    this.searchShelters = this.searchShelters.bind(this);
+  }
+
+  componentDidMount() {
+
+  }
+
+  searchShelters(zipcode) {
+    axios.post('/shelters', zipObj)
+    .then()
+    .catch();
   }
 
   render() {
