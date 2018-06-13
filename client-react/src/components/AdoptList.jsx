@@ -11,6 +11,7 @@ class AdoptList extends React.Component {
     }
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
     this.searchDogs = this.searchDogs.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
   
   componentDidMount() {
@@ -145,6 +146,10 @@ class AdoptList extends React.Component {
       });
     }; //end of if else
   } //end of search()
+
+  toggleFavorite(dog) {
+    console.log('dog should be', dog);
+  }
   
   render() {
     if (!this.state.adoptables) {
@@ -173,6 +178,7 @@ class AdoptList extends React.Component {
                     <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
                   </div>
                   <div className="item-text">
+                    <button className="button favorite" onClick={() => {this.toggleFavorite(dog)}}></button>
                     <h2>Name: {dog.name}</h2>
                     <p>{dog.description}</p>
                     <div className="flex zip-age">
