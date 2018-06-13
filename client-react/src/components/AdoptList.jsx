@@ -47,8 +47,19 @@ class AdoptList extends React.Component {
             description: dog.description.$t,
             zip: dog.contact.zip.$t,
             email: dog.contact.email.$t,
-            sex: dog.sex.$t
+            sex: dog.sex.$t,
           };
+          //console.log(dog.options.option);
+          if (dog.options.option !== undefined) {
+            if (Array.isArray(dog.options.option)) {
+              compressed.options = dog.options.option.map(trait => {
+                return trait.$t;
+              });
+            } else {
+              compressed.options = [dog.options.option.$t];
+            }
+          }
+           
           // SOME DOGS DON'T HAVE A PICTURE OR PICTURES IN BAD FORMATS. THE SIZE FORMATS "x" AND "pn" WORK FOR US
           // WE CHECK IF ONE OF THOSE IS AVAILABLE (PREFERABLY "x"), AND SET IT AS PHOTO, IF NOT WE GIVE IT A PLACEHOLDER
           if(dog.media.photos) {
@@ -58,7 +69,6 @@ class AdoptList extends React.Component {
                 if(!pics.hasOwnProperty(photo['@size'])) {
                   pics[photo['@size']] = photo.$t;
                 }
-
               }
             })
             if(pics.hasOwnProperty('x')) {
@@ -101,9 +111,10 @@ class AdoptList extends React.Component {
           if (category === 'options') {
             if (params.options.includes('catsOk') && dog.options.includes('noCats')) {
               return false;
-            }
-            if (params.options.includes('kidsOk') && dog.options.includes('noKids')) {
+            } else if (params.options.includes('kidsOk') && dog.options.includes('noKids')) {
               return false;
+            } else {
+              return true;
             }
           }
           return params[category].some(characteristic => {
@@ -118,18 +129,7 @@ class AdoptList extends React.Component {
         var favoriteSelect = createSelector(dog, 'favorite');
         var sexSelect = createSelector(dog, 'sex');
         var ageSelect = createSelector(dog, 'age');
-        var optionsSelect = (dog) => {
-          if (params.options.length !== 0) {
-            if (params.options.includes('catsOk') && dog.options.includes('noCats')) {
-              return false;
-            }
-            return params.options.some(characteristic => {
-              return characteristic === dog[category];
-            })
-          } else {
-            return true;
-          }
-        }
+        var optionsSelect = createSelector(dog, 'options');
        
         console.log('favoriteSelect', favoriteSelect);
         console.log('sexSelect', sexSelect);
