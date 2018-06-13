@@ -5,9 +5,9 @@ import Search from './components/Search.jsx';
 import exampleData from '../../exampleData.js';
 import axios from 'axios';
 import Home from './components/Home.jsx';
+import Authenticate from './components/Authenticate.jsx';
 import AdoptList from './components/AdoptList.jsx';
 import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class App extends React.Component {
   }
 
   searchNow(params) {
-    console.log('params is', params);
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
 
@@ -94,6 +93,12 @@ class App extends React.Component {
   render () {
     return (
       <Switch>
+        <Route exact={true} path="/signup" render={() => (
+          <Authenticate thisPage="signup" otherPage="login" />
+        )}/>
+        <Route exact={true} path="/login" render={() => (
+          <Authenticate thisPage="login" otherPage="signup" />
+        )}/>
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div>
@@ -110,7 +115,6 @@ class App extends React.Component {
     )
   }
 }
-
 
 ReactDOM.render((
   <BrowserRouter history={browserHistory}>

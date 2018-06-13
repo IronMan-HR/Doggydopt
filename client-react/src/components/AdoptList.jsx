@@ -90,8 +90,6 @@ class AdoptList extends React.Component {
   }
 
   searchDogs(params) {
-    
-    console.log('params are', params);
     var allDogs;
 
     //Checks to see if this is the first the filter is being used, if yes than a copy of all the breeds is kept in the state as unfiltered so additional api calls are unnecssary.
@@ -125,15 +123,11 @@ class AdoptList extends React.Component {
                 }   
               });
             }
-          }
-          // params['options'] = ["hasShots", "catsOk"], dog.options : ["hasShots"]
-          // params['age'] = ["young", "baby"], dog.age : "young"
-          else {
+          } else {
             return params[category].some(characteristic => {
               return characteristic === dog[category];
             }); 
-          }
-         
+          }   
         } else {
           return true;
         }
@@ -144,8 +138,7 @@ class AdoptList extends React.Component {
         var sexSelect = createSelector(dog, 'sex');
         var ageSelect = createSelector(dog, 'age');
         var optionsSelect = createSelector(dog, 'options');
-        console.log('optionsSelect is', optionsSelect);
-  
+
         return favoriteSelect && sexSelect && ageSelect && optionsSelect;
       }); //end of filter
 
