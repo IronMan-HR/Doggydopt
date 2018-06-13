@@ -34,6 +34,7 @@ class Authenticate extends React.Component {
     this.setState({
       zip: e.target.value,
     });
+    this.props.setZipInApp(e.target.value);
   }
 
   handleSubmit(e) {
@@ -63,7 +64,7 @@ class Authenticate extends React.Component {
 
   render() {
     if (this.state.userIsAuthenticated) {
-      return <Redirect to={{pathname: '/matchMe', state: {zipCode: this.state.zip}}} />
+      return <Redirect to='/matchMe' />
     } else {
       return (
         <div className="authentication-page">
