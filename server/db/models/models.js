@@ -54,7 +54,7 @@ module.exports = {
     },
     faves: {
       getUserDogs: (username, callback) => {
-        let queryStr = `SELECT * FROM FaveDogs INNER JOIN Users_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = "${username}")`;
+        let queryStr = `SELECT * FROM FaveDogs INNER JOIN Users_FaveDogs ON FaveDogs.dog_id = Users_FaveDogs.dog_id WHERE user_id = (SELECT id FROM Users WHERE username = "${username}")`;
         db.query(queryStr, (err, data) => {
             if (err) callback(err);
             else callback(null, data);
@@ -232,3 +232,5 @@ let dog3 = {"options":{"option":[{"$t":"altered"},{"$t":"hasShots"},{"$t":"house
 // module.exports.faves.saveFave('41870778', 'Scott', (err, data) => console.log(err, data));
 
 // module.exports.faves.getUserDogs('Rose', (err, data) => console.log(err, data));
+// module.exports.faves.getUserDogs('Lina', (err, data) => console.log(err, data));
+// module.exports.faves.getUserDogs('Scott', (err, data) => console.log(err, data));

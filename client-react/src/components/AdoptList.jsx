@@ -20,9 +20,6 @@ class AdoptList extends React.Component {
         zipCode: this.props.match.params.zip
       })
       .then(res => {
-        console.log(JSON.stringify(res.data.pet[0]));
-        console.log(JSON.stringify(res.data.pet[1]));
-        console.log(JSON.stringify(res.data.pet[2]));
         var refactoredData = this.refactorPetFinderData(res.data.pet);
         this.setState({
           adoptables: refactoredData,
