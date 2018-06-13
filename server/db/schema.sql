@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS `FaveDogs`;
 CREATE TABLE FaveDogs (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `age` VARCHAR(30) NULL DEFAULT NULL,
-  `breeds` VARCHAR(30) NULL DEFAULT NULL,   -- breeds object is converted to string via JSON.stringify
+  `breeds` BLOB NULL DEFAULT NULL,   -- breeds object is converted to string via JSON.stringify
   `address1` VARCHAR(30) NULL DEFAULT NULL, -- contact object has been separated into multiple fields
   `address2` VARCHAR(30) NULL DEFAULT NULL,
   `city` VARCHAR(30) NULL DEFAULT NULL,
@@ -26,12 +26,12 @@ CREATE TABLE FaveDogs (
   `phone` VARCHAR(30) NULL DEFAULT NULL,
   `state` VARCHAR(30) NULL DEFAULT NULL,
   `zip` VARCHAR(30) NULL DEFAULT NULL,
-  `description` VARCHAR(30) NULL DEFAULT NULL,
-  `dog_id` VARCHAR(30) NULL DEFAULT NULL,
-  `media` VARCHAR(30) NULL DEFAULT NULL,    -- media object is converted to string via JSON.stringify
+  `description` BLOB NULL DEFAULT NULL,
+  `dog_id` VARCHAR(30) NULL DEFAULT NULL UNIQUE,
+  `media` BLOB NULL DEFAULT NULL,    -- media object is converted to string via JSON.stringify
   `mix` VARCHAR(30) NULL DEFAULT NULL,
   `name` VARCHAR(30) NULL DEFAULT NULL,
-  `options` VARCHAR(30) NULL DEFAULT NULL,  -- options object is converted to string via JSON.stringify
+  `options` BLOB NULL DEFAULT NULL,  -- options object is converted to string via JSON.stringify
   `sex` VARCHAR(30) NULL DEFAULT NULL,
   `shelterId` VARCHAR(30) NULL DEFAULT NULL,
   `shelterPetId` VARCHAR(30) NULL DEFAULT NULL,

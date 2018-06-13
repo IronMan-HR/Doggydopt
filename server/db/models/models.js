@@ -58,10 +58,13 @@ module.exports = {
       },
       saveDog: (dogObj, callback) => {
         // takes dog object, adds to database, runs callback
-        let {} = dogObj; // pull values from dogObj
-        params = [];
-        var queryStr = "INSERT INTO favedogs () VALUES ()";
-        db.query(queryStr, (err, data) => {
+        let {age, breeds, contact, description, id, media, mix, name, options, sex, shelterId, shelterPetId, size, status} = dogObj; // pull values from dogObj
+        let values = [age.$t, JSON.stringify(breeds.breed), contact.address1.$t, contact.address2.$t, contact.city.$t, contact.email.$t, contact.fax.$t, contact.phone.$t, contact.state.$t, contact.zip.$t, description.$t, id.$t, JSON.stringify(media), mix.$t, name.$t, JSON.stringify(options.option), sex.$t, shelterId.$t, shelterPetId.$t, size.$t, status.$t];
+        // console.log(values);
+        let columns = 'age, breeds, address1, address2, city, email, fax, phone, state, zip, description, dog_id, media, mix, name, options, sex, shelterId, shelterPetId, size, status';
+        var queryStr = `INSERT INTO favedogs (${columns}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        // console.log(queryStr);
+        db.query(queryStr, values, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
         });
@@ -191,3 +194,6 @@ module.exports = {
 //         callback(data);
 //     });
 // },
+
+let oneDog = {"options":{"option":[{"$t":"altered"},{"$t":"hasShots"},{"$t":"housetrained"},{"$t":"noKids"}]},"status":{"$t":"A"},"contact":{"phone":{},"state":{"$t":"NY"},"address2":{},"email":{"$t":"pupstarzrescue@gmail.com"},"city":{"$t":"New York"},"zip":{"$t":"10010"},"fax":{},"address1":{}},"age":{"$t":"Adult"},"size":{"$t":"L"},"media":{"photos":{"photo":[{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=60&-pnt.jpg","@id":"1"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=95&-fpm.jpg","@id":"1"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=500&-x.jpg","@id":"1"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=300&-pn.jpg","@id":"1"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/1/?bust=1473822488&width=50&-t.jpg","@id":"1"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=60&-pnt.jpg","@id":"2"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=95&-fpm.jpg","@id":"2"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=500&-x.jpg","@id":"2"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=300&-pn.jpg","@id":"2"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/2/?bust=1473822489&width=50&-t.jpg","@id":"2"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=60&-pnt.jpg","@id":"3"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=95&-fpm.jpg","@id":"3"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=500&-x.jpg","@id":"3"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=300&-pn.jpg","@id":"3"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/36223058/3/?bust=1495825630&width=50&-t.jpg","@id":"3"}]}},"id":{"$t":"36223058"},"shelterPetId":{},"breeds":{"breed":{"$t":"Rottweiler"}},"name":{"$t":"Roxie! **FOSTER NEEDED**"},"sex":{"$t":"F"},"description":{"$t":"Roxie is a 5 year old, 80 pound Rottweiler mix. She is very affectionate and loves people. Roxie does not do well with cats and prefers to be the only pet in the household.  \n\nIf you would like to adopt this Rockstar, please email PupStarzRescue@gmail.com or visit www.pupstarzrescue.org for an application!  \n\nRoxie's Adoption Donation is: $400\n\nwww.pupstarzrescue.org \nPlease Follow us on Instagram and twitter: @pupstarzrescue\nLike us on FaceBook! www.facebook.com/PupStarzRescue"},"mix":{"$t":"no"},"shelterId":{"$t":"NY1270"},"lastUpdate":{"$t":"2016-09-14T03:08:08Z"},"animal":{"$t":"Dog"}};
+module.exports.faves.saveDog(oneDog, (err, data) => console.log(err, data));
