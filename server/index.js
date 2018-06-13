@@ -41,6 +41,30 @@ app.get('/breeds/all/pictures', (req, res)=>{
 	});
 });
 
+app.post('/login', (req, res) => {
+	console.log('login request is', req.body);
+	// if (userExists(req.body.username) && passwordIsCorrect(req.body.password)) {
+	// 	res.status(201).send();
+	// } else if (userExists(req.body.username) && !passwordIsCorrect(req.body.password)) {
+	// 	res.status(202).send('incorrect password');
+	// } else {
+	// 	res.status(202).send('user not found');
+	// }
+	res.status(201).send();
+});
+
+app.post('/signup', (req, res) => {
+	console.log('signup request is', req.body);
+	// if (userExists(req.body.username)) {
+	// 	res.status(202).send('user already exists');
+	// } else {
+	// 	createUser(req.body, () => {
+	// 		res.status(201).send();
+	// 	})
+	// }
+	res.status(201).send();
+});
+
 app.listen(port, ()=>{
 	console.log(`listening to ${port}`);
 })
