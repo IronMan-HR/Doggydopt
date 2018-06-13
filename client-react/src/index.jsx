@@ -44,25 +44,26 @@ class App extends React.Component {
     };
 
     //If all the selections are 'unselected' or zero, than all the breeds are shown.
-    if(params.size.length + params.exercise.length + params.shedding.length + params.biddability.length === 0){
+    if(params.size.length + params.exercise.length + params.shedding.length + params.biddability.length + params.barking.length === 0){
       this.setState({
         breeds: allBreeds,
         unfiltered: allBreeds
       });
     } else {
-
       var createSelector = (breed, category) => {
         if (params[category].length !== 0) {
           return params[category].some(characteristic => {
-            if(characteristic === 'small'){
-              return breed.weight_avg > 0 && breed.weight_avg <= 25;
-            } else if(characteristic === 'medium'){
-              return breed.weight_avg > 26 && breed.weight_avg <= 40;
-            } else if (characteristic === 'large'){
-              return breed.weight_avg > 41 && breed.weight_avg <= 300;
+            if (category === 'size') {
+              if(characteristic === 'small'){
+                return breed.weight_avg > 0 && breed.weight_avg <= 25;
+              } else if(characteristic === 'medium'){
+                return breed.weight_avg > 26 && breed.weight_avg <= 40;
+              } else if (characteristic === 'large'){
+                return breed.weight_avg > 41 && breed.weight_avg <= 300;
+              }
             } else {
               return characteristic === breed[category];
-            }     
+            }
           })
         } else {
           return true;
