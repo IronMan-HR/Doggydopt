@@ -2,7 +2,7 @@
 `use Dogs`
 Table Name | Description |
 -- | --
-Users 
+Users | 
 
 ## Helpers
 
