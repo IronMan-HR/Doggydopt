@@ -47,7 +47,7 @@ module.exports = {
             });
             console.log('apiresults: ', apiresults);
             console.log('sheltersInSpecificZip: ', sheltersInSpecificZip);
-            callback(sheltersInSpecificZip);
+            callback(null, sheltersInSpecificZip);
         })
         .catch((err) => console.log('err on shelters search', err));
       }

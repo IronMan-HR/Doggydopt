@@ -5,20 +5,21 @@ class SearchShelters extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-  	  zipcode: '',
+  	  zipcode: '10016',
       shelters: []
     }
     this.searchShelters = this.searchShelters.bind(this);
   }
 
   componentDidMount() {
-
+    this.searchShelters();
   }
 
-  searchShelters(zipcode) {
+  searchShelters() {
+    var zipObj = {zipcode: this.state.zipcode}
     axios.post('/shelters', zipObj)
-    .then()
-    .catch();
+    .then((results) => this.setState({shelters: results.data}))
+    .catch((err) => console.log('searchShelters err: ', err));
   }
 
   render() {
@@ -27,7 +28,7 @@ class SearchShelters extends React.Component {
         <h1>Search Local Shelters</h1>
         <form>
           <input placeholder="enter zipcode"/>
-        <button>Submit</button>
+          <button onClick={this.searchShelters}>Submit</button>
         </form>
   	  	
         <div className="search-shelters-results">

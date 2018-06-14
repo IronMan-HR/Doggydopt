@@ -36,7 +36,7 @@ app.post('/adopt', (req, res)=>{
 
 //Retrieves all nearby shelters based on zip code.
 app.post('/shelters', (req, res) => {
-	models.shelters.post(req.body, (results) => {
+	models.shelters.post(req.body, (err, results) => {
 		res.send(results);
 	});
 });
