@@ -63,6 +63,28 @@ app.post('/signup', (req, res) => {
 	});
 });
 
+/* ROUTES FOR FAVES */
+
+app.get('/faves', (req, res) => {
+	let {username} = req.query;
+	models.faves.getUserDogs(username, (err, data) => {
+		if (err) res.status(400).json(err);
+		else res.status(200).send(data);
+	});
+})
+
+app.post('/faves', (req, res) => {
+	// save dog to FaveDogs db, then save relationship to Users_FaveDogs
+	models.faves.saveDogToPool(req.body.dog, (err, data) => {
+    if (err) res.status(400).send(err);
+    else models.faves.saveFave(req.body.dog.dog_id, req.body.username, (err, data) => {
+      if (err) res.status(400).send(err);
+      else res.send('You saved a dog!');
+    });
+	});
+});
+
+
 app.listen(port, ()=>{
 	console.log(`listening to ${port}`);
 })
