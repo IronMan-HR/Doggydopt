@@ -46,7 +46,7 @@ class DogSearch extends React.Component {
             {/* <label className="label">Favorite Of Mine</label> */}
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'favorite' id ='1' className="button favorite" alt='favorite'></button>
+                <button name = 'favorite' id ='1' className="button favoriteOfMine" alt='favoriteOfMine'></button>
                 <p>Favorite Of Mine?</p>
               </div>
             </div>
