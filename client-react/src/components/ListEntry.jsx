@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom';
 
 
 
-const ListEntry = ({zipCode, breed, clickHandler, addDefaultSrc}) => {
-  if (zipCode === undefined) {
-    zipCode = 10017;
+const ListEntry = ({zip, breed, clickHandler, addDefaultSrc}) => {
+  if (zip === undefined) {
+    zip = 10017;
   }
   return (
     <Link to={{
-      pathname: `adopt/${breed.breed}/${zipCode}`,
+      pathname: `adopt/${breed.breed}/${zip}`,
     }}>
       <div className="list-entry">
         <div className="info-container">

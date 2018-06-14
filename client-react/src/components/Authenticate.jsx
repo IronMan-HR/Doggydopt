@@ -10,7 +10,6 @@ class Authenticate extends React.Component {
       password: '',
       status: '',
       zip: '',
-      userIsAuthenticated: false,
     };
     this.handleUserNameInput = this.handleUserNameInput.bind(this);
     this.handlePasswordInput = this.handlePasswordInput.bind(this);
@@ -34,7 +33,6 @@ class Authenticate extends React.Component {
     this.setState({
       zip: e.target.value,
     });
-    this.props.setZipInApp(e.target.value);
   }
 
   handleSubmit(e) {
@@ -53,9 +51,11 @@ class Authenticate extends React.Component {
           status: res.data,
         })
       } else if (res.status === 201) {
-        this.setState({
+        this.props.setCredentialsInApp({
+          username: credentials.username,
+          zip: credentials.zip,
           userIsAuthenticated: true,
-        })
+        });
       }
     }).catch(err => {
       console.error(err);
@@ -63,7 +63,7 @@ class Authenticate extends React.Component {
   }
 
   render() {
-    if (this.state.userIsAuthenticated) {
+    if (this.props.userIsAuthenticated) {
       return <Redirect to='/matchMe' />
     } else {
       return (

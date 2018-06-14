@@ -17,11 +17,13 @@ class App extends React.Component {
     this.state = {
       breeds: exampleData,
       unfiltered: [],
-      zipCode: 10017, 
+      zip: 10017,
+      username: '',
+      userIsAuthenticated: false,
     } 
     this.addDefaultSrc = this.addDefaultSrc.bind(this);
     this.searchNow = this.searchNow.bind(this);
-    this.setZipInApp = this.setZipInApp.bind(this);
+    this.setCredentialsInApp = this.setCredentialsInApp.bind(this);
   }
 
   componentWillMount() {
@@ -32,12 +34,6 @@ class App extends React.Component {
       }, console.log('all breeds is', res.data));
     }).catch(err => {
       console.error(err);
-    })
-  }
-
-  setZipInApp(zipCode) {
-    this.setState({
-      zipCode: zipCode,
     })
   }
 
@@ -100,6 +96,14 @@ class App extends React.Component {
     ev.target.src = 'https://www.drawingtutorials101.com/drawing-tutorials/Cartoon-Movies/Bolt/bolt/how-to-draw-Dog-from-Bolt-step-0.png'
   }
 
+  setCredentialsInApp(credentials) {
+    this.setState({
+      zip: credentials.zip,
+      username: credentials.username,
+      userIsAuthenticated: credentials.userIsAuthenticated,
+    });
+  }
+
   render () {
     return (
       <Switch>
@@ -107,19 +111,19 @@ class App extends React.Component {
           <Authenticate thisPage="signup" otherPage="login" />
         )}/>
         <Route exact={true} path="/login" render={() => (
-          <Authenticate thisPage="login" otherPage="signup" setZipInApp={this.setZipInApp}/>
+          <Authenticate thisPage="login" otherPage="signup" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
         )}/>
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div>
             <div className='below-header'>
                 <Search search={this.search} searchNow={this.searchNow}/>
-                <List zipCode={this.state.zipCode} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
+                <List zip={this.state.zip} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
             </div> 
           </div>
         )}/> 
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
-          <AdoptList match={match}/>
+          <AdoptList match={match} username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
         )}/>
         <Route exact={true} path="/searchShelters" render={() => (
           <SearchShelters />

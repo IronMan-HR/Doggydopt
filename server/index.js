@@ -27,6 +27,7 @@ app.post('/breeds', (req, res)=>{
 	});
 });
 
+
 //Retrieves the adoptable dogs based on breed name and zip code.
 app.post('/adopt', (req, res)=>{
 	models.adopt.post(req.body, (results)=>{
