@@ -6,6 +6,7 @@ import exampleData from '../../exampleData.js';
 import axios from 'axios';
 import Home from './components/Home.jsx';
 import Authenticate from './components/Authenticate.jsx';
+import SearchShelters from './components/SearchShelters.jsx';
 import AdoptList from './components/AdoptList.jsx';
 import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
 
@@ -119,6 +120,9 @@ class App extends React.Component {
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
           <AdoptList match={match}/>
         )}/>
+        <Route exact={true} path="/searchShelters" render={() => (
+          <SearchShelters />
+        )} />
       </Switch>
     )
   }

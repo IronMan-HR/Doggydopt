@@ -9,7 +9,7 @@ const ListEntry = ({zipCode, breed, clickHandler, addDefaultSrc}) => {
   }
   return (
     <Link to={{
-      pathname: `adopt/${breed.breed}/${zipCode}`,  // ZIPCODE CURRENTLY STILL HARDCODED
+      pathname: `adopt/${breed.breed}/${zipCode}`,
     }}>
       <div className="list-entry">
         <div className="info-container">
@@ -20,6 +20,7 @@ const ListEntry = ({zipCode, breed, clickHandler, addDefaultSrc}) => {
     </Link>
   )
 }
+
 
 
 export default ListEntry;

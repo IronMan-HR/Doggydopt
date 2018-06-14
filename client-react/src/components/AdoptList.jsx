@@ -11,6 +11,7 @@ class AdoptList extends React.Component {
     }
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
     this.searchDogs = this.searchDogs.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
   
   componentDidMount() {
@@ -20,6 +21,7 @@ class AdoptList extends React.Component {
         zipCode: this.props.match.params.zip
       })
       .then(res => {
+        console.log('dog data is', res.data.pet);
         var refactoredData = this.refactorPetFinderData(res.data.pet);
         this.setState({
           adoptables: refactoredData,
@@ -35,6 +37,7 @@ class AdoptList extends React.Component {
   refactorPetFinderData(data) {
     // FILTERING ONLY THE NECESSARY DATA
 
+
     if(data) {
       return (
         data.map(dog => {
@@ -45,6 +48,7 @@ class AdoptList extends React.Component {
             zip: dog.contact.zip.$t,
             email: dog.contact.email.$t,
             sex: dog.sex.$t,
+            fullDogObj: dog,
           };
           //console.log(dog.options.option);
           if (dog.options.option !== undefined) {
@@ -145,6 +149,10 @@ class AdoptList extends React.Component {
       });
     }; //end of if else
   } //end of search()
+
+  toggleFavorite(dog) {
+    console.log('dog should be', dog);
+  }
   
   render() {
     if (!this.state.adoptables) {
@@ -173,6 +181,7 @@ class AdoptList extends React.Component {
                     <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
                   </div>
                   <div className="item-text">
+                    <button className="button favorite" onClick={() => {this.toggleFavorite(dog)}}></button>
                     <h2>Name: {dog.name}</h2>
                     <p>{dog.description}</p>
                     <div className="flex zip-age">
