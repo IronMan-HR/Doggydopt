@@ -236,6 +236,10 @@ button:active{
     bottom: 0em;
 }
 
+button:focus {
+    outline: none;
+}
+
 .text h3 {
     text-align: center;
 }
@@ -280,6 +284,8 @@ h1{
     background-color: #f14c43;
     padding: 2em;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    display: flex;
+    justify-content: flex-start;
 }
 
 .list-item img{
@@ -397,7 +403,8 @@ h1{
 
 .control{
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 
@@ -417,13 +424,6 @@ h1{
     margin-bottom: 1em;
 border-radius: 16px;
     
-}
-
-.flex img {
-    min-width:347px;
-    width: auto;
-    max-height: 307px;
-    min-height:300px;
 }
 
 .item-text p{
@@ -453,8 +453,11 @@ border-radius: 16px;
     width: 6em;
     height: 6em;
     text-align: center;
-
+    cursor: pointer;
+    border-radius: 20px;
 }
+
+
 
 .field{
 /*     margin-bottom:1em; */
@@ -471,14 +474,21 @@ border-radius: 16px;
 .adopt-rightside{
     display: flex;
     flex-direction: column;
- align-items: center;
- border-radius: 16px;
- background-color:#FEFDFD;
- overflow: hidden;
- height: 27em;
- box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-
+    align-items: center;
+    border-radius: 16px;
+    background-color:#FEFDFD;
+    overflow: hidden;
+    height: 27em;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+/* .flex img {
+    min-width:347px;
+    width: auto;
+    max-height: 307px;
+    min-height:300px;
+} */
+
 .adopt-rightside button{
     background-color: transparent;
     color:  #FEFDFD;
@@ -667,6 +677,111 @@ border-radius: 16px;
 
 .high-shed{
     background-image: url('high-shed.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.low-bark {
+    background-image: url('speaker.png');
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.moderate-bark {
+    background-image: url('speaker.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.high-bark {
+    background-image: url('speaker.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.favorite-of-mine {
+    background-image: url('white-heart.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.male {
+    background-image: url('male.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.female {
+    background-image: url('female.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.has-shots {
+    background-image: url('syringe.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.kids-ok {
+    background-image: url('family.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cats-ok {
+    background-image: url('cat.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.altered {
+    background-image: url('scissors.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.baby {
+    background-image: url('puppy.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.young {
+    background-image: url('young-dog.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.adult {
+    background-image: url('adult-dog.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.senior {
+    background-image: url('old-dog.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.house-trained {
+    background-image: url('toilet.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
