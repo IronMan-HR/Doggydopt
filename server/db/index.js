@@ -13,17 +13,16 @@ if(credentials === undefined) {
     }
 }
 
-// module.exports = connection = mysql.createConnection({
-//     host: credentials.host,
-//     user: credentials.user,
-//     password: credentials.password,
-//     database: credentials.database
-// });
-
-//local db for testing
 module.exports = connection = mysql.createConnection({
+<<<<<<< HEAD
     host: 'localhost',
     user: 'root',
     password: 'password',
     database: 'Dogs'
+=======
+    host: credentials.host,
+    user: credentials.user,
+    password: credentials.password,
+    database: credentials.database
+>>>>>>> dev
 });

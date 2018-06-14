@@ -8,6 +8,7 @@ import Home from './components/Home.jsx';
 import Authenticate from './components/Authenticate.jsx';
 import SearchShelters from './components/SearchShelters.jsx';
 import AdoptList from './components/AdoptList.jsx';
+import Profile from './components/Profile.jsx';
 import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
 
 class App extends React.Component {
@@ -16,11 +17,13 @@ class App extends React.Component {
     this.state = {
       breeds: exampleData,
       unfiltered: [],
-      zipCode: 10017, 
+      zip: 10017,
+      username: '',
+      userIsAuthenticated: false,
     } 
     this.addDefaultSrc = this.addDefaultSrc.bind(this);
     this.searchNow = this.searchNow.bind(this);
-    this.setZipInApp = this.setZipInApp.bind(this);
+    this.setCredentialsInApp = this.setCredentialsInApp.bind(this);
   }
 
   componentWillMount() {
@@ -31,12 +34,6 @@ class App extends React.Component {
       }, console.log('all breeds is', res.data));
     }).catch(err => {
       console.error(err);
-    })
-  }
-
-  setZipInApp(zipCode) {
-    this.setState({
-      zipCode: zipCode,
     })
   }
 
@@ -99,6 +96,14 @@ class App extends React.Component {
     ev.target.src = 'https://www.drawingtutorials101.com/drawing-tutorials/Cartoon-Movies/Bolt/bolt/how-to-draw-Dog-from-Bolt-step-0.png'
   }
 
+  setCredentialsInApp(credentials) {
+    this.setState({
+      zip: credentials.zip,
+      username: credentials.username,
+      userIsAuthenticated: credentials.userIsAuthenticated,
+    });
+  }
+
   render () {
     return (
       <Switch>
@@ -106,22 +111,27 @@ class App extends React.Component {
           <Authenticate thisPage="signup" otherPage="login" />
         )}/>
         <Route exact={true} path="/login" render={() => (
-          <Authenticate thisPage="login" otherPage="signup" setZipInApp={this.setZipInApp}/>
+          <Authenticate thisPage="login" otherPage="signup" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
         )}/>
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/matchMe" render={() => (
           <div>
             <div className='below-header'>
                 <Search search={this.search} searchNow={this.searchNow}/>
-                <List zipCode={this.state.zipCode} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
+                <List zip={this.state.zip} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
             </div> 
           </div>
         )}/> 
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
-          <AdoptList match={match}/>
+          <AdoptList match={match} username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
         )}/>
         <Route exact={true} path="/shelters" render={() => (
           <SearchShelters />
+        )} />
+        <Route exact path="/profile" render={() => (
+          <div className='below-header'>
+            <Profile username={this.state.username} />
+          </div>
         )} />
       </Switch>
     )

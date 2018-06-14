@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import DogSearch from './DogSearch.jsx';
+import {Redirect} from 'react-router';
 
 class AdoptList extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class AdoptList extends React.Component {
     this.state = {
       adoptables: [],
       unfiltered: [],
+      redirect: false,
     }
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
     this.searchDogs = this.searchDogs.bind(this);
@@ -33,10 +35,8 @@ class AdoptList extends React.Component {
     }
   }
 
-
   refactorPetFinderData(data) {
     // FILTERING ONLY THE NECESSARY DATA
-
 
     if(data) {
       return (
@@ -151,11 +151,26 @@ class AdoptList extends React.Component {
   } //end of search()
 
   toggleFavorite(dog) {
-    console.log('dog should be', dog);
+    if (this.props.userIsAuthenticated && this.props.username !== '') {
+      axios.post('/faves', {
+        dog: dog.fullDogObj,
+        username: this.props.username,
+      }).then(res => {
+        console.log('response is', res);
+      }).catch(err => {
+        console.error(err);
+      })
+    } else {
+      this.setState({
+        redirect: true,
+      })
+    }    
   }
   
   render() {
-    if (!this.state.adoptables) {
+    if (this.state.redirect) {
+      return (<Redirect to="/login" />);
+    } else if (!this.state.adoptables) {
       return (
         <div className="loading-div">
           <p className="loading-text">Going to space and looking for doggos . . .</p>

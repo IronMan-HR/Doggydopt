@@ -1,10 +1,10 @@
 import React from 'react';
 import ListEntry from './ListEntry.jsx';
 
-const List = ({zipCode, breeds, clickHandler,addDefaultSrc}) => (
+const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
       <div className="breed-container">
           {breeds.map((breed, i) => {
-            return <ListEntry zipCode={zipCode} key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
+            return <ListEntry zip={zip} key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
           })}
         
         {/* FOOTER */}
