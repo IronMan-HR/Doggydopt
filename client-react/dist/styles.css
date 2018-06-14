@@ -284,6 +284,8 @@ h1{
     background-color: #f14c43;
     padding: 2em;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    display: flex;
+    justify-content: flex-start;
 }
 
 .list-item img{
@@ -401,7 +403,7 @@ h1{
 
 .control{
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -422,13 +424,6 @@ h1{
     margin-bottom: 1em;
 border-radius: 16px;
     
-}
-
-.flex img {
-    min-width:347px;
-    width: auto;
-    max-height: 307px;
-    min-height:300px;
 }
 
 .item-text p{
@@ -485,8 +480,15 @@ border-radius: 16px;
     overflow: hidden;
     height: 27em;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    width: 100%;
 }
+
+/* .flex img {
+    min-width:347px;
+    width: auto;
+    max-height: 307px;
+    min-height:300px;
+} */
+
 .adopt-rightside button{
     background-color: transparent;
     color:  #FEFDFD;
@@ -738,6 +740,48 @@ border-radius: 16px;
 
 .cats-ok {
     background-image: url('cat.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.altered {
+    background-image: url('scissors.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.baby {
+    background-image: url('puppy.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.young {
+    background-image: url('young-dog.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.adult {
+    background-image: url('adult-dog.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.senior {
+    background-image: url('old-dog.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.house-trained {
+    background-image: url('toilet.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
