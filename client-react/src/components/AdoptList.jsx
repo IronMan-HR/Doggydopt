@@ -37,7 +37,6 @@ class AdoptList extends React.Component {
   refactorPetFinderData(data) {
     // FILTERING ONLY THE NECESSARY DATA
 
-
     if(data) {
       return (
         data.map(dog => {
