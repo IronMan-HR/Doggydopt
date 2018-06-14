@@ -680,6 +680,69 @@ border-radius: 16px;
     background-position: center;
 }
 
+.low-bark {
+    background-image: url('speaker.png');
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.moderate-bark {
+    background-image: url('speaker.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.high-bark {
+    background-image: url('speaker.png');
+    background-size: 4em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.favorite-of-mine {
+    background-image: url('white-heart.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.male {
+    background-image: url('male.png');
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.female {
+    background-image: url('female.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.has-shots {
+    background-image: url('syringe.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.kids-ok {
+    background-image: url('family.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cats-ok {
+    background-image: url('cat.png');
+    background-size: 3.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .filter-option{
 /*     border: 1px solid yellow; */
     height:9em;
