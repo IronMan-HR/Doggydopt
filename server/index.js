@@ -84,9 +84,9 @@ app.get('/faveStatus', (req, res) => {
 
 app.post('/faves', (req, res) => {
   models.faves.saveDogToPool(req.body.dog, (err, data) => {
-    if (err) res.status(400).send(err);
+    if (err) {console.log(err); res.status(400).send(err)}
     else models.faves.saveFave(req.body.dog.id.$t, req.body.username, (err2, data2) => {
-      if (err2) res.status(400).send(err2);
+      if (err2) res.status(401).send(err2);
       else res.send(data2);
     });
   });
