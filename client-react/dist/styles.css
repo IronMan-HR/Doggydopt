@@ -726,3 +726,33 @@ border-radius: 16px;
 .problem {
     color: red;
 }
+
+.search-shelters-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5%;
+}
+
+.search-shelters-page form {
+    width: 20%;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.search-shelters-results {
+    border: 1px solid black; 
+    margin-top: 5%; 
+    width: 40%;
+}
+
+.shelter-item {
+    background-color:#FEFDFD;
+    color: #4791A1;
+    margin: 2%;
+    padding: 2% 5%;
+    border-radius: 16px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
