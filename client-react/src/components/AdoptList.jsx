@@ -153,20 +153,19 @@ class AdoptList extends React.Component {
   toggleFavorite(dog) {
     if (this.props.userIsAuthenticated && this.props.username !== '') {
       dog = dog.fullDogObj;
-      let dog_id = dog.id.$;
+      let dog_id = dog.id.$t;
       axios.get('/faveStatus', {params: {dog_id, username: this.props.username}})
         .then(({data}) => {
           if (data.length) {
-            // functionality for adding the dog to FaveDogs and to Users_FaveDogs
-            axios.post('/faves', {dog, username: this.props.username})
-              .then(res => console.log('faved dog!', res))
-              .catch(err => console.error('error faving dog!', err));
-          } else {
             // functionality for deleting the dog from Users_FaveDogs
-            console.log('deleting pupper', dog_id, this.props.username);
             axios.delete('/faves', {params: {dog_id, username: this.props.username}})
               .then(data => console.log('unfaved dog', dog_id))
               .catch(err => console.log('error unfaving dog', err));
+          } else {
+            // functionality for adding the dog to FaveDogs and to Users_FaveDogs
+            axios.post('/faves', {dog, username: this.props.username})
+            .then(res => console.log('faved dog!', res))
+            .catch(err => console.error('error faving dog!', err));
           }
         })
         .catch(err => console.error(err));
