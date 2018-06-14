@@ -33,7 +33,14 @@ class SearchShelters extends React.Component {
   	  	
         <div className="search-shelters-results">
           {this.state.shelters.map((shelter) => (
-            <div>{shelter.name.$t}</div>
+            <div className="shelter-item">
+              <p>{shelter.name.$t}</p>
+              <p>{shelter.address1.$t}</p>
+              <p>{shelter.address2.$t}</p>
+              <p>{shelter.city.$t} {shelter.state.$t} {shelter.zip.$t}</p>
+              <p>{shelter.phone.$t}</p>
+              <p>{shelter.email.$t}</p>
+            </div>
           ))}
         </div>
   	  </div>

@@ -120,7 +120,7 @@ class App extends React.Component {
         <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
           <AdoptList match={match}/>
         )}/>
-        <Route exact={true} path="/searchShelters" render={() => (
+        <Route exact={true} path="/shelters" render={() => (
           <SearchShelters />
         )} />
       </Switch>
