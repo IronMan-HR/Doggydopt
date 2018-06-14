@@ -21,6 +21,7 @@ class AdoptList extends React.Component {
         zipCode: this.props.match.params.zip
       })
       .then(res => {
+        console.log('dog data is', res.data.pet);
         var refactoredData = this.refactorPetFinderData(res.data.pet);
         this.setState({
           adoptables: refactoredData,
@@ -36,6 +37,7 @@ class AdoptList extends React.Component {
   refactorPetFinderData(data) {
     // FILTERING ONLY THE NECESSARY DATA
 
+
     if(data) {
       return (
         data.map(dog => {
@@ -46,6 +48,7 @@ class AdoptList extends React.Component {
             zip: dog.contact.zip.$t,
             email: dog.contact.email.$t,
             sex: dog.sex.$t,
+            fullDogObj: dog,
           };
           //console.log(dog.options.option);
           if (dog.options.option !== undefined) {
