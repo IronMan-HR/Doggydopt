@@ -75,14 +75,13 @@ app.get('/faves', (req, res) => {
 })
 
 app.post('/faves', (req, res) => {
-	// save dog to FaveDogs db, then save relationship to Users_FaveDogs
-	models.faves.saveDogToPool(req.body.dog, (err, data) => {
+  models.faves.saveDogToPool(req.body.dog, (err, data) => {
     if (err) res.status(400).send(err);
-    else models.faves.saveFave(req.body.dog.dog_id, req.body.username, (err, data) => {
-      if (err) res.status(400).send(err);
-      else res.send('You saved a dog!');
+    else models.faves.saveFave(req.body.dog.id.$t, req.body.username, (err2, data2) => {
+      if (err2) res.status(400).send(err2);
+      else res.send(data2);
     });
-	});
+  });
 });
 
 
