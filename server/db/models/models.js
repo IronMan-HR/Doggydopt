@@ -105,6 +105,13 @@ module.exports = {
           else callback(null, data);
         });
       },
+      checkFave: (dog_id, username, callback) => {
+        let queryStr = `SELECT dog_id FROM Users_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = "${username}") AND dog_id = "${dog_id}"`;
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
+      },
     },
   
     pictures: {
