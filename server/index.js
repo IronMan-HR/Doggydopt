@@ -34,6 +34,13 @@ app.post('/adopt', (req, res)=>{
 	});
 });
 
+//Retrieves all nearby shelters based on zip code.
+app.post('/shelters', (req, res) => {
+	models.shelters.post(req.body, (err, results) => {
+		res.send(results);
+	});
+});
+
 //Will get the pictures for all the dog breeds.
 app.get('/breeds/all/pictures', (req, res)=>{
 	models.pictures.get((data)=>{
