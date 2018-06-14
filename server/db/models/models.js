@@ -97,7 +97,14 @@ module.exports = {
           if (err) callback(err);
           else callback(null, data);
         });
-      }
+      },
+      deleteFave: (dog_id, username, callback) => {
+        let queryStr = `DELETE FROM Users_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = "${username}") AND dog_id = "${dog_id}"`;
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
+      },
     },
   
     pictures: {

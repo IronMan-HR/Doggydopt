@@ -84,6 +84,13 @@ app.post('/faves', (req, res) => {
   });
 });
 
+app.delete('/faves', (req, res) => {
+	models.faves.deleteFave(req.query.dog_id, req.query.username, (err, data) => {
+    if (err) res.status(400).send(err);
+	  else res.send(data);
+	});
+})
+
 
 app.listen(port, ()=>{
 	console.log(`listening to ${port}`);
