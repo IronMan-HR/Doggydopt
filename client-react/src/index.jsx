@@ -8,6 +8,7 @@ import Home from './components/Home.jsx';
 import Authenticate from './components/Authenticate.jsx';
 import SearchShelters from './components/SearchShelters.jsx';
 import AdoptList from './components/AdoptList.jsx';
+import Profile from './components/Profile.jsx';
 import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
 
 class App extends React.Component {
@@ -122,6 +123,11 @@ class App extends React.Component {
         )}/>
         <Route exact={true} path="/searchShelters" render={() => (
           <SearchShelters />
+        )} />
+        <Route exact path="/profile" render={() => (
+          <div className='below-header'>
+            <Profile username={this.state.username} />
+          </div>
         )} />
       </Switch>
     )
