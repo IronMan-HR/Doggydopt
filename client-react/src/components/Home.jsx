@@ -7,6 +7,9 @@ const Home = ({findMyMatch}) => (
       <Link className='link-main'to={'/matchMe'}>
           <button className='findMyMatch'>Find my match</button>
       </Link>
+      <Link className='link-main' to={'/profile'}>
+          <button className='profile'>View My Dogs</button>
+      </Link>
     </div>
 ); 
 
