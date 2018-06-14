@@ -50,15 +50,12 @@ app.get('/breeds/all/pictures', (req, res)=>{
 });
 
 app.post('/login', (req, res) => {
-	console.log('login request is', req.body);
 	models.users.checkUser(req.body, (status, message) => {
 		res.status(status).send(message);
 	});
 });
 
 app.post('/signup', (req, res) => {
-	console.log('signup request is', req.body);
-	
 	models.users.createUser(req.body, (status, message) => {
 		res.status(status).send(message);
 	});
