@@ -173,13 +173,15 @@ module.exports = {
             var userQuery = `SELECT * FROM Users WHERE username = ?`;
             db.query(userQuery, username, (err, foundUser) => {
                 if (err) {
+                    callback(202, 'error retrieving from database');
+                } else if (foundUser.length === 0) {
                     callback(202, 'user does not exist');
                 } else {
                     bcrypt.compare(password, foundUser[0].password, (err, res) => {
                         if (err) {
                             callback(202, 'error comparing passwords');
                         } else if (res === false) {
-                            callback(202, 'inccorect password');
+                            callback(202, 'incorrect password');
                         } else {
                             callback(201);
                         }
