@@ -23,7 +23,7 @@ class Profile extends React.Component {
   deleteFave(dog_id, username) {
     console.log('deleting pupper', dog_id, username);
     axios.delete('/faves', {params: {dog_id, username}})
-    .then(data => console.log(data))
+    .then(data => this.getFaves(username))
     .catch(err => console.log(err));
   }
   render() {
