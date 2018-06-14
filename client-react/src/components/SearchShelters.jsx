@@ -8,17 +8,31 @@ class SearchShelters extends React.Component {
   	  zipcode: '10016',
       shelters: []
     }
+    this.handleZipInput = this.handleZipInput.bind(this);
     this.searchShelters = this.searchShelters.bind(this);
   }
 
-  componentDidMount() {
-    this.searchShelters();
+  // componentDidMount() {
+  //   this.searchShelters();
+  // }
+
+  handleZipInput(e) {
+    e.preventDefault();
+    console.log('what am i typing for zip:', e.target.value);
+    this.setState({
+      zipcode: e.target.value.toString()
+    });
+    console.log('what is state for zipcode: ', this.state.zipcode);
   }
 
   searchShelters() {
     var zipObj = {zipcode: this.state.zipcode}
     axios.post('/shelters', zipObj)
-    .then((results) => this.setState({shelters: results.data}))
+    .then((results) => {
+      console.log('what i get back on shelter search:', results);
+      this.setState({shelters: results.data});
+      
+    })
     .catch((err) => console.log('searchShelters err: ', err));
   }
 
@@ -27,14 +41,14 @@ class SearchShelters extends React.Component {
   	  <div className="search-shelters-page">
         <h1>Search Local Shelters</h1>
         <form>
-          <input placeholder="enter zipcode"/>
+          <input placeholder="enter zipcode" onChange={this.handleZipInput} />
           <button onClick={this.searchShelters}>Submit</button>
         </form>
   	  	
         <div className="search-shelters-results">
           {this.state.shelters.map((shelter) => (
             <div className="shelter-item">
-              <p>{shelter.name.$t}</p>
+              <h3>{shelter.name.$t}</h3>
               <p>{shelter.address1.$t}</p>
               <p>{shelter.address2.$t}</p>
               <p>{shelter.city.$t} {shelter.state.$t} {shelter.zip.$t}</p>
