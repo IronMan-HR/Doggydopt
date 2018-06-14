@@ -17,7 +17,6 @@ class SearchShelters extends React.Component {
   // }
 
   handleZipInput(e) {
-    e.preventDefault();
     console.log('what am i typing for zip:', e.target.value);
     this.setState({
       zipcode: e.target.value.toString()
@@ -25,13 +24,15 @@ class SearchShelters extends React.Component {
     console.log('what is state for zipcode: ', this.state.zipcode);
   }
 
-  searchShelters() {
-    var zipObj = {zipcode: this.state.zipcode}
-    axios.post('/shelters', zipObj)
+  searchShelters(e) {
+    e.preventDefault();
+    console.log('now searching for shelters in zip: ', this.state.zipcode)
+    axios.post('/shelters', {zipcode: this.state.zipcode})
     .then((results) => {
       console.log('what i get back on shelter search:', results);
-      this.setState({shelters: results.data});
-      
+      this.setState({
+        shelters: results.data
+      });
     })
     .catch((err) => console.log('searchShelters err: ', err));
   }
