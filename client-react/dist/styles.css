@@ -859,6 +859,7 @@ border-radius: 16px;
     justify-content: flex-start;
     align-items: center;
     margin: 5%;
+    margin-top: 7%;
 }
 
 .search-shelters-page form {
@@ -871,7 +872,7 @@ border-radius: 16px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     justify-content: space-evenly;
 }
 
@@ -883,6 +884,7 @@ border-radius: 16px;
 #search-shelters-map {
     height: 400px;
     width: 100%;
+    border-radius: 16px;
 }
 
 .shelter-item {

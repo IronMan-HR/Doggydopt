@@ -108,7 +108,8 @@ class SearchShelters extends React.Component {
       var currShelter = this.state.shelters[i];
       var marker = new google.maps.Marker({
         position: {lat: +currShelter.latitude.$t, lng: +currShelter.longitude.$t},
-        map: map
+        map: map,
+        animation: google.maps.Animation.DROP,
       });
     }
   }
