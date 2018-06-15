@@ -214,6 +214,7 @@ button.findMyMatch {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    color: white;
 }
 
 button.findMyMatch:hover{
@@ -319,7 +320,6 @@ h1{
 .search{
     border:2px solid pink;
 }
-
 
 .breed-container{
     padding: 2em 2em 9em 2em;
@@ -500,8 +500,7 @@ border-radius: 16px;
 } */
 
 .adopt-me, .favorite {
-    background-color: transparent;
-    color:  #FEFDFD;
+    background-color:  #FEFDFD;
     border: 2px solid #FEFDFD ;
     border-radius: 16px;;
     font-family: 'Poppins', sans-serif;
@@ -510,7 +509,7 @@ border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     padding: 0.4em;
     font-size: 1.5em;
-    background-color:#f14c43;
+    color:#f14c43;
 }
 
 
@@ -892,4 +891,12 @@ border-radius: 16px;
     padding: 2% 5%;
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.favorited {
+    background-color: #f14c43;
+}
+
+.filter-by-favorites {
+    display: none;
 }
