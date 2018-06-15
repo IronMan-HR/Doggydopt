@@ -64,15 +64,18 @@ class Authenticate extends React.Component {
 
   render() {
     if (this.props.userIsAuthenticated) {
-      if (localStorage.getItem('previousPage') === 'Profile') return <Redirect to='/profile' />
-      return <Redirect to='/matchMe' />
+      if (localStorage.getItem('previousPage') === 'Profile') {
+        return <Redirect to='/profile' />
+      } else {
+        return <Redirect to='/matchMe' />
+      }   
     } else {
       return (
         <div className="authentication-page">
           <h1>{this.props.thisPage}</h1>
           <form onSubmit={this.handleSubmit}>
             <input placeholder="username" value={this.state.username} onChange={this.handleUserNameInput} />
-            <input placeholder="password" value={this.state.password} onChange={this.handlePasswordInput} />
+            <input placeholder="password" type="password" value={this.state.password} onChange={this.handlePasswordInput} />
             <input placeholder="zipcode" value={this.state.zip} onChange={this.handleZipInput} />
             <button className="submit">Submit</button>
           </form>
