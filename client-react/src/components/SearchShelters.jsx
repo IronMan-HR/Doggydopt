@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {googleMapsAPI_key} from '../../../config.js';
 
 class SearchShelters extends React.Component {
   constructor(props) {
@@ -13,21 +14,16 @@ class SearchShelters extends React.Component {
     this.getGoogleMaps = this.getGoogleMaps.bind(this);
   }
 
-  // componentWillMount() {
-  //   this.getGoogleMaps();
-  // }
-
   componentDidMount() {
+    //when page loads, display default shelters and default google map for zipcode 10017 
     this.searchShelters();
-
-    // Once the Google Maps API has finished loading, initialize the map
     this.getGoogleMaps().then((google) => {
-      const latlong = {lat: 40.750885, lng: -73.983511};
-      const map = new google.maps.Map(document.getElementById('search-shelters-map'), {
+      var latlong = {lat: 40.750885, lng: -73.983511}; //placeholder lat/long to use for now
+      var map = new google.maps.Map(document.getElementById('search-shelters-map'), {
         zoom: 16,
         center: latlong
       });
-      const marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: latlong,
         map: map
       });
@@ -45,7 +41,6 @@ class SearchShelters extends React.Component {
     //   });
     //   console.log('latlong: ', latlong);
     // }
-    // axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD8EVIaRnrGkLM6HLFfsdvtaMG5Cv2p31I&callback=initMap");
   }
 
   handleZipInput(e) {
@@ -59,7 +54,6 @@ class SearchShelters extends React.Component {
     console.log('now searching for shelters in zip: ', this.state.zipcode)
     axios.post('/shelters', {zipcode: this.state.zipcode})
     .then((results) => {
-      // console.log('shelter search results:', results);
       this.setState({
         shelters: results.data
       });
@@ -69,16 +63,15 @@ class SearchShelters extends React.Component {
 
   getGoogleMaps() {
     if (!this.googleMapsPromise) {
-      this.googleMapsPromise = new Promise((resolve) => {
+      this.googleMapsPromise = new Promise((resolve, reject) => { 
         window.handleGoogleMapsAPIWhenLoaded = () => {
           resolve(google);
           delete window.handleGoogleMapsAPIWhenLoaded;
         };
 
-        // Load the Google Maps API
+        //create script to call Google Maps API with callback
         var script = document.createElement('script');
-        var API = 'AIzaSyD8EVIaRnrGkLM6HLFfsdvtaMG5Cv2p31I';
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&callback=handleGoogleMapsAPIWhenLoaded`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPI_key}&callback=handleGoogleMapsAPIWhenLoaded`;
         script.async = true;
         document.body.appendChild(script);
       });
