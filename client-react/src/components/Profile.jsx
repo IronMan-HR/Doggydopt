@@ -1,20 +1,24 @@
 import React from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router';
 
 class Profile extends React.Component {
   constructor() {
     super();
     this.state = {
       dogs: null,
-      username: 'Lina'
+      // redirect: false,
+      username: 'Lina',
     };
     this.getFaves = this.getFaves.bind(this);
     this.deleteFave = this.deleteFave.bind(this);
+    // console.log(this.props.username);
   }
   componentDidMount() {
-    this.getFaves('Lina');  //== TODO: remove hard-coded references or state-references to username
+    if(this.props.userIsAuthenticated) this.getFaves('Lina');  //== TODO: remove hard-coded references or state-references to username
   }
   getFaves(username) {
+    localStorage.setItem('previousPage', null);
     console.log('getting faves for', username);
     axios.get('/faves', {params: {username}})
       .then(({data}) => this.setState({dogs: data}, () => console.log(this.state.dogs)))
@@ -27,6 +31,7 @@ class Profile extends React.Component {
     .catch(err => console.log(err));
   }
   render() {
+    if (!this.props.userIsAuthenticated) return <Redirect to="/login" />;
     if (!this.state.dogs) return <div>FETCHING YOUR PUPPERS!</div>
     let dogProfiles = this.state.dogs.map(dog => (
       <div className="faves-dogs-container" key={dog.dog_id}>

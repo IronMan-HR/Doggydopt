@@ -8,7 +8,7 @@ const Home = ({findMyMatch}) => (
           <button className='findMyMatch'>Find my match</button>
       </Link>
       <Link className='link-main' to={'/profile'}>
-          <button className='profile'>View My Dogs</button>
+          <button onClick={() => localStorage.setItem('previousPage', 'Profile')} className='profile'>View My Dogs</button>
       </Link>
     </div>
 ); 
