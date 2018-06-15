@@ -130,7 +130,7 @@ class App extends React.Component {
         )} />
         <Route exact path="/profile" render={() => (
           <div className='below-header'>
-            <Profile username={this.state.username} />
+            <Profile username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
           </div>
         )} />
       </Switch>

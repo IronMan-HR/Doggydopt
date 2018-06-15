@@ -194,6 +194,7 @@ class AdoptList extends React.Component {
     //     )
     } else {
       return (
+        
         <div className="below-header">
           <DogSearch searchDogs={this.searchDogs}/>
           <div className="breed-container flex">

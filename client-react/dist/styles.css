@@ -893,3 +893,13 @@ border-radius: 16px;
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+
+
+
+/* CSS FOR FAVES BELOW */
+
+#match-faves-button {
+  z-index: 100;
+  align-self: center;
+}
