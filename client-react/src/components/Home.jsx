@@ -8,9 +8,6 @@ const Home = ({findMyMatch}) => (
             <Link to={'/matchMe'}>
                 <button className='findMyMatch'>Find my match</button>
             </Link>
-            <Link to={'/profile'}>
-                <button onClick={() => localStorage.setItem('previousPage', 'Profile')} className='profile'>View My Dogs</button>    
-            </Link>
         </div>
         <div className="home-right-side">
             <div className='home-pic'></div>

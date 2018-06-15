@@ -10,6 +10,7 @@ import SearchShelters from './components/SearchShelters.jsx';
 import AdoptList from './components/AdoptList.jsx';
 import Profile from './components/Profile.jsx';
 import { BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
+import Header from './components/Header.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -123,34 +124,37 @@ class App extends React.Component {
 
   render () {
     return (
-      <Switch>
-        <Route exact={true} path="/signup" render={() => (
-          <Authenticate thisPage="signup" otherPage="login" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
-        )}/>
-        <Route exact={true} path="/login" render={() => (
-          <Authenticate thisPage="login" otherPage="signup" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
-        )}/>
-        <Route exact={true} path="/" component={Home}/>
-        <Route exact={true} path="/matchMe" render={() => (
-          <div>
+      <div className="app-container">
+        <Header />
+        <Switch>
+          <Route exact={true} path="/signup" render={() => (
+            <Authenticate thisPage="signup" otherPage="login" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
+          )}/>
+          <Route exact={true} path="/login" render={() => (
+            <Authenticate thisPage="login" otherPage="signup" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
+          )}/>
+          <Route exact={true} path="/" component={Home}/>
+          <Route exact={true} path="/matchMe" render={() => (
+            <div>
+              <div className='below-header'>
+                  <Search search={this.search} searchNow={this.searchNow}/>
+                  <List zip={this.state.zip} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
+              </div> 
+            </div>
+          )}/> 
+          <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
+            <AdoptList match={match} username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
+          )}/>
+          <Route exact={true} path="/shelters" render={() => (
+            <SearchShelters />
+          )} />
+          <Route exact path="/profile" render={() => (
             <div className='below-header'>
-                <Search search={this.search} searchNow={this.searchNow}/>
-                <List zip={this.state.zip} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
-            </div> 
-          </div>
-        )}/> 
-        <Route exact={true} path="/adopt/:breed/:zip" render={({match}) => ( 
-          <AdoptList match={match} username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
-        )}/>
-        <Route exact={true} path="/shelters" render={() => (
-          <SearchShelters />
-        )} />
-        <Route exact path="/profile" render={() => (
-          <div className='below-header'>
-            <Profile username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
-          </div>
-        )} />
-      </Switch>
+              <Profile username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
+            </div>
+          )} />
+        </Switch>
+      </div>
     )
   }
 }
