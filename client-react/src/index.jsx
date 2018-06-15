@@ -108,7 +108,7 @@ class App extends React.Component {
     return (
       <Switch>
         <Route exact={true} path="/signup" render={() => (
-          <Authenticate thisPage="signup" otherPage="login" />
+          <Authenticate thisPage="signup" otherPage="login" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>
         )}/>
         <Route exact={true} path="/login" render={() => (
           <Authenticate thisPage="login" otherPage="signup" userIsAuthenticated={this.state.userIsAuthenticated} setCredentialsInApp={this.setCredentialsInApp}/>

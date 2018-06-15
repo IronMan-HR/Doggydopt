@@ -46,8 +46,8 @@ class DogSearch extends React.Component {
             {/* <label className="label">Favorite Of Mine</label> */}
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'favorite' id ='1' className="button favorite" alt='favorite'></button>
-                <p>Favorite Of Mine?</p>
+                <button name = 'favorite' id ='1' className="button favorite-of-mine" alt='favoriteOfMine'></button>
+                <p>My Favorites</p>
               </div>
             </div>
           </div>
@@ -92,23 +92,23 @@ class DogSearch extends React.Component {
             <label className="label">Options</label>
             <div className="control">
               <div className = 'filter-option'>
-                <button name = 'housetrained' id ='8' className="button" alt='housetrained'></button>
+                <button name = 'housetrained' id ='8' className="button house-trained" alt='housetrained'></button>
                 <p>House Trained</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'hasShots' id ='9' className="button" alt='hasShots'></button>
+                <button name = 'hasShots' id ='9' className="button has-shots" alt='hasShots'></button>
                 <p>Has Shots</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'kidsOk' id ='10' className="button" alt='kidsOk'></button>
+                <button name = 'kidsOk' id ='10' className="button kids-ok" alt='kidsOk'></button>
                 <p>Kids Ok</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'catsOk' id ='11' className="button" alt='catsOk'></button>
+                <button name = 'catsOk' id ='11' className="button cats-ok" alt='catsOk'></button>
                 <p>Cats Ok</p>
               </div>
               <div className = 'filter-option'>
-                <button name = 'altered' id ='12' className="button" alt='altered'></button>
+                <button name = 'altered' id ='12' className="button altered" alt='altered'></button>
                 <p>Altered</p>
               </div>
             </div>

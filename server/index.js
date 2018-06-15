@@ -50,15 +50,12 @@ app.get('/breeds/all/pictures', (req, res)=>{
 });
 
 app.post('/login', (req, res) => {
-	console.log('login request is', req.body);
 	models.users.checkUser(req.body, (status, message) => {
 		res.status(status).send(message);
 	});
 });
 
 app.post('/signup', (req, res) => {
-	console.log('signup request is', req.body);
-	
 	models.users.createUser(req.body, (status, message) => {
 		res.status(status).send(message);
 	});
@@ -72,19 +69,31 @@ app.get('/faves', (req, res) => {
 		if (err) res.status(400).json(err);
 		else res.status(200).send(data);
 	});
-})
+});
+
+app.get('/faveStatus', (req, res) => {
+	let {dog_id, username} = req.query;
+	models.faves.checkFave(dog_id, username, (err, data) => {
+		if (err) res.status(400).json(err);
+		else res.status(200).send(data);
+	});
+});
 
 app.post('/faves', (req, res) => {
   models.faves.saveDogToPool(req.body.dog, (err, data) => {
-    if (err) res.status(400).send(err);
+    if (err) {console.log(err); res.status(400).send(err)}
     else models.faves.saveFave(req.body.dog.id.$t, req.body.username, (err2, data2) => {
-      if (err2) res.status(400).send(err2);
+      if (err2) res.status(401).send(err2);
       else res.send(data2);
     });
   });
 });
 
+app.delete('/faves', (req, res) => {
+	models.faves.deleteFave(req.query.dog_id, req.query.username, (err, data) => {
+    if (err) res.status(400).send(err);
+	  else res.send(data);
+	});
+});
 
-app.listen(port, ()=>{
-	console.log(`listening to ${port}`);
-})
+app.listen(port, () => console.log(`listening to ${port}`));

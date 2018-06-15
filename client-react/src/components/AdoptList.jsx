@@ -152,14 +152,23 @@ class AdoptList extends React.Component {
 
   toggleFavorite(dog) {
     if (this.props.userIsAuthenticated && this.props.username !== '') {
-      axios.post('/faves', {
-        dog: dog.fullDogObj,
-        username: this.props.username,
-      }).then(res => {
-        console.log('response is', res);
-      }).catch(err => {
-        console.error(err);
-      })
+      dog = dog.fullDogObj;
+      let dog_id = dog.id.$t;
+      axios.get('/faveStatus', {params: {dog_id, username: this.props.username}})
+        .then(({data}) => {
+          if (data.length) {
+            // functionality for deleting the dog from Users_FaveDogs
+            axios.delete('/faves', {params: {dog_id, username: this.props.username}})
+              .then(data => console.log('unfaved dog', dog_id))
+              .catch(err => console.log('error unfaving dog', err));
+          } else {
+            // functionality for adding the dog to FaveDogs and to Users_FaveDogs
+            axios.post('/faves', {dog, username: this.props.username})
+            .then(res => console.log('faved dog!', res))
+            .catch(err => console.error('error faving dog!', err));
+          }
+        })
+        .catch(err => console.error(err));
     } else {
       this.setState({
         redirect: true,
@@ -190,20 +199,20 @@ class AdoptList extends React.Component {
           <div className="breed-container flex">
             {this.state.adoptables.map((dog, i)=>{
               return(
-                <div key={i} className="flex list-item">
-                  <div className='adopt-rightside'>
-                    <img src={dog.photo} width='250' height= '260'/>
-                    <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
-                  </div>
-                  <div className="item-text">
-                    <button className="button favorite" onClick={() => {this.toggleFavorite(dog)}}></button>
-                    <h2>Name: {dog.name}</h2>
+                <div key={i} className="list-item">
+                  <img className="doggy-pic" src={dog.photo} />
+                  <div className="item-text"> 
+                    <h1>{dog.name}</h1>
                     <p>{dog.description}</p>
-                    <div className="flex zip-age">
+                    <div className="dog-buttons">
+                      <button className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
+                      <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+                    </div>
+                    {/* <div className="flex zip-age">
                       <h4>Age: {dog.age}</h4>
                       <h4>Sex: {dog.sex}</h4>
                       <h4>Zip Code: {dog.zip}</h4>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               )
