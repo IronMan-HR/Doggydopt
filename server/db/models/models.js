@@ -83,7 +83,7 @@ module.exports = {
       },
       saveDogToPool: (dogObj, callback) => {
         let {age, breeds, contact, description, id, media, mix, name, options, sex, shelterId, shelterPetId, size, status} = dogObj; // pull values from dogObj
-        let values = [age.$t, JSON.stringify(breeds.breed), contact.address1.$t, contact.address2.$t, contact.city.$t, contact.email.$t, contact.fax.$t, contact.phone.$t, contact.state.$t, contact.zip.$t, description.$t, id.$t, JSON.stringify(media), mix.$t, name.$t, JSON.stringify(options.option), sex.$t, shelterId.$t, shelterPetId.$t, size.$t, status.$t];
+        let values = [age.$t, JSON.stringify(breeds.breed), contact.address1.$t, contact.address2.$t, contact.city.$t, contact.email.$t, contact.fax.$t, contact.phone.$t, contact.state.$t, contact.zip.$t, JSON.stringify(description.$t), id.$t, JSON.stringify(media), mix.$t, name.$t, JSON.stringify(options.option), sex.$t, shelterId.$t, shelterPetId.$t, size.$t, status.$t];
         let columns = 'age, breeds, address1, address2, city, email, fax, phone, state, zip, description, dog_id, media, mix, name, options, sex, shelterId, shelterPetId, size, status';
         let queryStr = `REPLACE INTO favedogs (${columns}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
         db.query(queryStr, values, (err, data) => {
@@ -100,6 +100,13 @@ module.exports = {
       },
       deleteFave: (dog_id, username, callback) => {
         let queryStr = `DELETE FROM Users_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = "${username}") AND dog_id = "${dog_id}"`;
+        db.query(queryStr, (err, data) => {
+          if (err) callback(err);
+          else callback(null, data);
+        });
+      },
+      checkFave: (dog_id, username, callback) => {
+        let queryStr = `SELECT dog_id FROM Users_FaveDogs WHERE user_id = (SELECT id FROM Users WHERE username = "${username}") AND dog_id = "${dog_id}"`;
         db.query(queryStr, (err, data) => {
           if (err) callback(err);
           else callback(null, data);
