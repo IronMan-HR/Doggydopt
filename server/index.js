@@ -31,13 +31,13 @@ app.get('/breeds/all', (req, res) =>{
 	});
 });
 
-app.get('/isUserAuth', (req, res) => {
-	if (req.session.cookie.name = 'super secret cookie') {
-		res.status(200).send('yes');
-	} else {
-		res.status(200).send('no');
-	}
-})
+// app.get('/isUserAuth', (req, res) => {
+// 	if (req.session.cookie.name = 'super secret cookie') {
+// 		res.status(200).send('yes');
+// 	} else {
+// 		res.status(200).send('no');
+// 	}
+// })
 
 //Provides characteristics for a particular breed when the name is sent as post parameters.
 app.post('/breeds', (req, res)=>{

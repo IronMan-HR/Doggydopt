@@ -190,8 +190,8 @@ module.exports = {
                         } else if (res === false) {
                             callback(202, 'incorrect password');
                         } else {
-                            req.session.cookie.name = 'super secret cookie';
-                            console.log(req.session);
+                            //req.session.cookie.name = 'super secret cookie';
+                            //console.log(req.session);
                             callback(201);
                         }
                     });
