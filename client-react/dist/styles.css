@@ -852,6 +852,7 @@ border-radius: 16px;
 }
 
 .search-shelters-page {
+    border: 1px solid black; 
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -861,15 +862,27 @@ border-radius: 16px;
 }
 
 .search-shelters-page form {
+    border: 1px solid black; 
     width: 20%;
-    /* display: flex;
-    flex-direction: column; */
 }
 
-.search-shelters-results {
+.search-section {
     border: 1px solid black; 
-    margin-top: 5%; 
-    width: 40%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 5%;
+    justify-content: space-evenly;
+}
+
+.search-shelters-results, #search-shelters-map {
+    border: 1px solid black; 
+    width: 100%;
+}
+
+#search-shelters-map {
+    height: 400px;
+    width: 100%;
 }
 
 .shelter-item {
