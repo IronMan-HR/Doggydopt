@@ -74,9 +74,9 @@ class Authenticate extends React.Component {
             <input placeholder="username" value={this.state.username} onChange={this.handleUserNameInput} />
             <input placeholder="password" value={this.state.password} onChange={this.handlePasswordInput} />
             <input placeholder="zipcode" value={this.state.zip} onChange={this.handleZipInput} />
-            <button>Submit</button>
+            <button className="submit">Submit</button>
           </form>
-          <Link to={`/${this.props.otherPage}`}>{this.props.otherPage} Here</Link>
+          <Link to={`/${this.props.otherPage}`}><h1>{this.props.otherPage} Here</h1></Link>
           <h2 className="problem">{this.state.status}</h2>
         </div>
       )
