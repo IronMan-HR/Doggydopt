@@ -7,27 +7,43 @@ class SearchShelters extends React.Component {
   	super(props)
   	this.state = {
   	  zipcode: '10017',
-      shelters: []
+      shelters: [ { country: { '$t': 'US' },
+      longitude: { '$t': '-73.9751' },
+      name: { '$t': 'Rescuzilla' },
+      phone: {},
+      state: { '$t': 'NY' },
+      address2: {},
+      email: { '$t': 'adopt@rescuzillanyc.org' },
+      city: { '$t': 'New York' },
+      zip: { '$t': '10017' },
+      fax: {},
+      latitude: { '$t': '40.7526' },
+      id: { '$t': 'NY993' },
+      address1: {} },
+    { country: { '$t': 'US' },
+      longitude: { '$t': '-73.9751' },
+      name: { '$t': 'Rebound Hounds' },
+      phone: {},
+      state: { '$t': 'NY' },
+      address2: {},
+      email: { '$t': 'reboundhounds@gmail.com' },
+      city: { '$t': 'New York' },
+      zip: { '$t': '10017' },
+      fax: {},
+      latitude: { '$t': '40.7526' },
+      id: { '$t': 'NY1041' },
+      address1: {} } ]
     }
     this.handleZipInput = this.handleZipInput.bind(this);
     this.searchShelters = this.searchShelters.bind(this);
     this.getGoogleMaps = this.getGoogleMaps.bind(this);
+    this.renderGoogleMaps = this.renderGoogleMaps.bind(this);
   }
 
   componentDidMount() {
     //when page loads, display default shelters and default google map for zipcode 10017 
     this.searchShelters();
-    this.getGoogleMaps().then((google) => {
-      var latlong = {lat: 40.750885, lng: -73.983511}; //placeholder lat/long to use for now
-      var map = new google.maps.Map(document.getElementById('search-shelters-map'), {
-        zoom: 16,
-        center: latlong
-      });
-      var marker = new google.maps.Marker({
-        position: latlong,
-        map: map
-      });
-    });
+    this.getGoogleMaps().then((google) => this.renderGoogleMaps(google));
 
     // function initMap() {
     //   var latlong = {lat: 40.750885, long: -73.983511};
@@ -54,9 +70,11 @@ class SearchShelters extends React.Component {
     console.log('now searching for shelters in zip: ', this.state.zipcode)
     axios.post('/shelters', {zipcode: this.state.zipcode})
     .then((results) => {
+      console.log('search results for zipcode: ', results)
       this.setState({
         shelters: results.data
       });
+      this.getGoogleMaps().then((google) => this.renderGoogleMaps(google));
     })
     .catch((err) => console.log('searchShelters err: ', err));
   }
@@ -77,6 +95,22 @@ class SearchShelters extends React.Component {
       });
     }
     return this.googleMapsPromise;
+  }
+
+  renderGoogleMaps(google) {
+    var latlong = {lat: +this.state.shelters[0].latitude.$t, lng: +this.state.shelters[0].longitude.$t}; 
+    var map = new google.maps.Map(document.getElementById('search-shelters-map'), {
+      zoom: 14,
+      center: latlong
+    });
+    
+    for(var i = 0; i < this.state.shelters.length; i++) {
+      var currShelter = this.state.shelters[i];
+      var marker = new google.maps.Marker({
+        position: {lat: +currShelter.latitude.$t, lng: +currShelter.longitude.$t},
+        map: map
+      });
+    }
   }
 
   render() {
