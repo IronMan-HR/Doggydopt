@@ -64,6 +64,7 @@ class Authenticate extends React.Component {
 
   render() {
     if (this.props.userIsAuthenticated) {
+      if (localStorage.getItem('previousPage') === 'Profile') return <Redirect to='/profile' />
       return <Redirect to='/matchMe' />
     } else {
       return (

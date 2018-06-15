@@ -41,6 +41,9 @@ class Search extends React.Component {
   render() {
     return (
       <div className="menu">
+            
+    {/* <div className="field profile"><Link to={'/profile'}><button id="match-faves-button">SEE ALL YOUR FAVE DOGGOS!</button></Link></div> */}
+            
       <div className="fixed-menu">
         <div>
           <div className="field" onClick={(e) => this.onClick(e, 'size')}>
