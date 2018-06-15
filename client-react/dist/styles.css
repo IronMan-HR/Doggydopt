@@ -3,7 +3,7 @@
     /*border: 1px solid black; */
 }
 
-html, body, .top, #app {
+html, body, #app, .app-container {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -127,7 +127,7 @@ a{
     color: #B7BCBD ;
 }
 
-button.findMyMatch, button.profile {
+button.findMyMatch {
     background-color: hsla(3, 95%, 71%, 0.7);
     color: #FEFDFD;
     border: 2px solid #FEFDFD;
@@ -139,6 +139,22 @@ button.findMyMatch, button.profile {
     transition: 0.5s;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+button.header-button {
+    background-color: hsla(3, 95%, 71%, 0.7);
+    color: #FEFDFD;
+    border: 2px solid #FEFDFD;
+    padding: 20px 30px;
+    font-size: 2em;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;  
+    margin-top: 0.5em;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    float: right;
+    margin-right: 1em;
 }
 
 .dog-buttons {
@@ -917,7 +933,7 @@ border-radius: 16px;
     display: flex;
     flex-direction: start;
     top: 7%;
-    height: 93%;  
+    height: 100%;  
 }
 
 .home-left-side {
