@@ -901,11 +901,6 @@ border-radius: 16px;
 
 
 
-/* PROFILE PAGE */
-#match-faves-button {
-    z-index: 100;
-    align-self: center;
-}
 
 /* HOME */
 
@@ -970,4 +965,29 @@ input, .submit {
     cursor: pointer;
 }
 
+/* PROFILE PAGE */
+#match-faves-button {
+    z-index: 100;
+    align-self: center;
+}
   
+#profile-page {
+    overflow: scroll;
+    width: 100%;
+}
+
+#profile-page #faves-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-evenly;
+
+}
+
+#profile-page #faves-container .fave-dog-container {
+    width: 30%;
+}
+
+#profile-page * {
+    border: 1px solid black;
+}
