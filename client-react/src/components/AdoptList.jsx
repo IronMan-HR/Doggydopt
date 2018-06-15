@@ -227,30 +227,34 @@ class AdoptList extends React.Component {
     //     )
     } else {
       return (
+        
         <div className="below-header">
           <DogSearch searchDogs={this.searchDogs}/>
-          <div className="breed-container flex">  
-            {this.state.adoptables.map((dog, i)=>{
-              return(
-                <div key={i} className="list-item">
-                  <img className="doggy-pic" src={dog.photo} />
-                  <div className="item-text"> 
-                    <h1>{dog.name}</h1>
-                    <p>{dog.description}</p>
-                    <div className="dog-buttons">
-                      <button id={`${dog.id}`} className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
-                      <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+          <div className="breeds-right-side">
+            <h1>Step 2: Pick your dog! Showing {`${this.props.match.params.breed}s in ${this.props.match.params.zip}`}</h1>
+            <div className="breed-container flex">  
+              {this.state.adoptables.map((dog, i)=>{
+                return(
+                  <div key={i} className="list-item">
+                    <img className="doggy-pic" src={dog.photo} />
+                    <div className="item-text"> 
+                      <h1>{dog.name}</h1>
+                      <p>{dog.description}</p>
+                      <div className="dog-buttons">
+                        <button id={`${dog.id}`} className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
+                        <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+                      </div>
+                      {/* <div className="flex zip-age">
+                        <h4>Age: {dog.age}</h4>
+                        <h4>Sex: {dog.sex}</h4>
+                        <h4>Zip Code: {dog.zip}</h4>
+                      </div> */}
                     </div>
-                    {/* <div className="flex zip-age">
-                      <h4>Age: {dog.age}</h4>
-                      <h4>Sex: {dog.sex}</h4>
-                      <h4>Zip Code: {dog.zip}</h4>
-                    </div> */}
                   </div>
-                </div>
-              )
-            })} 
-          </div>    
+                )
+              })} 
+            </div>  
+          </div>  
         </div>
       )
     }

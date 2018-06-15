@@ -34,7 +34,24 @@ class App extends React.Component {
       }, console.log('all breeds is', res.data));
     }).catch(err => {
       console.error(err);
-    })
+    });
+
+    // axios.get('/isUserAuth')
+    // .then(res => {
+    //   console.log('isuserauth is', res.data);
+    //   if (res.data === 'yes') {
+    //     this.setState({
+    //       userIsAuthenticated: true,
+    //     })
+    //   } else {
+    //     this.setState({
+    //       userIsAuthenticated: false,
+    //     })
+    //   }
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // })
   }
 
   searchNow(params) {
@@ -130,7 +147,7 @@ class App extends React.Component {
         )} />
         <Route exact path="/profile" render={() => (
           <div className='below-header'>
-            <Profile username={this.state.username} />
+            <Profile username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
           </div>
         )} />
       </Switch>

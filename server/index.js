@@ -3,22 +3,41 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var axios = require('axios');
 var history = require('connect-history-api-fallback');
-
+var session = require('express-session');
 var models = require('../server/db/models/models.js');
 
 var port = process.env.PORT || 9000;
 var app = express(); 
+
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+	saveUninitialized: true,
+	cookie: {
+		maxAge: 1000,
+		name: '',
+	}
+}));
 
 app.use(history());
 app.use(express.static(__dirname + '/../client-react/dist'));
 app.use(bodyParser.json());
 
 //Provides the characteristics for all breeds.
-app.get('/breeds/all', (req, res)=>{
+app.get('/breeds/all', (req, res) =>{
 	models.breeds.all((data)=>{
 		res.status(201).send(data);
 	});
 });
+
+// app.get('/isUserAuth', (req, res) => {
+// 	if (req.session.cookie.name = 'super secret cookie') {
+// 		res.status(200).send('yes');
+// 	} else {
+// 		res.status(200).send('no');
+// 	}
+// })
 
 //Provides characteristics for a particular breed when the name is sent as post parameters.
 app.post('/breeds', (req, res)=>{
@@ -50,7 +69,7 @@ app.get('/breeds/all/pictures', (req, res)=>{
 });
 
 app.post('/login', (req, res) => {
-	models.users.checkUser(req.body, (status, message) => {
+	models.users.checkUser(req.body, req, (status, message) => {
 		res.status(status).send(message);
 	});
 });
@@ -72,6 +91,7 @@ app.get('/faves', (req, res) => {
 });
 
 app.get('/faveStatus', (req, res) => {
+	console.log('req.session is', req.session);
 	let {dog_id, username} = req.query;
 	models.faves.checkFave(dog_id, username, (err, data) => {
 		if (err) res.status(400).json(err);

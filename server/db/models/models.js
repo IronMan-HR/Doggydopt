@@ -175,7 +175,7 @@ module.exports = {
     },
 
     users: {
-        checkUser: (userObj, callback) => {
+        checkUser: (userObj, req, callback) => {
             let {username, password} = userObj;
             var userQuery = `SELECT * FROM Users WHERE username = ?`;
             db.query(userQuery, username, (err, foundUser) => {
@@ -190,6 +190,8 @@ module.exports = {
                         } else if (res === false) {
                             callback(202, 'incorrect password');
                         } else {
+                            //req.session.cookie.name = 'super secret cookie';
+                            //console.log(req.session);
                             callback(201);
                         }
                     });

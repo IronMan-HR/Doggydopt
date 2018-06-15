@@ -2,6 +2,8 @@ import React from 'react';
 import ListEntry from './ListEntry.jsx';
 
 const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
+    <div className="breeds-right-side">
+      <h1>Step 1: Pick your breed!</h1>
       <div className="breed-container">
           {breeds.map((breed, i) => {
             return <ListEntry zip={zip} key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
@@ -26,8 +28,7 @@ const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
           <p>©2018 Doggy App All rights reserved.</p>
         </div> 
       </div>
+    </div>
   )
-
-
 
 export default List;
