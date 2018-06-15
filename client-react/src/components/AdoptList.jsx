@@ -14,6 +14,7 @@ class AdoptList extends React.Component {
     this.refactorPetFinderData = this.refactorPetFinderData.bind(this);
     this.searchDogs = this.searchDogs.bind(this);
     this.toggleFavorite = this.toggleFavorite.bind(this);
+    this.getAndHighlightFaves = this.getAndHighlightFaves.bind(this);
   }
   
   componentDidMount() {
@@ -28,11 +29,38 @@ class AdoptList extends React.Component {
         this.setState({
           adoptables: refactoredData,
           unfiltered: refactoredData,
-        })
-      }).catch(err => {
+        });
+      })
+      .then(() => {
+        this.getAndHighlightFaves();
+      })
+      .catch(err => {
         console.error(err);
-      }) 
+      })
     }
+  }
+
+  getAndHighlightFaves() {
+    console.log('in highlight');
+    axios.get('/faves', {
+      params: { username: this.props.username}
+    })
+    .then(res => {
+      console.log('res.data is', res.data)
+      var favoriteIds = res.data.map(favorite => {
+        return favorite.dog_id;
+      });
+      this.state.unfiltered.forEach(dog => {
+        if (favoriteIds.includes(dog.id)) {
+          document.getElementById(dog.id).classList.add('favorited');
+        } else {
+          document.getElementById(dog.id).classList.remove('favorited');
+        }
+      });
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   refactorPetFinderData(data) {
@@ -49,6 +77,8 @@ class AdoptList extends React.Component {
             email: dog.contact.email.$t,
             sex: dog.sex.$t,
             fullDogObj: dog,
+            id: dog.id.$t,
+            favorite: '',
           };
           //console.log(dog.options.option);
           if (dog.options.option !== undefined) {
@@ -124,6 +154,8 @@ class AdoptList extends React.Component {
                 }   
               });
             }
+          } else if (category === 'favorite') {
+            return this.state.favorites.includes(dog.id);
           } else {
             return params[category].some(characteristic => {
               return characteristic === dog[category];
@@ -152,6 +184,7 @@ class AdoptList extends React.Component {
 
   toggleFavorite(dog) {
     if (this.props.userIsAuthenticated && this.props.username !== '') {
+      document.getElementById(dog.id).classList.toggle('favorited');
       dog = dog.fullDogObj;
       let dog_id = dog.id.$t;
       axios.get('/faveStatus', {params: {dog_id, username: this.props.username}})
@@ -197,7 +230,7 @@ class AdoptList extends React.Component {
         
         <div className="below-header">
           <DogSearch searchDogs={this.searchDogs}/>
-          <div className="breed-container flex">
+          <div className="breed-container flex">  
             {this.state.adoptables.map((dog, i)=>{
               return(
                 <div key={i} className="list-item">
@@ -206,7 +239,7 @@ class AdoptList extends React.Component {
                     <h1>{dog.name}</h1>
                     <p>{dog.description}</p>
                     <div className="dog-buttons">
-                      <button className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
+                      <button id={`${dog.id}`} className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
                       <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
                     </div>
                     {/* <div className="flex zip-age">
