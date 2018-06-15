@@ -26,7 +26,7 @@ body{
     font-size: 4em;
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
-
+    display: inline-block;
     z-index: 10999093322;
 }
 
@@ -39,9 +39,9 @@ body{
 
 header {
 /*     border-bottom: 9px solid #FEFDFD; */
-    display: flex;
+    /* display: flex; */
     /* color: #4791A1 !important;  */
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 100%;
     /* background-color: #FEFDFD ; */
      /*position: absolute; */
@@ -51,6 +51,7 @@ header {
     /* background-color:#4791A1 ; */
     z-index: 099291092233210;
     position: fixed;
+    padding: 1em;
 }
 
 .below-header{
@@ -948,7 +949,7 @@ border-radius: 16px;
 
 .home-container h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 4em;
     line-height: 1.9em;
     /* padding: 2em 1em 6em 1em; */
     font-family: 'Kaushan Script', cursive;
@@ -974,9 +975,9 @@ input, .submit {
 }
 
 .logo {
-    height: 4%;
-    width: 8%;
+    height: 6em;
     float: right;
+    margin-right: 2em;
 }
 
   
