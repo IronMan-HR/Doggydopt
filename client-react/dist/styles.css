@@ -162,14 +162,12 @@ button.findMyMatch, button.profile {
 }*/
 
 .favorite {
-    height: 4em;
-    width: 4em;
     background-image: url('hearts.png');
-    background-size: 1.5em;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    color: white;
+}
+
+.email {
+    background-image: url('envelope.png');
+    background-size: 4em;
 }
 
 button.findMyMatch:hover, button.profile:hover {
@@ -464,7 +462,7 @@ border-radius: 16px;
     min-height:300px;
 } */
 
-.adopt-me, .favorite {
+.email, .favorite {
     background-color:  #FEFDFD;
     border: 2px solid #FEFDFD ;
     border-radius: 16px;;
@@ -473,8 +471,13 @@ border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     padding: 0.4em;
-    font-size: 1.5em;
-    color:#f14c43;
+    height: 4em;
+    width: 4em;   
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    color: white;
 }
 
 
@@ -942,6 +945,12 @@ input, .submit {
 .submit {
     background-color:   hsla(3, 95%, 71%, 0.7);
     cursor: pointer;
+}
+
+.logo {
+    height: 4%;
+    width: 8%;
+    float: right;
 }
 
   
