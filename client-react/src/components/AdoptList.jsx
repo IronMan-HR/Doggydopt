@@ -78,6 +78,7 @@ class AdoptList extends React.Component {
             sex: dog.sex.$t,
             fullDogObj: dog,
             id: dog.id.$t,
+            favorite: '',
           };
           //console.log(dog.options.option);
           if (dog.options.option !== undefined) {

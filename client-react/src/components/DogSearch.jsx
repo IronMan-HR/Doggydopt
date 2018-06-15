@@ -42,7 +42,7 @@ class DogSearch extends React.Component {
       <div className="menu">
       <div className="fixed-menu">
         <div>
-          <div className="field" onClick={(e) => this.onClick(e, 'favorite')}>
+          <div className="field filter-by-favorites" onClick={(e) => this.onClick(e, 'favorite')}>
             {/* <label className="label">Favorite Of Mine</label> */}
             <div className="control">
               <div className = 'filter-option'>

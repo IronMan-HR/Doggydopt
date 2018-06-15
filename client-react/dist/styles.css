@@ -896,3 +896,7 @@ border-radius: 16px;
 .favorited {
     background-color: #f14c43;
 }
+
+.filter-by-favorites {
+    display: none;
+}
