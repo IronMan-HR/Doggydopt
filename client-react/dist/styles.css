@@ -851,7 +851,7 @@ border-radius: 16px;
 }
 
 .search-shelters-page {
-    border: 1px solid black; 
+    /* border: 1px solid black;  */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -861,22 +861,48 @@ border-radius: 16px;
     margin-top: 7%;
 }
 
-.search-shelters-page form {
-    border: 1px solid black; 
-    width: 20%;
-}
-
-.search-section {
-    border: 1px solid black; 
+.search-shelters-header {
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 3%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-shelters-page form {
+    /* border: 1px solid black;  */
+    width: 20%;
+}
+
+.corgi {
+    /* border: 1px solid black; */
+    content: url('corgi.png');
+    height: 100%;
+    margin: 0 2%;
+}
+
+.corgi-flip {
+    content: url('corgi-flip.png');
+}
+
+.search-shelters-page button {
+    border-radius: 16px;
+    color: #4791A1;
+}
+
+.search-section {
+    /* border: 1px solid black;  */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 0;
     justify-content: space-evenly;
 }
 
 .search-shelters-results, #search-shelters-map {
-    border: 1px solid black; 
+    /* border: 1px solid black;  */
     width: 100%;
 }
 
@@ -889,7 +915,7 @@ border-radius: 16px;
 .shelter-item {
     background-color:#FEFDFD;
     color: #4791A1;
-    margin: 2%;
+    margin: 0 2% 2% 2%;
     padding: 2% 5%;
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
