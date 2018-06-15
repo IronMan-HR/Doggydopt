@@ -28,6 +28,4 @@ const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
       </div>
   )
 
-
-
 export default List;
