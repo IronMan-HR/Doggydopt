@@ -1,12 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-let googleMapsAPI_key;
-try {
-  googleMapsAPI_key = process.env.googleMapsAPI_key;
-} catch(e) {
-  googleMapsAPI_key = require('../../../config.js').googleMapsAPI_key;
-}
-
+// let googleMapsAPI_key;
+// try {
+//   googleMapsAPI_key = process.env.googleMapsAPI_key;
+// } catch(e) {
+//   console.log('in catch');
+//   googleMapsAPI_key = require('../../../config.js').googleMapsAPI_key;
+// }
+// import {googleMapsAPI_key} from '../../../config.js';
+// try {
+  
+// } catch(e) {
+//   var googleMapsAPI_key = process.env.googleMapsAPI_key;
+// }
 
 class SearchShelters extends React.Component {
   constructor(props) {
@@ -87,7 +93,7 @@ class SearchShelters extends React.Component {
 
         //script pings Google Maps API and passes it the global callback
         var script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPI_key}&callback=handleGoogleMapsAPIWhenLoaded`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.googleMapsAPI_key}&callback=handleGoogleMapsAPIWhenLoaded`;
         script.async = true;
         document.body.appendChild(script);
       });
