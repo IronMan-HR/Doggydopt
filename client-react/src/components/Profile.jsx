@@ -57,7 +57,7 @@ class Profile extends React.Component {
           <div className="fave-dog-options">
           </div>
           <div className="fave-dog-description">
-            <p>{dog.description}</p>
+            <p className="dog-desc">{dog.description}</p>
           </div>
         </div>
       )
