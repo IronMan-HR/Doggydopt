@@ -6,7 +6,8 @@ class SearchShelters extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-  	  zipcode: '10017',
+      zipcode: '10017',
+      googleMapsAPI_key: '',
       shelters: [ //when page loads, maps these 2 shelters from default zipcode 10017
         { country: { '$t': 'US' },
           longitude: { '$t': '-73.9751' },
@@ -45,10 +46,22 @@ class SearchShelters extends React.Component {
 
   componentDidMount() {
     //displays default shelters
-    this.searchShelters();
-    console.log('process.env is', process.env);
+
+    axios.get('/getAPIKey')
+    .then(res => {
+      this.setState({
+        googleMapsAPI_key: res.data,
+      })
+    })
+    .then(() => {
+      this.searchShelters();
+      this.getGoogleMaps().then((google) => this.renderGoogleMaps(google));
+    })
+    .catch(err => {
+      console.error(err);
+    })
     //when google maps api loads, renders the map (with default zipcode 10017) 
-    this.getGoogleMaps().then((google) => this.renderGoogleMaps(google));
+    
   }
 
   handleZipInput(e) {
@@ -82,7 +95,7 @@ class SearchShelters extends React.Component {
 
         //script pings Google Maps API and passes it the global callback
         var script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.googleMapsAPI_key}&callback=handleGoogleMapsAPIWhenLoaded`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${this.state.googleMapsAPI_key}&callback=handleGoogleMapsAPIWhenLoaded`;
         script.async = true;
         document.body.appendChild(script);
       });
