@@ -41,6 +41,9 @@ app.get('/breeds/all', (req, res) =>{
 // 	}
 // })
 
+app.get('/getAPIKey', (req, res) => {
+	res.status(200).send('AIzaSyD8EVIaRnrGkLM6HLFfsdvtaMG5Cv2p31I');
+})
 //Provides characteristics for a particular breed when the name is sent as post parameters.
 app.post('/breeds', (req, res)=>{
 	models.breeds.post(req.body, (data)=>{
