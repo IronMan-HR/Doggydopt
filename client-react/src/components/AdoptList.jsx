@@ -242,7 +242,7 @@ class AdoptList extends React.Component {
                       <p>{dog.description}</p>
                       <div className="dog-buttons">
                         <button id={`${dog.id}`} className="favorite" onClick={() => {this.toggleFavorite(dog)}}></button>  
-                        <a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'><button className = 'adopt-me'>Adopt me!</button></a>
+                        <button className="email"><a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'></a></button>
                       </div>
                       {/* <div className="flex zip-age">
                         <h4>Age: {dog.age}</h4>

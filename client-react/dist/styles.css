@@ -3,7 +3,7 @@
     /*border: 1px solid black; */
 }
 
-html, body, .top, #app {
+html, body, #app, .app-container {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -26,7 +26,7 @@ body{
     font-size: 4em;
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
-
+    display: inline-block;
     z-index: 10999093322;
 }
 
@@ -39,9 +39,9 @@ body{
 
 header {
 /*     border-bottom: 9px solid #FEFDFD; */
-    display: flex;
+    /* display: flex; */
     /* color: #4791A1 !important;  */
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 100%;
     /* background-color: #FEFDFD ; */
      /*position: absolute; */
@@ -51,6 +51,7 @@ header {
     /* background-color:#4791A1 ; */
     z-index: 099291092233210;
     position: fixed;
+    padding: 1em;
 }
 
 .below-header{
@@ -126,7 +127,7 @@ a{
     color: #B7BCBD ;
 }
 
-button.findMyMatch, button.profile {
+button.findMyMatch {
     background-color: hsla(3, 95%, 71%, 0.7);
     color: #FEFDFD;
     border: 2px solid #FEFDFD;
@@ -138,6 +139,22 @@ button.findMyMatch, button.profile {
     transition: 0.5s;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+button.header-button {
+    background-color: hsla(3, 95%, 71%, 0.7);
+    color: #FEFDFD;
+    border: 2px solid #FEFDFD;
+    padding: 20px 30px;
+    font-size: 2em;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;  
+    margin-top: 0.5em;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    float: right;
+    margin-right: 1em;
 }
 
 .dog-buttons {
@@ -162,14 +179,12 @@ button.findMyMatch, button.profile {
 }*/
 
 .favorite {
-    height: 4em;
-    width: 4em;
     background-image: url('hearts.png');
-    background-size: 1.5em;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    color: white;
+}
+
+.email {
+    background-image: url('envelope.png');
+    background-size: 4em;
 }
 
 button.findMyMatch:hover, button.profile:hover {
@@ -464,7 +479,7 @@ border-radius: 16px;
     min-height:300px;
 } */
 
-.adopt-me, .favorite {
+.email, .favorite {
     background-color:  #FEFDFD;
     border: 2px solid #FEFDFD ;
     border-radius: 16px;;
@@ -473,8 +488,13 @@ border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     padding: 0.4em;
-    font-size: 1.5em;
-    color:#f14c43;
+    height: 4em;
+    width: 4em;   
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    color: white;
 }
 
 
@@ -908,7 +928,7 @@ border-radius: 16px;
     display: flex;
     flex-direction: start;
     top: 7%;
-    height: 93%;  
+    height: 100%;  
 }
 
 .home-left-side {
@@ -940,7 +960,7 @@ border-radius: 16px;
 
 .home-container h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 4em;
     line-height: 1.9em;
     /* padding: 2em 1em 6em 1em; */
     font-family: 'Kaushan Script', cursive;
@@ -991,3 +1011,11 @@ input, .submit {
 #profile-page * {
     border: 1px solid black;
 }
+
+.logo {
+    height: 6em;
+    float: right;
+    margin-right: 2em;
+}
+
+  
