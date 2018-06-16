@@ -136,9 +136,9 @@ class SearchShelters extends React.Component {
         <h1>Search Local Shelters</h1>
         <div className="search-shelters-header">
           <div className="corgi"></div>
-          <form>
+          <form onSubmit={this.searchShelters}>
             <input placeholder="enter zipcode" onChange={this.handleZipInput} />
-            <button onClick={this.searchShelters}>Submit</button>
+            {/* <button onClick={this.searchShelters}>Submit</button> */}
           </form>
           <div className="corgi corgi-flip"></div>
         </div>
