@@ -27,7 +27,7 @@ body{
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
     display: inline-block;
-    z-index: 10999093322;
+    z-index: 1000;
 }
 
 .main{
@@ -1008,14 +1008,13 @@ input, .submit {
     width: 30%;
 }
 
-#profile-page * {
+#profile-page {
     border: 1px solid black;
 }
 
 .logo {
-    height: 6em;
-    float: right;
-    margin-right: 2em;
+    height: 3em;
+    background-image: url('dog.png');
 }
 
   
