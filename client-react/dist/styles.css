@@ -1021,7 +1021,7 @@ input, .submit {
     margin: 10px;
 }
 
-#faves-container .fave-dog-container h1, h4, p {
+#faves-container .fave-dog-container h1, h4 {
     color: #4791A1;
     cursor: default;
     

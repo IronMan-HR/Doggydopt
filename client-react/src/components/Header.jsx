@@ -4,15 +4,18 @@ import {Link} from 'react-router-dom';
 const Header = () => {
   return (
     <header>
-        <Link to="/matchMe">
+        <Link to="/">
           <h1 className='title'>Rescue-Me NYC</h1>
-        </Link> 
+        </Link>
         <Link to="/profile">
           <button onClick={() => localStorage.setItem('previousPage', 'Profile')} className='header-button'>My Dogs</button>    
         </Link>
         <Link to='/shelters'>
           <button className='header-button'>Find a Shelter</button> 
-        </Link>   
+        </Link>
+        <Link to='/matchMe'>
+          <button className='header-button'>Match Me</button> 
+        </Link>  
     </header>
   )
 }
