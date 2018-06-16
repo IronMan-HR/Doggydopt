@@ -1,5 +1,5 @@
 {
-  "name": "DogPlusLife",
+  "name": "doggydopt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
-  "author": "Team Hulk",
+  "author": "Team Star-Lord",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",

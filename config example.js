@@ -3,5 +3,6 @@ module.exports = {
     user: '',
     password: '',
     database: '',
-    pf_key: ''
+    pf_key: '',
+    googleMapsAPI_key: ''
 }
