@@ -11,23 +11,17 @@ class Profile extends React.Component {
     };
     this.getFaves = this.getFaves.bind(this);
     this.deleteFave = this.deleteFave.bind(this);
-    // console.log(this.props.username);
   }
   componentDidMount() {
-    console.log('props of Profile component', this.props);
-    if(this.props.userIsAuthenticated) this.getFaves(this.props.username);
-    // this.getFaves('Rose'); //====================change after testing
-    
+    if(this.props.userIsAuthenticated) this.getFaves(this.props.username);   
   }
   getFaves(username) {
     localStorage.setItem('previousPage', null);
-    console.log('getting faves for', username);
     axios.get('/faves', {params: {username}})
-      .then(({data}) => this.setState({dogs: data}, () => console.log(this.state.dogs)))
+      .then(({data}) => this.setState({dogs: data}))
       .catch(err => console.log(err));
   }
   deleteFave(dog_id, username) {
-    console.log('deleting pupper', dog_id, username);
     axios.delete('/faves', {params: {dog_id, username}})
     .then(data => this.getFaves(username))
     .catch(err => console.log(err));
@@ -38,7 +32,6 @@ class Profile extends React.Component {
     if (!this.props.userIsAuthenticated) return <Redirect to="/login" />; // commented out for now while developing
     if (!this.state.dogs) return <div>FETCHING YOUR PUPPERS!</div>
     let dogProfiles = this.state.dogs.map(dog => {
-      // console.log(JSON.parse(dog.media).photos.photo);
       let dogpic = JSON.parse(dog.media).photos.photo[2].$t;
       return (
         <div className="fave-dog-container" key={dog.dog_id}>

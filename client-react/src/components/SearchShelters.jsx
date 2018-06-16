@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-// import {googleMapsAPI_key} from '../../../config.js';
 
 class SearchShelters extends React.Component {
   constructor(props) {
@@ -72,10 +71,8 @@ class SearchShelters extends React.Component {
 
   searchShelters(e) {
     if(e) e.preventDefault();
-    console.log('now searching for shelters in zip: ', this.state.zipcode)
     axios.post('/shelters', {zipcode: this.state.zipcode})
     .then((results) => {
-      console.log('search results for zipcode: ', results)
       this.setState({
         shelters: results.data
       });

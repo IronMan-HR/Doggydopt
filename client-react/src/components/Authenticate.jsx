@@ -36,7 +36,6 @@ class Authenticate extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('submitted');
     e.preventDefault();
     var credentials = {
       username: this.state.username,
@@ -45,7 +44,6 @@ class Authenticate extends React.Component {
     }
     axios.post(`/${this.props.thisPage}`, credentials)
     .then(res => {
-      console.log('res.data is', res.data, 'res.status is', res.status);
       if (res.status === 202) {
         this.setState({
           status: res.data,
