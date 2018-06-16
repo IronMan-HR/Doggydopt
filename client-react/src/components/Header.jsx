@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header>
         <Link to="/">
-          <h1 className='title'>Doggyd<img width="6%" src="dog.png" />pt</h1>
+          <h1 className='title'>Doggyd<img width="6%" src="./images/dog.png" />pt</h1>
         </Link>
         <Link to="/profile">
           <button onClick={() => localStorage.setItem('previousPage', 'Profile')} className='header-button'>My Dogs</button>    

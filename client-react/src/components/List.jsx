@@ -16,7 +16,7 @@ const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
                 <p>We aim to simplify the dog adoption process by targeting breeds that will pair favorably with your lifestyle, and locating local area dogs in need of a good home.</p>
             </div>
             <div className='bottom-logo box'>
-              <img src='logo2.png' alt='logo'width="85" />
+              <img src='./images/logo2.png' alt='logo'width="85" />
             </div>
             <div  id="aboutUs"className="text box">
               <h3>About Us</h3>

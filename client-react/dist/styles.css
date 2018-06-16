@@ -126,11 +126,11 @@ button.header-button {
 }
 
 .favorite {
-    background-image: url('hearts.png');
+    background-image: url('./images/hearts.png');
 }
 
 .email {
-    background-image: url('envelope.png');
+    background-image: url('./images/envelope.png');
     background-size: 4em;
 }
 
@@ -421,91 +421,91 @@ h1{
 }
 
 .small{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .medium{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 3.6em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .large{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-shed{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-shed{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 4em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-shed{
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
     background-size: 5.6em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-energy{
-    background-image: url('flash.png');
+    background-image: url('./images/flash.png');
     background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-energy{
-    background-image: url('flash.png');
+    background-image: url('./images/flash.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-energy{
-    background-image: url('flash.png');
+    background-image: url('./images/flash.png');
     background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-play{
-    background-image: url('lazy.png');
+    background-image: url('./images/lazy.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: 50% 80%;
 }
 
 .moderate-play{
-    background-image: url('almost-active.png');
+    background-image: url('./images/almost-active.png');
     background-size: 4.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-play{
-    background-image: url('active.png');
+    background-image: url('./images/active.png');
     background-size: 5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .yes{
-    background-image: url('family.png');
+    background-image: url('./images/family.png');
     background-size: 4.5em;
     background-repeat: no-repeat;
     background-position: center;
@@ -519,126 +519,126 @@ h1{
 }
 
 .low-shed{
-    background-image: url('low-shed.png');
+    background-image: url('./images/low-shed.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-shed{
-    background-image: url('moderate-shed.png');
+    background-image: url('./images/moderate-shed.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-shed{
-    background-image: url('high-shed.png');
+    background-image: url('./images/high-shed.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-bark {
-    background-image: url('speaker.png');
+    background-image: url('./images/speaker.png');
     background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-bark {
-    background-image: url('speaker.png');
+    background-image: url('./images/speaker.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-bark {
-    background-image: url('speaker.png');
+    background-image: url('./images/speaker.png');
     background-size: 4em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .favorite-of-mine {
-    background-image: url('white-heart.png');
+    background-image: url('./images/white-heart.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .male {
-    background-image: url('male.png');
+    background-image: url('./images/male.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .female {
-    background-image: url('female.png');
+    background-image: url('./images/female.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .has-shots {
-    background-image: url('syringe.png');
+    background-image: url('./images/syringe.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .kids-ok {
-    background-image: url('family.png');
+    background-image: url('./images/family.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .cats-ok {
-    background-image: url('cat.png');
+    background-image: url('./images/cat.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .altered {
-    background-image: url('scissors.png');
+    background-image: url('./images/scissors.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .baby {
-    background-image: url('puppy.png');
+    background-image: url('./images/puppy.png');
     background-size: 3em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .young {
-    background-image: url('young-dog.png');
+    background-image: url('./images/young-dog.png');
     background-size: 4em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .adult {
-    background-image: url('adult-dog.png');
+    background-image: url('./images/adult-dog.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .senior {
-    background-image: url('old-dog.png');
+    background-image: url('./images/old-dog.png');
     background-size: 4em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .house-trained {
-    background-image: url('toilet.png');
+    background-image: url('./images/toilet.png');
     background-size: 3.5em;
     background-repeat: no-repeat;
     background-position: center;
@@ -718,13 +718,13 @@ h1{
 }
 
 .corgi {
-    content: url('corgi.png');
+    content: url('./images/corgi.png');
     height: 100%;
     margin: 0 2%;
 }
 
 .corgi-flip {
-    content: url('corgi-flip.png');
+    content: url('./images/corgi-flip.png');
 }
 
 .search-shelters-page button {
@@ -795,7 +795,7 @@ h1{
 
 }
 .home-pic{
-    background-image: url('happyadoption.jpg');
+    background-image: url('./images/happyadoption.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -881,7 +881,7 @@ input, .submit {
 
 .logo {
     height: 3em;
-    background-image: url('dog.png');
+    background-image: url('./images/dog.png');
 }
 
 .fave-dog-info {
