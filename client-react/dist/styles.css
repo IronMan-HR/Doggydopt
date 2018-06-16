@@ -1050,6 +1050,7 @@ input, .submit {
 
 .fave-dog-pic {
     text-align: center;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
 }
 
 .fave-dog-pic img {
