@@ -68,7 +68,7 @@ class DogSearch extends React.Component {
 
           <div className="field" onClick={(e) => this.onClick(e, 'age')}>
             <label className="label">Age</label>
-            <div className="control">
+            <div className="age-control">
               <div className = 'filter-option'>
                 <button name = 'Baby' id ='4' className="button baby" alt='baby'></button>
                 <p>Baby</p>

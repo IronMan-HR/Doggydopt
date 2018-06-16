@@ -33,31 +33,13 @@ class App extends React.Component {
     .then(res => {
       this.setState({
         breeds: res.data
-      }, console.log('all breeds is', res.data));
+      });
     }).catch(err => {
       console.error(err);
     });
-
-    // axios.get('/isUserAuth')
-    // .then(res => {
-    //   console.log('isuserauth is', res.data);
-    //   if (res.data === 'yes') {
-    //     this.setState({
-    //       userIsAuthenticated: true,
-    //     })
-    //   } else {
-    //     this.setState({
-    //       userIsAuthenticated: false,
-    //     })
-    //   }
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // })
   }
 
   searchNow(params) {
-    //console.log('params are', params);
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
 
