@@ -15,8 +15,8 @@ class Profile extends React.Component {
   }
   componentDidMount() {
     console.log('props of Profile component', this.props);
-    // if(this.props.userIsAuthenticated) this.getFaves(this.props.username);
-    this.getFaves('Rose'); //====================change after testing
+    if(this.props.userIsAuthenticated) this.getFaves(this.props.username);
+    // this.getFaves('Rose'); //====================change after testing
     
   }
   getFaves(username) {
@@ -33,9 +33,9 @@ class Profile extends React.Component {
     .catch(err => console.log(err));
   }
   render() {
-    let username = 'Rose'; //====================change after testing
-    // let {username} = this.props;
-    // if (!this.props.userIsAuthenticated) return <Redirect to="/login" />; // commented out for now while developing
+    // let username = 'Rose'; //====================change after testing
+    let {username} = this.props;
+    if (!this.props.userIsAuthenticated) return <Redirect to="/login" />; // commented out for now while developing
     if (!this.state.dogs) return <div>FETCHING YOUR PUPPERS!</div>
     let dogProfiles = this.state.dogs.map(dog => {
       // console.log(JSON.parse(dog.media).photos.photo);
