@@ -1,18 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-// let googleMapsAPI_key;
-// try {
-//   googleMapsAPI_key = process.env.googleMapsAPI_key;
-// } catch(e) {
-//   console.log('in catch');
-//   googleMapsAPI_key = require('../../../config.js').googleMapsAPI_key;
-// }
 // import {googleMapsAPI_key} from '../../../config.js';
-// try {
-  
-// } catch(e) {
-//   var googleMapsAPI_key = process.env.googleMapsAPI_key;
-// }
 
 class SearchShelters extends React.Component {
   constructor(props) {
@@ -58,6 +46,7 @@ class SearchShelters extends React.Component {
   componentDidMount() {
     //displays default shelters
     this.searchShelters();
+    console.log('process.env is', process.env);
     //when google maps api loads, renders the map (with default zipcode 10017) 
     this.getGoogleMaps().then((google) => this.renderGoogleMaps(google));
   }
