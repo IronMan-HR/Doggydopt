@@ -45,8 +45,8 @@ module.exports = {
             var sheltersInSpecificZip = apiresults.filter(function(result) {
               return result.zip.$t === params.zipcode.toString();
             });
-            console.log('apiresults: ', apiresults);
-            console.log('sheltersInSpecificZip: ', sheltersInSpecificZip);
+            //console.log('apiresults: ', apiresults);
+            //console.log('sheltersInSpecificZip: ', sheltersInSpecificZip);
             callback(null, sheltersInSpecificZip);
         })
         .catch((err) => console.log('err on shelters search', err));
@@ -120,7 +120,7 @@ module.exports = {
             var apiQuery = `http://loremflickr.com/640/480/dog,Brittany Spaniel'`;
             axios.get(apiQuery)
             .then((results)=>{
-                console.log('lorem results', results);
+                //console.log('lorem results', results);
             })
         },
         ceo: ()=>{
@@ -151,20 +151,20 @@ module.exports = {
                     //console.log('list of common', acc);
                     acc = acc.map((breed)=>{
                         //console.log('inside map', breed);
-                        console.log(`https://dog.ceo/api/breed/${breed.breed.toLowerCase()}/images/random`);
+                        //console.log(`https://dog.ceo/api/breed/${breed.breed.toLowerCase()}/images/random`);
                         return ()=>{return axios.get(`https://dog.ceo/api/breed/${breed.breed.toLowerCase()}/images/random`)};
                         //return breed.breed.toLowerCase();
                     });
-                    console.log(JSON.stringify(acc));
+                    //console.log(JSON.stringify(acc));
                     axios.all(acc)
                     .then(axios.spread(function(acct, perms){
-                        console.log('all done');
-                        console.log(acct);
-                        console.log(perms);
+                        //console.log('all done');
+                        // console.log(acct);
+                        // console.log(perms);
                     }))
                     .catch((err)=>{
-                        console.log('err');
-                        console.log(err);
+                        //console.log('err');
+                        console.error(err);
                     });
                 })
                 .catch(()=>{
