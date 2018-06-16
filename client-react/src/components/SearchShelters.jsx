@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import {googleMapsAPI_key} from '../../../config.js';
+import config from '../../../config.js';
+var googleMapsAPI_key = process.env.googleMapsAPI_key || config.googleMapsAPI_key;
+
 
 class SearchShelters extends React.Component {
   constructor(props) {
