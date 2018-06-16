@@ -15,8 +15,8 @@ class Profile extends React.Component {
   }
   componentDidMount() {
     console.log('props of Profile component', this.props);
-    // if(this.props.userIsAuthenticated) this.getFaves(this.props.username);
-    this.getFaves('Rose'); //====================change after testing
+    if(this.props.userIsAuthenticated) this.getFaves(this.props.username);
+    // this.getFaves('Rose'); //====================change after testing
     
   }
   getFaves(username) {
@@ -33,9 +33,9 @@ class Profile extends React.Component {
     .catch(err => console.log(err));
   }
   render() {
-    let username = 'Rose'; //====================change after testing
-    // let {username} = this.props;
-    // if (!this.props.userIsAuthenticated) return <Redirect to="/login" />; // commented out for now while developing
+    // let username = 'Rose'; //====================change after testing
+    let {username} = this.props;
+    if (!this.props.userIsAuthenticated) return <Redirect to="/login" />; // commented out for now while developing
     if (!this.state.dogs) return <div>FETCHING YOUR PUPPERS!</div>
     let dogProfiles = this.state.dogs.map(dog => {
       // console.log(JSON.parse(dog.media).photos.photo);
@@ -44,13 +44,21 @@ class Profile extends React.Component {
         <div className="fave-dog-container" key={dog.dog_id}>
           <div className="fave-dog-info">
             <h1>{dog.name}</h1>
-            <h1>{dog.age}</h1>
+            <h4>({dog.age})</h4>
             {/* <h1>{dog.breeds}</h1> */}
+            <div className="fave-options">
+              <button className="favorite" onClick={() => this.deleteFave(dog.dog_id, username)}>Delete</button>
+              <button className="email"><a href={`mailto:${dog.email}?subject=I would like to adopt ${dog.name}!&body=Hello! I was looking at ${dog.name} and I believe we would have the most amazing adventures together. I would like to meet and see if the feeling is mutual. Please let me know if you have any other questions!`} target='_self'></a></button>
+            </div>
           </div>
           <div className="fave-dog-pic">
-            <img width="100px" src={dogpic} />
+            <img src={dogpic} />
           </div>
-        <button onClick={() => this.deleteFave(dog.dog_id, username)}>Delete</button>
+          <div className="fave-dog-options">
+          </div>
+          <div className="fave-dog-description">
+            <p>{dog.description}</p>
+          </div>
         </div>
       )
     });
@@ -58,10 +66,9 @@ class Profile extends React.Component {
     return (
       <div id="profile-page">
         <div id="profile-to-home"><Link to={'/matchMe'}>
-        <button>Browse Breeds</button>
         </Link></div>
         <div id="profile-container">
-          <h1>Welcome back, <span>{username}</span></h1>
+          <h1>Welcome back, <span>{username}</span>!</h1>
           <div id="faves-container">
             {dogProfiles}
           </div>
