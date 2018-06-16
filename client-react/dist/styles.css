@@ -1064,3 +1064,7 @@ input, .submit {
     flex-direction: column;
     margin-left: auto;
 }
+
+.dog-desc {
+    color: #4791A1;
+}
