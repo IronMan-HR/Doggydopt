@@ -23,6 +23,7 @@ body{
 }
 
 .title {
+    padding-left: 1%;
     font-size: 4em;
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
@@ -1025,6 +1026,12 @@ input, .submit {
     color: #4791A1;
     cursor: default;
     
+}
+
+.title img {
+    /* margin-top: 202px; */
+    vertical-align: bottom;
+    margin-bottom: 20px;
 }
 
 .logo {
