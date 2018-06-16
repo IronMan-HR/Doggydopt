@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   searchNow(params) {
-    console.log('params are', params);
+    //console.log('params are', params);
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
 
@@ -125,7 +125,7 @@ class App extends React.Component {
   }
 
   resetAdoptables() {
-    console.log('reset is', this.state.unfiltered);
+    //console.log('reset is', this.state.unfiltered);
     this.setState({
       breeds: this.state.unfiltered,
     })

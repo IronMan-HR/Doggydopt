@@ -24,7 +24,7 @@ class AdoptList extends React.Component {
         zipCode: this.props.match.params.zip
       })
       .then(res => {
-        console.log('dog data is', res.data.pet);
+        //console.log('dog data is', res.data.pet);
         var refactoredData = this.refactorPetFinderData(res.data.pet);
         this.setState({
           adoptables: refactoredData,
@@ -41,12 +41,11 @@ class AdoptList extends React.Component {
   }
 
   getAndHighlightFaves() {
-    console.log('in highlight');
     axios.get('/faves', {
       params: { username: this.props.username}
     })
     .then(res => {
-      console.log('res.data is', res.data)
+      //console.log('res.data is', res.data)
       var favoriteIds = res.data.map(favorite => {
         return favorite.dog_id;
       });

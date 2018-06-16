@@ -93,7 +93,7 @@ app.get('/faves', (req, res) => {
 });
 
 app.get('/faveStatus', (req, res) => {
-	console.log('req.session is', req.session);
+	//console.log('req.session is', req.session);
 	let {dog_id, username} = req.query;
 	models.faves.checkFave(dog_id, username, (err, data) => {
 		if (err) res.status(400).json(err);
