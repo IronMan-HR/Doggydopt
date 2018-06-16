@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios';
 let googleMapsAPI_key;
 try {
-  googleMapsAPI_key = require('../../../config.js').googleMapsAPI_key;
+  googleMapsAPI_key = process.env.googleMapsAPI_key;
 } catch(e) {
-  googleMapsAPI_key = process.env.googleMapsAPI_key
+  googleMapsAPI_key = require('../../../config.js').googleMapsAPI_key;
 }
 
 
