@@ -12,8 +12,7 @@ const Header = () => {
         </Link>
         <Link to='/shelters'>
           <button className='header-button'>Find a Shelter</button> 
-        </Link>
-        
+        </Link>   
     </header>
   )
 }

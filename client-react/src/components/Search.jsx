@@ -33,9 +33,10 @@ class Search extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.resetAdoptables();
-  }
+  // componentWillUnmount() {
+  //   console.log('unmount triggered');
+  //   this.props.resetAdoptables();
+  // }
 
   triggerButton(id) {
     let buttonId = document.getElementById(id);

@@ -125,9 +125,9 @@ class App extends React.Component {
   }
 
   resetAdoptables() {
-    var unfiltered = this.state.unfiltered.slice();
+    console.log('reset is', this.state.unfiltered);
     this.setState({
-      breeds: unfiltered,
+      breeds: this.state.unfiltered,
     })
   }
 
