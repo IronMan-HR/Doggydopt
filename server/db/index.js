@@ -1,10 +1,10 @@
 var mysql = require('mysql');
-var credentials =  process.env.credentials;
-
+// var credentials =  process.env.credentials;
+let credentials;
 //Sets up the login information for the database whether from the deployment environment or locally.
-if(credentials === undefined) {
+try {
     credentials = require('../../config.js') 
-} else {
+} catch(e) {
     credentials = {
         host: process.env.host,
         user: process.env.user,
