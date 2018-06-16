@@ -25,6 +25,7 @@ class App extends React.Component {
     this.addDefaultSrc = this.addDefaultSrc.bind(this);
     this.searchNow = this.searchNow.bind(this);
     this.setCredentialsInApp = this.setCredentialsInApp.bind(this);
+    this.resetAdoptables = this.resetAdoptables.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +57,7 @@ class App extends React.Component {
   }
 
   searchNow(params) {
+    console.log('params are', params);
     //The searchnow filters the breeds dynamicly as the user makes their selection for characteristics. As each selection is made, searchNow is invoked. 
     var allBreeds;
 
@@ -122,6 +124,13 @@ class App extends React.Component {
     });
   }
 
+  resetAdoptables() {
+    var unfiltered = this.state.unfiltered.slice();
+    this.setState({
+      breeds: unfiltered,
+    })
+  }
+
   render () {
     return (
       <div className="app-container">
@@ -137,7 +146,7 @@ class App extends React.Component {
           <Route exact={true} path="/matchMe" render={() => (
             <div>
               <div className='below-header'>
-                  <Search search={this.search} searchNow={this.searchNow}/>
+                  <Search search={this.search} searchNow={this.searchNow} resetAdoptables={this.resetAdoptables}/>
                   <List zip={this.state.zip} breeds={this.state.breeds} addDefaultSrc={this.addDefaultSrc}/> 
               </div> 
             </div>

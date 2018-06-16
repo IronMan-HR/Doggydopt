@@ -27,7 +27,7 @@ body{
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
     display: inline-block;
-    z-index: 10999093322;
+    z-index: 1000;
 }
 
 .main{
@@ -989,11 +989,10 @@ input, .submit {
     background-color:   hsla(3, 95%, 71%, 0.7);
     cursor: pointer;
 }
-
+/* 
 .logo {
-    height: 6em;
-    float: right;
-    margin-right: 2em;
-}
+    height: 3em;
+    background-image: url('dog.png');
+} */
 
   

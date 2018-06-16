@@ -33,6 +33,10 @@ class Search extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.resetAdoptables();
+  }
+
   triggerButton(id) {
     let buttonId = document.getElementById(id);
     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'rgb(254, 137, 18)') ? 'transparent' : 'rgb(254, 137, 18)';
