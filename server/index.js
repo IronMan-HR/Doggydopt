@@ -1,25 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var url = require('url');
-var axios = require('axios');
 var history = require('connect-history-api-fallback');
-var session = require('express-session');
 var models = require('../server/db/models/models.js');
 
 var port = process.env.PORT || 9000;
 var googleMapsAPI_key = process.env.googleMapsAPI_key || require('../config.js').googleMapsAPI_key;
 var app = express(); 
-
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-	saveUninitialized: true,
-	cookie: {
-		maxAge: 1000,
-		name: '',
-	}
-}));
 
 app.use(history());
 app.use(express.static(__dirname + '/../client-react/dist'));
@@ -31,16 +17,6 @@ app.get('/breeds/all', (req, res) =>{
 		res.status(201).send(data);
 	});
 });
-
-
-
-// app.get('/isUserAuth', (req, res) => {
-// 	if (req.session.cookie.name = 'super secret cookie') {
-// 		res.status(200).send('yes');
-// 	} else {
-// 		res.status(200).send('no');
-// 	}
-// })
 
 app.get('/getAPIKey', (req, res) => {
 	res.status(200).send(googleMapsAPI_key);

@@ -19,10 +19,10 @@ body{
 
 .title {
     padding-left: 1%;
-    font-size: 4em;
+    font-size: 3em;
     font-family: 'Poppins', sans-serif;
     margin: auto 0;
-    display: inline-block;
+    display: inline;
     z-index: 1000;
 }
 
@@ -35,7 +35,7 @@ header {
     width: 100%;
     top:0;
     left:0;
-    z-index: 099291092233210;
+    z-index: 100;
     position: fixed;
     padding: 1em;
 }
@@ -94,8 +94,8 @@ button.findMyMatch {
     background-color: hsla(3, 95%, 71%, 0.7);
     color: #FEFDFD;
     border: 2px solid #FEFDFD;
-    padding: 40px 50px;
-    font-size: 3em;
+    padding: 20px 25px;
+    font-size: 2em;
     border-radius: 16px;
     font-family: 'Poppins', sans-serif;  
     margin-top: 1em;
@@ -108,8 +108,8 @@ button.header-button {
     background-color: hsla(3, 95%, 71%, 0.7);
     color: #FEFDFD;
     border: 2px solid #FEFDFD;
-    padding: 20px 30px;
-    font-size: 2em;
+    padding: 10px 15px;
+    font-size: 1.5em;
     border-radius: 16px;
     font-family: 'Poppins', sans-serif;  
     margin-top: 0.5em;
@@ -177,14 +177,14 @@ h1{
     overflow: hidden;
 }
 .list-item{
-    margin: 2em 0em;
+    margin: 1em 0em;
     width: 40%;
-    height: 29em;
+    height: 15em;
     overflow:hidden;
     border-radius: 16px;
     border: 2px solid #FEFDFD;
     background-color: #f14c43;
-    padding: 2em;
+    padding: 1em;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     display: flex;
     justify-content: flex-start;
@@ -193,6 +193,7 @@ h1{
 .item-text h1 {
     text-align: right;
     margin-top: 0;
+    font-size: 1.5em;
 }
 
 .bottom-logo{
@@ -215,14 +216,14 @@ h1{
 }
 
 .breeds-right-side {
-    padding: 2em 2em 9em 2em;
+    padding: 1em 1em 4.5em 1em;
     position:relative;
     overflow: scroll;
     width: 75%;
     background-color: #4791A1 ;
 }
 
-.breeds-right-side h1 {
+.breeds-right-side h2 {
     text-align: center;
     margin-top: 0;
 }
@@ -239,7 +240,7 @@ h1{
 }
 .info-container p{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #4791A1 ;         
 }
 
@@ -247,7 +248,7 @@ h1{
     min-width: 70%;
     max-width: 80%;
     background-color:#FEFDFD;
-    padding: 1em;
+    padding: 0.5em;
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -265,13 +266,15 @@ h1{
 }
 
 .info-container img {
-    min-width:347px;
-    width: auto;
-    max-height: 307px;
-    min-height:300px;
+    /* min-width:347px; */
+    height: 150px;
+    width: 150px;
+    /* width: auto; */
+    /* max-height: 307px; */
+    /* min-height:300px; */
     cursor:pointer;
     position: relative;
-    right: 2em;   
+    /* right: 2em;    */
 }
 
 .menu{
@@ -304,32 +307,32 @@ h1{
 
 .item-text p{
     overflow: scroll;
-    height:17em;
-    padding: 0.5em 1em;
+    height:8em;
+    padding: 0.25em 0.5em;
     margin-left: 1em;
-    font-size: 1.em;
-    line-height: 1.75em;
+    font-size: 1em;
+    line-height: 1.5em;
     color: #024B63;
     background-color: #FEFDFD;
+    margin-bottom: 0.5em;
 }
 
 .cute{
-    border-radius: 16px;
     overflow: hidden;
-    height: 307px;
+    margin-top: 1em;
 }
 
 .field .button{
     color: #FEFDFD;
     background-color: transparent;
-    margin: 0.25em 0.5em;
-    padding: 1em;
+    margin: 0.125em 0.25em;
+    padding: 0.5em;
     box-shadow: none;
-    width: 6em;
-    height: 6em;
+    width: 3em;
+    height: 3em;
     text-align: center;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .field{
@@ -338,7 +341,7 @@ h1{
 }
 
 .field label{
-    font-size: 1.25em;
+    font-size: 1em;
     text-decoration: underline;
 }
 
@@ -422,236 +425,237 @@ h1{
 
 .small{
     background-image: url('./images/dog.png');
-    background-size: 2.5em;
+    background-size: 1.25em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .medium{
     background-image: url('./images/dog.png');
-    background-size: 3.6em;
+    background-size: 1.8em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .large{
     background-image: url('./images/dog.png');
-    background-size: 5em;
+    background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-shed{
     background-image: url('./images/dog.png');
-    background-size: 2.5em;
+    background-size: 1.25em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-shed{
     background-image: url('./images/dog.png');
-    background-size: 4em;
+    background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-shed{
     background-image: url('./images/dog.png');
-    background-size: 5.6em;
+    background-size: 2.8em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-energy{
     background-image: url('./images/flash.png');
-    background-size: 1.5em;
+    background-size: 0.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-energy{
     background-image: url('./images/flash.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-energy{
     background-image: url('./images/flash.png');
-    background-size: 5em;
+    background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-play{
     background-image: url('./images/lazy.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: 50% 80%;
 }
 
 .moderate-play{
     background-image: url('./images/almost-active.png');
-    background-size: 4.5em;
+    background-size: 2.25em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-play{
     background-image: url('./images/active.png');
-    background-size: 5em;
+    background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .yes{
     background-image: url('./images/family.png');
-    background-size: 4.5em;
+    background-size: 2.25em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .no{
     background-image: url('nofamily.png');
-    background-size: 4em;
+    background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-shed{
     background-image: url('./images/low-shed.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-shed{
     background-image: url('./images/moderate-shed.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-shed{
     background-image: url('./images/high-shed.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .low-bark {
     background-image: url('./images/speaker.png');
-    background-size: 2em;
+    background-size: 1em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .moderate-bark {
     background-image: url('./images/speaker.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .high-bark {
     background-image: url('./images/speaker.png');
-    background-size: 4em;
+    background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .favorite-of-mine {
     background-image: url('./images/white-heart.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .male {
     background-image: url('./images/male.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .female {
     background-image: url('./images/female.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .has-shots {
     background-image: url('./images/syringe.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .kids-ok {
     background-image: url('./images/family.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .cats-ok {
     background-image: url('./images/cat.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .altered {
     background-image: url('./images/scissors.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .baby {
     background-image: url('./images/puppy.png');
-    background-size: 3em;
+    background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .young {
     background-image: url('./images/young-dog.png');
-    background-size: 4em;
+    background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .adult {
     background-image: url('./images/adult-dog.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .senior {
     background-image: url('./images/old-dog.png');
-    background-size: 4em;
+    background-size: 2em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .house-trained {
     background-image: url('./images/toilet.png');
-    background-size: 3.5em;
+    background-size: 1.75em;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .filter-option{
-    height:9em;
+    height:4em;
     text-align:center;
     width: 33%;
 }
 
 .filter-option p{
     position:relative;
+    font-size: 0.75em;
     bottom: 1em
 }
 
@@ -695,13 +699,15 @@ h1{
 }
 
 .search-shelters-page {
-    height: 100%;
+    position:relative;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin: 5%;
-    margin-top: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 5%;
 }
 
 .search-shelters-header {
@@ -745,7 +751,7 @@ h1{
 }
 
 #search-shelters-map {
-    height: 400px;
+    height: 270px;
     width: 100%;
     border-radius: 16px;
 }
@@ -757,6 +763,11 @@ h1{
     padding: 2% 5%;
     border-radius: 16px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.shelter-item p, .shelter-item h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 /* CSS FOR FAVES BELOW */
@@ -807,24 +818,24 @@ h1{
 
 .home-container h1 {
     text-align: center;
-    font-size: 4em;
-    line-height: 1.9em;
+    font-size: 2.5em;
+    line-height: 1.4em;
     /* padding: 2em 1em 6em 1em; */
     font-family: 'Kaushan Script', cursive;
     color: #FEFDFD;
-    margin-top: 5em;
-    padding: 0 2em;
+    margin-top: 4em;
+    padding: 0 1em;
 }
 
 /* AUTHENTICATION */
 
 input, .submit {
     width: 100%;
-    height: 2em;
+    height: 1.5em;
     border-radius: 5px;
     margin-top: 1em;
     text-align: center;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .submit {
@@ -875,8 +886,9 @@ input, .submit {
 }
 
 .title img {
+    width: 57px;
     vertical-align: bottom;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .logo {
