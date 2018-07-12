@@ -70,15 +70,15 @@ class Authenticate extends React.Component {
     } else {
       return (
         <div className="authentication-page">
-          <h1>{this.props.thisPage}</h1>
+          <h2>{this.props.thisPage}</h2>
           <form onSubmit={this.handleSubmit}>
             <input placeholder="username" value={this.state.username} onChange={this.handleUserNameInput} />
             <input placeholder="password" type="password" value={this.state.password} onChange={this.handlePasswordInput} />
             <input placeholder="zipcode" value={this.state.zip} onChange={this.handleZipInput} />
             <button className="submit">Submit</button>
           </form>
-          <Link to={`/${this.props.otherPage}`}><h1>{this.props.otherPage} Here</h1></Link>
-          <h2 className="problem">{this.state.status}</h2>
+          <Link to={`/${this.props.otherPage}`}><h2>{this.props.otherPage} Here</h2></Link>
+          <h3 className="problem">{this.state.status}</h3>
         </div>
       )
     }   

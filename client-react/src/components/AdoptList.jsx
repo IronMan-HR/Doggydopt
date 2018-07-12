@@ -230,7 +230,7 @@ class AdoptList extends React.Component {
         <div className="below-header">
           <DogSearch searchDogs={this.searchDogs}/>
           <div className="breeds-right-side">
-            <h1>Step 2: Pick your dog! Showing {`${this.props.match.params.breed}s in ${this.props.match.params.zip}`}</h1>
+            <h2>Step 2: Pick your dog! Showing {`${this.props.match.params.breed}s in ${this.props.match.params.zip}`}</h2>
             <div className="breed-container flex">  
               {this.state.adoptables.map((dog, i)=>{
                 return(

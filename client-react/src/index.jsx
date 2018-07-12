@@ -137,7 +137,9 @@ class App extends React.Component {
             <AdoptList match={match} username={this.state.username} userIsAuthenticated={this.state.userIsAuthenticated}/>
           )}/>
           <Route exact={true} path="/shelters" render={() => (
-            <SearchShelters />
+            <div className="below-header">
+              <SearchShelters />
+            </div>
           )} />
           <Route exact path="/profile" render={() => (
             <div className='below-header'>
