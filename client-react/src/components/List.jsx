@@ -3,7 +3,7 @@ import ListEntry from './ListEntry.jsx';
 
 const List = ({zip, breeds, clickHandler,addDefaultSrc}) => (
     <div className="breeds-right-side">
-      <h1>Step 1: Pick your breed!</h1>
+      <h2>Step 1: Pick your breed!</h2>
       <div className="breed-container">
           {breeds.map((breed, i) => {
             return <ListEntry zip={zip} key={i} breed={breed} clickHandler={clickHandler} addDefaultSrc={addDefaultSrc}/>
