@@ -700,6 +700,7 @@ h1{
 
 .search-shelters-page {
     position:relative;
+    width: 100%;
     overflow: scroll;
     display: flex;
     flex-direction: column;
@@ -726,6 +727,7 @@ h1{
 .corgi {
     content: url('./images/corgi.png');
     height: 100%;
+    width: 150px;
     margin: 0 2%;
 }
 
