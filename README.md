@@ -1,4 +1,4 @@
-# [Doggydopt](https://calm-badlands-51138.herokuapp.com/)
+# [Doggydopt](https://doggydopt.herokuapp.com)
 
 <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1149910-200.png" alt="Doggydopt" width="100px" height="100px">
 
